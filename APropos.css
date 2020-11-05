@@ -26,6 +26,7 @@ header .HeaderTitle {
   float: left;
   padding: 0 30px;
   text-decoration: none;
+  font-size: 1.5em;
 }
 
 header .HeaderMenu {
