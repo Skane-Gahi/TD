@@ -63,7 +63,7 @@
       </div>
       <!--///////////////////Bannière de bienvenue/////////////////////////////-->
 
-      <p class="BannerText">Clickez sur le projet qui vous intéresse pour en savoir plus <br> sur son contenue et les compétences acquises</p>
+      <p class="BannerText">Cliquez sur le projet qui vous intéresse pour en savoir plus <br> sur son contenu et les compétences acquises</p>
       <div class="Arrows">
         <i class="fas fa-angle-double-down" id="ArrowRight"></i>
         <i class="fas fa-angle-double-down" id="ArrowLeft"></i>
@@ -100,7 +100,7 @@
         </a>
 
         <a href="#" class="element">
-          <h2>À venir..</h2>
+          <h2>À venir...</h2>
           <div class="ProjectImage">
             <img src="images/POO.png" alt="C'est le projet com">
             <div class="caption">
@@ -109,7 +109,7 @@
           </div>
         </a>
         <a href="#" class="element">
-          <h2>À venir..</h2>
+          <h2>À venir...</h2>
           <div class="ProjectImage">
             <img src="images/Reseau.jpg" alt="C'est le projet BDD">
             <div class="caption">
@@ -118,7 +118,7 @@
         </div>
         </a>
         <a href="#" class="element">
-          <h2>À venir..</h2>
+          <h2>À venir...</h2>
           <div class="ProjectImage">
             <img src="images/Web.jpg" alt="C'est le projet embarqué">
             <div class="caption">
@@ -150,7 +150,7 @@
             La modulation du son nous permet de transmettre des bits de données. Nous avons 4 modulations d'amplitude sur 2 bits et 2 modulations de phases sur 1 bit. Ainsi chaque période d'un signal envoie 3 bits de données. Nous envoyons 3 signaux en même temps qui sont porté par une onde ultrasonore. Nous avions donc un débit théorique d'envoie de 72 kbits/s. <br>
             l'image ci-dessous récapitule l'encodage d'un signal sonore.
           </p>
-
+          <h4>Tableau de correspondance bits/modulation</h4>
           <div class="ModalImage">
             <img src="images/Com/BitsTransmis.JPG" alt="Encodage d'un signal sonore">
           </div><br>
@@ -160,7 +160,7 @@
             Le protocole réseau nous permet bien identifier chaque portion de signal à décoder et permet aussi des détecter des erreurs de transmissions potentiels. Pour identifier chaque trame nous avons un bit de start, un bit de stop, un idendificateur avec le numéro de trame, un bit de parité et finalement le segment. Le segment qui contient la donnée avec le code correcteur de hamming par-dessus pour détecter les erreurs.<br>
             l'image ci-dessous récapitule la composition d'une trame.<br>
           </p>
-
+          <h4>Modélisation de l'encapsulement d'une donnée</h4>
           <div class="ModalImage">
             <img src="images/Com/ProtocoleReseau.JPG" alt="Composition d'une trame">
           </div><br>
@@ -172,7 +172,7 @@
             Le programme d'envoie va lire le message depuis un fichier texte et faire la conversion des caractères en binaires. il va ensuite découper la suite de bits pour obtenir des segments en y rajoutant le bits de contrôles de Hamming. Le programme va composer les trames comme vu plus haut. Enfin le programme va composer le signal sonore modulé et lire le son produit. <br>
             Voici le programme d'envoie complet.
           </p>
-
+          <h4>Programme d'envoie</h4>
           <div class="CodeBlock">
             <pre class="Preformate">
               <code class="language-py">
@@ -387,7 +387,7 @@
             Le programme de réception va lire le fichier texte avec les trames envoyées et reconvertir les bits en caractères. Le programme passe évidemment par la décomposition des trames ainsi que de tout les bits de contrôles.<br>
             Voici le programme de réception complet.
           </p>
-
+          <h4>Programme de réception</h4>
           <div class="CodeBlock">
             <pre class="Preformate">
               <code class="language-py">
@@ -462,8 +462,2166 @@
       <div class="ModalBDD" id="ModalBDD">
         <div class="ModalContent">
           <a href="#" class="ModalClose"><i class="far fa-times-circle"></i></a>
-          <h2>Projet Base de donnée</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <h2>Projet Base de donnée</h2><br><br>
+          <p>
+            Nous avons des informations de ventes sur 5 siècles réunies sur 1 seule fichier excel(300 000+ lignes). L'image ci-dessous illustre la situation initiale.
+          </p>
+          <img src="images/BDD/initial.png" alt="Situation initiale">
+          <p>
+            Le but du projet et d'organiser une base de donnée à partir de ces données initiales. Il faut aussi préparer par la suite des requêtes permettant d'exploiter les données comme par exemple, rajouter les données relatives à une nouvelle vente.<br>
+            Le projet dans son ensemble m'a permis d'apprendre : <br>
+            - Les bases de l'UML/SYSML (Diagramme de cas d'utilisation, exigences et de machine à état) <br>
+            - Dicionnaire de données et matrice des dépendances fonctionnelles <br>
+            - Modèle conceptuel/logique/physique de données <br>
+            - Langage SQL sur wamp server (MySQL) avec phpmyadmin<br>
+            - Arbres algébriques et algèbre relationnel (jointure, union, intersection etc...) <br>
+          </p>
+          <h3>Analyse et Modélisation</h3>
+          <p>
+            Dans un premier temps, il nous a fallu établir précisément ce qu'il nous fallait réaliser pour répondre à la demande du client. C'est pourquoi nous avons réaliser des diagrammes UML comme le diagramme d'exigences. Nous avions 12 souhaits à réaliser et chacun nécessite des données de la situation initiale. L'image ci-dessous est un extrait du diagramme d'exigence.
+          </p>
+          <div class="ModalImage">
+            <img src="images/BDD/exigences.png" alt="Diagramme d'exigences">
+          </div>
+
+          <p>
+            Ensuite nous avons créer notre dictionnaire de donnée et notre matrice de dépendances fonctionnelles en prenant en compte les données de départ.
+            Une fois cela fait nous sommes passer à la modélisation de la base de donnée qui en découlait. Nous avons du faire de nombreux choix parfois discutables comme mettre les provinces et cités dans la même entité. Cependant nous avons bien fait en sorte de simplifier au maximum la réalisation des souhaits(voir exigences) par la suite.
+          </p>
+          <h4>Dictionnaire de donnée</h4>
+          <div class="ModalImage">
+            <img src="images/BDD/DD.png" alt="Dictionnaire de donnée">
+          </div>
+          <h4>Matrice des dépendances fonctionnelles</h4>
+          <div class="ModalImage">
+            <img src="images/BDD/MDF.png" alt="Matrice des dépendances fonctionnelles">
+          </div>
+          <h4>Modèle conceptuel de données</h4>
+          <div class="ModalImage">
+            <img src="images/BDD/MCD.png" alt="Modèle conceptuel de données">
+          </div>
+          <h3>Implémentation</h3>
+          <p>
+            Il est temps de passez à l'implémentation, c'est-à-dire créer la nouvelle base données à partir du modèle logique de données et migrer les données de départ dans cette nouvelle base. Il faut d'abord créer les tables puis réussir récupérer les données à partir des données départ et cela fut le plus compliqué. L'exemple le plus flagrant et pour la table guerre où j'ai du développer une fonction pour bien extraire chaque donnée. Voici un extrait des données initiales des guerres suivi de la solution réalisée.
+          </p>
+          <h4>Données "guerres" initiales</h4>
+          <div class="ModalImage">
+            <img src="images/BDD/guerres.png" alt="Données 'guerres' initiales">
+          </div>
+          <h4>Solution SQL apportée (Procédure stockée avec curseurs)</h4>
+          <div class="CodeBlock">
+            <pre class="Preformate">
+              <code class="language-sql">
+                -- -----------------------------------------------------------------------------
+                -- Table : Guerre
+                -- -----------------------------------------------------------------------------
+
+                CREATE TABLE `ventes`.`tmp_guerre` (
+
+                    `lieu` VARCHAR(256) NOT NULL ,
+                    `annee` VARCHAR(256) NOT NULL ,
+                    `demidieu` VARCHAR(256)
+                ) ENGINE = InnoDB;
+
+                -- -----------------------------------------------------------------------------
+                DELIMITER |
+                DROP FUNCTION IF EXISTS ventes_avant.reduce_str|
+
+                CREATE FUNCTION ventes_avant.reduce_str(
+                  str   VARCHAR(1312),
+                  delim VARCHAR(50),
+                  pos   INT
+                ) RETURNS VARCHAR(255)
+                RETURN
+                  REPLACE(SUBSTRING(SUBSTRING_INDEX(str, delim, pos),
+                  LENGTH(SUBSTRING_INDEX(str, delim, pos-1)) + 1),
+                  delim, '')
+                |
+
+                -- -----------------------------------------------------------------------------
+
+                DELIMITER |
+                DROP PROCEDURE IF EXISTS ventes_avant.NewWar|
+
+                CREATE PROCEDURE ventes_avant.NewWar()
+
+                  BEGIN
+
+                  DECLARE LeDemiDieu  VARCHAR(256); -- value
+                  DECLARE LaAnnee     VARCHAR(256);  -- part
+                  DECLARE LaGuerre    VARCHAR(256); -- val
+                  DECLARE compteur    INT UNSIGNED DEFAULT 1;
+                  DECLARE LaProvince  VARCHAR(256);
+                  DECLARE LesGuerres  VARCHAR(1312);
+                  DECLARE done        INT DEFAULT FALSE;
+
+                  DECLARE CurGuerre CURSOR FOR SELECT `Province/Citée`,
+                    `Année de guerre - (Demi Dieu éventuel)`
+                    FROM ventes_avant.guerre;
+                  DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+                  OPEN CurGuerre;
+
+                  TRUNCATE TABLE ventes.tmp_guerre;
+
+                  LaBoucle: LOOP
+                    FETCH CurGuerre INTO LaProvince, LesGuerres;
+                    IF done THEN
+                      LEAVE LaBoucle;
+                    END IF;
+
+                    SET compteur = 1;
+                    WHILE (CHAR_LENGTH(reduce_str(LesGuerres,';',compteur)) > 0) DO
+
+                      SET LaGuerre = reduce_str(LesGuerres, ';', compteur);
+                      SET LaAnnee = reduce_str(LaGuerre, ' ', 1);
+                      SET LeDemiDieu = reduce_str(LaGuerre, ' ', 2);
+
+                      INSERT INTO ventes.tmp_guerre (lieu, annee, demidieu)
+                      VALUES (LaProvince, LaAnnee, LeDemiDieu);
+
+                      SET compteur = compteur +1;
+                    END WHILE;
+
+                  END LOOP Laboucle;
+                  CLOSE CurGuerre;
+                END |
+
+                CALL NewWar();
+
+                UPDATE ventes.tmp_guerre
+                SET demidieu = REPLACE(REPLACE(demidieu, "(", ""), ")", "")
+                WHERE demidieu LIKE "(%)";
+
+                UPDATE ventes.tmp_guerre
+                SET demidieu = NULL
+                WHERE demidieu LIKE "";
+
+                UPDATE ventes.tmp_guerre
+                SET lieu = SUBSTRING_INDEX(lieu, " - ", -1)
+                WHERE lieu LIKE "% - %";
+
+                CREATE TABLE ventes.`Guerre` (
+
+                  `ID`          INT UNSIGNED AUTO_INCREMENT NOT NULL,
+                  `annee`       INT NOT NULL,
+                  `ID_DemiDieu` INT UNSIGNED ,
+                  `ID_Lieu`     INT UNSIGNED NOT NULL,
+
+                  CONSTRAINT PK_Guerre
+                    PRIMARY KEY(`ID`)
+
+                ) ENGINE = InnoDB;
+
+
+                INSERT INTO ventes.guerre (`annee`, `ID_DemiDieu`, `ID_Lieu`)
+                  SELECT war.annee, fighter.ID, field.ID
+                  FROM ventes.tmp_guerre AS war
+                  LEFT JOIN ventes.demidieu AS fighter
+                  ON war.demidieu = fighter.nom
+                  INNER JOIN ventes.lieu AS field
+                  ON war.lieu = field.designation
+                ;
+
+                DROP TABLE ventes.tmp_guerre;
+              </code>
+            </pre>
+          </div>
+          <p>
+            Si cela vous intéresse le script complet (! 1200+ lignes) écrit à la main par mes soins se trouve tout en bas de cette page.
+          </p>
+          <h3>Exploiter/Opérer</h3>
+          <p>
+            Dernière phase du projet, il faut composer les requêtes permettant de répondre au 12 souhaits de départ. Le principal problème à était d'optimiser les requêtes pour permettre à MySQL de les réaliser. L'un des souhaits plus intéréssant est pour l'ajout de nouvelles ventes. Celui-ci comprend un trigger qui déclenche un procédure stockée. Si cela vous intéresse, le script complet avec tous les souhaits se trouve tout en bas de cette page.
+          </p>
+          <h4>Souhait "Ajout de nouvelles ventes" en SQL</h4>
+          <div class="CodeBlock">
+            <pre class="Preformate">
+              <code class="language-sql">
+                -- -----------------------------------------------------------------------------
+                -- Wish 7
+                -- -----------------------------------------------------------------------------
+
+                CREATE TABLE `NewVente` (
+
+                  `jour`              DECIMAL(2,0) NOT NULL,
+                  `mois`              VARCHAR(100) NOT NULL,
+                  `annee`             DECIMAL(3,0),
+                  `objet`             VARCHAR(256) NOT NULL,
+                  `quantité d'objet`  INT UNSIGNED NOT NULL,
+                  `Don à`             VARCHAR(256),
+                  `Lieu`              VARCHAR(256),
+                  `Divinité associée` VARCHAR(256)
+
+                ) ENGINE = InnoDB;
+
+                DELIMITER |
+
+                DROP TRIGGER IF EXISTS insert_NV|
+
+                CREATE TRIGGER insert_NV AFTER INSERT
+                ON YFANSI.NewVente FOR EACH ROW
+
+                BEGIN
+
+                DECLARE LeJour    DECIMAL(2,0);
+                DECLARE LeMois    VARCHAR(100);
+                DECLARE LaAnnee   DECIMAL(3,0);
+                DECLARE LeObjet   VARCHAR(256);
+                DECLARE LaQte     INT UNSIGNED;
+                DECLARE LeDon     VARCHAR(256);
+                DECLARE LeLieu    VARCHAR(256);
+                DECLARE LeDieu    VARCHAR(256);
+
+                SET LeJour = NEW.jour;
+                SET LeMois = NEW.mois;
+                SET LaAnnee = NEW.annee;
+                SET LeObjet = NEW.objet;
+                SET LaQte = NEW.`quantité d'objet`;
+                SET LeDon = NEW.`Don à`;
+                SET LeLieu = NEW.Lieu;
+                SET LeDieu = NEW.`Divinité associée`;
+
+                CALL SP_insert_NV(LeJour, LeMois, LaAnnee, LeObjet, LaQte, LeDon, LeLieu, LeDieu);
+
+                END|
+
+                DELIMITER |
+
+                DROP PROCEDURE IF EXISTS SP_insert_NV|
+
+                CREATE PROCEDURE SP_insert_NV (
+
+                  IN Pjour      DECIMAL(2,0),
+                  IN Pmois      VARCHAR(256),
+                  IN Pannee     DECIMAL(3,0),
+                  IN Pobjet     VARCHAR(256),
+                  IN Pqte       INT UNSIGNED,
+                  IN Pdon       VARCHAR(256),
+                  IN Plieu      VARCHAR(256),
+                  IN Pdieu      VARCHAR(256)
+
+                )
+
+                BEGIN
+
+                DECLARE Psiecle   DECIMAL(1,0);
+                DECLARE ID_Pmois  INT UNSIGNED;
+                DECLARE ID_Pobjet INT UNSIGNED;
+                DECLARE ID_Pdon   INT UNSIGNED DEFAULT NULL;
+                DECLARE ID_Plieu  INT UNSIGNED DEFAULT NULL;
+                DECLARE ID_Pdieu  INT DEFAULT NULL;
+
+                SELECT SUBSTRING(Pannee FROM 1 FOR 1) + 1 INTO Psiecle;
+
+
+                SELECT ID INTO ID_Pobjet
+                FROM objet
+                WHERE designation = Pobjet;
+
+                SELECT ID INTO ID_Pmois
+                FROM mois
+                WHERE designation = Pmois;
+
+                IF (Pdon IS NOT NULL) THEN
+
+                  SELECT ID INTO ID_Pdon
+                  FROM demidieu
+                  WHERE nom = Pdon;
+
+                END IF;
+
+                IF (Plieu IS NOT NULL) THEN
+
+                  SELECT ID INTO ID_Plieu
+                  FROM lieu
+                  WHERE designation = Plieu;
+
+                END IF;
+
+                IF (Pdieu IS NOT NULL) THEN
+
+                  SELECT ID INTO ID_Pdieu
+                  FROM dieu
+                  WHERE nom = Pdieu;
+
+                END IF;
+
+                INSERT INTO YFANSI.vente (`jour`, `annee`, `siecle`, `quantite_objet`,
+                   `ID_Objet`, `ID_Mois`, `ID_DemiDieu`, `ID_Lieu`, `ID_Dieu`)
+                VALUES (Pjour, Pannee, Psiecle, Pqte, ID_Pobjet, ID_Pmois, ID_Pdon, ID_Plieu, ID_Pdieu);
+
+                END|
+              </code>
+            </pre>
+          </div>
+          <p>
+            Je vai prendre l'exemple du souhait 4 pour vous montrer un résultat final bien illustré. Ce souhait consiste à comparer l'évolution des ventes de l'Ægypte par rapport à toutes les autres provinces. Comme vous pourrez le constater le nombre de ventes évolue de façon similair dans les deux cas. Voici le script SQL réalisé suivi du diagramme réalisé sur excel.
+          </p>
+          <h4>Souhait 4 en SQL</h4>
+          <div class="CodeBlock">
+            <pre class="Preformate">
+              <code class="language-sql">
+                -- -----------------------------------------------------------------------------
+                -- Wish 4
+                -- -----------------------------------------------------------------------------
+
+                CREATE VIEW `Wish 4` AS
+
+                  SELECT LaProvince.*, lesAutres.Autres
+                  FROM (
+                    SELECT annee, COUNT(*) AS `AEgypte`
+                    FROM vente
+
+                    WHERE ID_Lieu = 4
+
+                    GROUP BY vente.annee
+                  ) AS LaProvince
+
+                  INNER JOIN (
+
+                    SELECT annee, ROUND(AVG(`Autres`)) AS `Autres`
+                    FROM (
+
+                      SELECT annee, ID_Lieu, COUNT(*) AS `Autres` FROM vente
+
+                      WHERE ID_Lieu != 4
+
+                      GROUP BY ID_Lieu, annee
+
+                    ) AS t1
+
+                    GROUP BY annee
+
+                  ) AS LesAutres
+
+                  ON LaProvince.annee = LesAutres.annee
+                ;
+              </code>
+            </pre>
+          </div>
+          <h4>Diagramme du souhait 4</h4>
+          <div class="ModalImage">
+            <img src="images/BDD/wish4.png" alt="Souhait 4 en SQL">
+          </div>
+          <h3>Scripts complets</h3>
+          <h4>Implémentation</h4>
+          <div class="CodeBlock">
+            <pre class="Preformate">
+              <code class="language-sql">
+
+
+
+                -- -----------------------------------------------------------------------------
+                -- Table : Type_Option
+                -- -----------------------------------------------------------------------------
+
+                CREATE TABLE ventes.`Type_Option` (
+
+                  `ID`           INT AUTO_INCREMENT NOT NULL,
+                  `designation`  VARCHAR(100) NOT NULL,
+
+                  CONSTRAINT PK_Type_Option
+                    PRIMARY KEY(`id`)
+                ) ENGINE = InnoDB ;
+
+                INSERT INTO `Type_Option`(`designation`)
+                VALUES ("pouvoir"), ("décoration");
+
+                -- -----------------------------------------------------------------------------
+                -- Table : Dieu
+                -- -----------------------------------------------------------------------------
+
+                CREATE TABLE ventes.`Dieu` (
+
+                  `ID`  INT AUTO_INCREMENT NOT NULL,
+                  `nom` VARCHAR(256) NOT NULL,
+
+                  CONSTRAINT PK_Dieu
+                    PRIMARY KEY(`ID`)
+
+                ) ENGINE = InnoDB;
+
+                SELECT DISTINCT `Fils ou Fille de` -- > DIEUX
+                FROM ventes_avant.demidieu;
+
+                /*
+                SELECT SUBSTRING_INDEX(Deco, " d'", -1) AS Deco        VERIF DES INFOS DU SELECT
+                FROM (
+                  SELECT DISTINCT Deco_1 AS Deco FROM ventes_avant.tmp_deco      DEPUIS LA TABLE DES VENTES
+                  UNION
+                  SELECT DISTINCT Deco_2 FROM ventes_avant.tmp_deco
+                ) AS tmp_deco1
+                WHERE Deco LIKE "% d'%"
+
+                UNION  -- listes des décos différentes
+
+                SELECT SUBSTRING_INDEX(Deco, " de ", -1) AS Deco
+                FROM (
+                  SELECT DISTINCT Deco_1 AS Deco FROM ventes_avant.tmp_deco
+                  UNION
+                  SELECT DISTINCT Deco_2 FROM ventes_avant.tmp_deco
+                ) AS tmp_deco2
+                WHERE Deco NOT LIKE "% d'%"
+                ;
+                */
+
+                INSERT INTO `Dieu` (`nom`)
+                SELECT DISTINCT `Fils ou Fille de`
+                FROM ventes_avant.demidieu;
+
+                -- -----------------------------------------------------------------------------
+                -- Table : DemiDieu
+                -- -----------------------------------------------------------------------------
+
+                CREATE TABLE `ventes`.`DemiDieu` (
+
+                  `ID`      INT UNSIGNED AUTO_INCREMENT NOT NULL,
+                  `nom`     VARCHAR(256) NOT NULL,
+                  `ID_Dieu` INT NOT NULL,
+
+                  CONSTRAINT PK_DemiDieu
+                    PRIMARY KEY(`ID`)
+
+                ) ENGINE = InnoDB;
+
+                INSERT INTO ventes.demidieu (`nom`, `ID_Dieu`)
+                  SELECT DISTINCT SUBSTRING(child.`Demi Dieu` FROM 2), parent.ID
+                  FROM ventes_avant.demidieu AS child -- DEMIDIEUX
+                  INNER JOIN ventes.Dieu AS parent
+                  ON child.`Fils ou fille de` = parent.nom
+                ;
+
+                -- -----------------------------------------------------------------------------
+                -- Table : Guerre
+                -- -----------------------------------------------------------------------------
+
+                CREATE TABLE `ventes`.`tmp_guerre` (
+
+                    `lieu` VARCHAR(256) NOT NULL ,
+                    `annee` VARCHAR(256) NOT NULL ,
+                    `demidieu` VARCHAR(256)
+                ) ENGINE = InnoDB;
+
+                -- -----------------------------------------------------------------------------
+                DELIMITER |
+                DROP FUNCTION IF EXISTS ventes_avant.reduce_str|
+
+                CREATE FUNCTION ventes_avant.reduce_str(
+                  str   VARCHAR(1312),
+                  delim VARCHAR(50),
+                  pos   INT
+                ) RETURNS VARCHAR(255)
+                RETURN
+                  REPLACE(SUBSTRING(SUBSTRING_INDEX(str, delim, pos),
+                  LENGTH(SUBSTRING_INDEX(str, delim, pos-1)) + 1),
+                  delim, '')
+                |
+
+                -- -----------------------------------------------------------------------------
+
+                DELIMITER |
+                DROP PROCEDURE IF EXISTS ventes_avant.NewWar|
+
+                CREATE PROCEDURE ventes_avant.NewWar()
+
+                  BEGIN
+
+                  DECLARE LeDemiDieu  VARCHAR(256); -- value
+                  DECLARE LaAnnee     VARCHAR(256);  -- part
+                  DECLARE LaGuerre    VARCHAR(256); -- val
+                  DECLARE compteur    INT UNSIGNED DEFAULT 1;
+                  DECLARE LaProvince  VARCHAR(256);
+                  DECLARE LesGuerres  VARCHAR(1312);
+                  DECLARE done        INT DEFAULT FALSE;
+
+                  DECLARE CurGuerre CURSOR FOR SELECT `Province/Citée`,
+                    `Année de guerre - (Demi Dieu éventuel)`
+                    FROM ventes_avant.guerre;
+                  DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+                  OPEN CurGuerre;
+
+                  TRUNCATE TABLE ventes.tmp_guerre;
+
+                  LaBoucle: LOOP
+                    FETCH CurGuerre INTO LaProvince, LesGuerres;
+                    IF done THEN
+                      LEAVE LaBoucle;
+                    END IF;
+
+                    SET compteur = 1;
+                    WHILE (CHAR_LENGTH(reduce_str(LesGuerres,';',compteur)) > 0) DO
+
+                      SET LaGuerre = reduce_str(LesGuerres, ';', compteur);
+                      SET LaAnnee = reduce_str(LaGuerre, ' ', 1);
+                      SET LeDemiDieu = reduce_str(LaGuerre, ' ', 2);
+
+                      INSERT INTO ventes.tmp_guerre (lieu, annee, demidieu)
+                      VALUES (LaProvince, LaAnnee, LeDemiDieu);
+
+                      SET compteur = compteur +1;
+                    END WHILE;
+
+                  END LOOP Laboucle;
+                  CLOSE CurGuerre;
+                END |
+
+                CALL NewWar();
+
+                UPDATE ventes.tmp_guerre
+                SET demidieu = REPLACE(REPLACE(demidieu, "(", ""), ")", "")
+                WHERE demidieu LIKE "(%)";
+
+                UPDATE ventes.tmp_guerre
+                SET demidieu = NULL
+                WHERE demidieu LIKE "";
+
+                UPDATE ventes.tmp_guerre
+                SET lieu = SUBSTRING_INDEX(lieu, " - ", -1)
+                WHERE lieu LIKE "% - %";
+
+                CREATE TABLE ventes.`Guerre` (
+
+                  `ID`          INT UNSIGNED AUTO_INCREMENT NOT NULL,
+                  `annee`       INT NOT NULL,
+                  `ID_DemiDieu` INT UNSIGNED ,
+                  `ID_Lieu`     INT UNSIGNED NOT NULL,
+
+                  CONSTRAINT PK_Guerre
+                    PRIMARY KEY(`ID`)
+
+                ) ENGINE = InnoDB;
+
+
+                INSERT INTO ventes.guerre (`annee`, `ID_DemiDieu`, `ID_Lieu`)
+                  SELECT war.annee, fighter.ID, field.ID
+                  FROM ventes.tmp_guerre AS war
+                  LEFT JOIN ventes.demidieu AS fighter
+                  ON war.demidieu = fighter.nom
+                  INNER JOIN ventes.lieu AS field
+                  ON war.lieu = field.designation
+                ;
+
+                DROP TABLE ventes.tmp_guerre;
+
+                -- -----------------------------------------------------------------------------
+                -- Table : Moulaga ( Union des 5 siècles de ventes )
+                -- -----------------------------------------------------------------------------
+
+                CREATE TABLE `Moulaga` AS
+                SELECT * FROM ventes_avant.siecle1
+                UNION ALL
+                SELECT * FROM ventes_avant.siecle2
+                UNION ALL
+                SELECT * FROM ventes_avant.siecle3
+                UNION ALL
+                SELECT * FROM ventes_avant.siecle4
+                UNION ALL
+                SELECT * FROM ventes_avant.siecle5;
+
+                ALTER TABLE `Moulaga`
+                  ADD COLUMN `ID` INT AUTO_INCREMENT NOT NULL FIRST,
+                  ADD CONSTRAINT PK_Moulaga
+                    PRIMARY KEY(`ID`),
+                    ADD INDEX `ID_Deco`(`ID`, `Decoration`)
+                ;
+
+                -- -----------------------------------------------------------------------------
+                -- Table : Option
+                -- -----------------------------------------------------------------------------
+
+                CREATE TABLE  `ventes`.`Option` (
+
+                  `ID`             INT UNSIGNED AUTO_INCREMENT NOT NULL,
+                  `designation`    VARCHAR(256) NOT NULL,
+                  `ID_Type_Option` INT NOT NULL,
+
+                  CONSTRAINT PK_Option
+                    PRIMARY KEY(`ID`)
+
+                ) ENGINE = InnoDB;
+
+                -- -----------------------------------------------------------------------------
+
+                CREATE TABLE `tmp_deco` AS
+                  SELECT DISTINCT SUBSTRING_INDEX(`Decoration`, ' &', 1) AS Deco_1,
+                    SUBSTRING_INDEX(`Decoration`, '& ', -1) AS Deco_2
+                    FROM ventes_avant.Moulaga
+                    WHERE Decoration LIKE '%&%'
+
+                  UNION
+
+                  SELECT DISTINCT SUBSTRING_INDEX(`Decoration`, ' &', 1) AS Deco_1,
+                    '' AS Deco_2
+                  FROM ventes_avant.Moulaga
+                  WHERE Decoration NOT LIKE '%&%'
+                ;
+
+                -- -----------------------------------------------------------------------------
+
+                INSERT INTO ventes.option(`designation`, `ID_Type_Option`)
+                  SELECT DISTINCT SF_split(Deco_1, 1), 2 FROM ventes_avant.tmp_deco
+                  WHERE Deco_1 NOT LIKE ""
+
+                  UNION
+
+                  SELECT DISTINCT SF_split(Deco_2, 1), 2 FROM ventes_avant.tmp_deco
+                  WHERE Deco_2 NOT LIKE ""
+                ;
+
+                -- -----------------------------------------------------------------------------
+
+                INSERT INTO ventes.option(`designation`, `ID_Type_Option`)
+                  SELECT DISTINCT `Pouvoir`, 1 FROM ventes_avant.moulaga2
+                  WHERE `Pouvoir` NOT LIKE ""
+                ;
+
+                -- -----------------------------------------------------------------------------
+                -- Table : Artisan
+                -- -----------------------------------------------------------------------------
+
+                CREATE TABLE `tmp_artisans` AS
+                SELECT DISTINCT Artisan FROM ventes_avant.moulaga;
+
+                CREATE TABLE `ventes`.`Artisan` (
+
+                  `ID`   INT UNSIGNED AUTO_INCREMENT NOT NULL,
+                  `nom`  VARCHAR(256) NOT NULL,
+
+                  CONSTRAINT PK_Artisan
+                    PRIMARY KEY(`ID`)
+
+                ) ENGINE = InnoDB;
+
+
+                INSERT INTO ventes.Artisan(`nom`)
+                SELECT SUBSTRING_INDEX(`Artisan`, " & ", 1) FROM ventes_avant.tmp_artisans
+
+                UNION
+
+                SELECT SUBSTRING_INDEX(`Artisan`, " & ", -1) FROM ventes_avant.tmp_artisans
+                ;
+
+                -- -----------------------------------------------------------------------------
+                -- Table : conclure
+                -- -----------------------------------------------------------------------------
+
+                CREATE TABLE `tmp_conclure` AS
+
+                  SELECT `ID`, `Artisan`
+                  FROM ventes_avant.moulaga
+                ;
+
+                CREATE TABLE `ventes_avant`.`tmp_conclure2` AS
+
+                  SELECT `ID`, SUBSTRING_INDEX(`Artisan`, " & ", 1) AS nom
+                  FROM ventes_avant.tmp_conclure
+
+                  UNION ALL
+
+                  SELECT `ID`, SUBSTRING_INDEX(`Artisan`, " & ", -1) AS nom
+                  FROM ventes_avant.tmp_conclure
+                  WHERE `Artisan` LIKE "% & %"
+                ;
+
+                CREATE TABLE `ventes`.`conclure` (
+
+                  `ID_Vente`    INT UNSIGNED NOT NULL,
+                  `ID_Artisan`  INT UNSIGNED NOT NULL
+
+                ) ENGINE = InnoDB;
+
+                INSERT INTO ventes.conclure (`ID_Vente`, `ID_Artisan`)
+                  SELECT ccl.ID AS ID_Vente, art.ID AS ID_Artisan
+                  FROM ventes_avant.tmp_conclure2 AS ccl
+                  INNER JOIN ventes.Artisan AS art
+                  ON ccl.nom = art.nom
+                ;
+
+                -- -----------------------------------------------------------------------------
+                -- Deuxième Table vente temporaire
+                -- -----------------------------------------------------------------------------
+
+                CREATE TABLE `Moulaga2` AS
+                  SELECT `ID`, `Date`, `Objet`, `Pouvoir`, `Decoration`, `Lieu`, `Oo`, `Oa`, `Of`, `Quantite`
+                  FROM ventes_avant.moulaga
+                ;
+
+                -- -----------------------------------------------------------------------------
+                -- Table : Objet
+                -- -----------------------------------------------------------------------------
+
+                CREATE TABLE `ventes`.`Objet` (
+
+                  `ID`          INT UNSIGNED AUTO_INCREMENT NOT NULL,
+                  `designation` VARCHAR(256) NOT NULL,
+
+                  CONSTRAINT PK_Objet
+                    PRIMARY KEY(`ID`)
+
+                ) ENGINE = InnoDB;
+
+                CREATE TABLE `ventes_avant`.`tmp_objet`
+                SELECT DISTINCT `objet`
+                FROM ventes_avant.moulaga2;
+
+                INSERT INTO `ventes`.`Objet` (`designation`)
+                SELECT objet FROM ventes_avant.tmp_objet;
+
+                -- -----------------------------------------------------------------------------
+                -- Table : Mois
+                -- -----------------------------------------------------------------------------
+
+                CREATE TABLE `ventes`.`Mois` (
+
+                  `ID`          INT UNSIGNED AUTO_INCREMENT NOT NULL,
+                  `designation` VARCHAR(100) NOT NULL,
+                  `ordre`       TINYINT UNSIGNED NOT NULL,
+                  `ID_Dieu`     INT NOT NULL,
+
+                  CONSTRAINT PK_Mois
+                    PRIMARY KEY(`ID`)
+
+                ) ENGINE = InnoDB;
+
+
+
+                CREATE TABLE `ventes_avant`.`tmp_mois` AS
+
+                  SELECT `Mois`, `Divinité fétée` AS Party, God.ID
+                  FROM ventes_avant.mois AS Month
+                  INNER JOIN ventes.Dieu AS God
+                  ON Month.`Divinité fétée` = God.nom
+                ;
+
+                INSERT INTO `ventes`.`Mois` (`designation`, `ID_Dieu`)
+                  SELECT `Mois`, `ID`
+                  FROM ventes_avant.tmp_mois
+                ;
+
+                UPDATE `mois` SET `ordre` = '1' WHERE `mois`.`ID` = 11;
+                UPDATE `mois` SET `ordre` = '2' WHERE `mois`.`ID` = 8;
+                UPDATE `mois` SET `ordre` = '3' WHERE `mois`.`ID` = 3;
+                UPDATE `mois` SET `ordre` = '4' WHERE `mois`.`ID` = 7;
+                UPDATE `mois` SET `ordre` = '5' WHERE `mois`.`ID` = 6;
+                UPDATE `mois` SET `ordre` = '6' WHERE `mois`.`ID` = 2;
+                UPDATE `mois` SET `ordre` = '7' WHERE `mois`.`ID` = 4;
+                UPDATE `mois` SET `ordre` = '8' WHERE `mois`.`ID` = 10;
+                UPDATE `mois` SET `ordre` = '9' WHERE `mois`.`ID` = 12;
+                UPDATE `mois` SET `ordre` = '10' WHERE `mois`.`ID` = 9;
+                UPDATE `mois` SET `ordre` = '11' WHERE `mois`.`ID` = 5;
+                UPDATE `mois` SET `ordre` = '12' WHERE `mois`.`ID` = 1;
+
+                -- -----------------------------------------------------------------------------
+                -- Table Monnaie
+                -- -----------------------------------------------------------------------------
+
+                CREATE TABLE `ventes`.`Monnaie` (
+
+                  `ID`                     INT AUTO_INCREMENT NOT NULL,
+                  `designation`            VARCHAR(100) NOT NULL,
+                  `abreviation`            VARCHAR(3) NOT NULL,
+                  `quantite`               INT NOT NULL,
+                  `ID_Monnaie_conversion`  INT NOT NULL,
+
+                  CONSTRAINT PK_Monnaie
+                    PRIMARY KEY(`ID`)
+
+                ) ENGINE = InnoDB;
+
+
+                INSERT INTO ventes.monnaie(`designation`, `quantite`, `abreviation`, `ID_Monnaie_conversion`)
+                  SELECT `Monnaie`, `Conversion`, `Monnaie de conversion`, 5
+                  FROM ventes_avant.Monnaie
+                ;
+
+                -- -----------------------------------------------------------------------------
+                -- Table : Lieu
+                -- -----------------------------------------------------------------------------
+
+                CREATE TABLE `ventes`.`Lieu` (
+
+                  `ID`          INT UNSIGNED NOT NULL,
+                  `designation` VARCHAR(256) NOT NULL,
+                  `ID_Province` INT UNSIGNED,
+
+                  CONSTRAINT PK_Lieu
+                    PRIMARY KEY(`ID`)
+
+                ) ENGINE = InnoDB ;
+
+
+                CREATE TABLE `ventes`.`tmp_Lieu` (
+
+                  `ID`          INT UNSIGNED AUTO_INCREMENT NOT NULL,
+                  `designation` VARCHAR(256) NOT NULL,
+
+                ) ENGINE = InnoDB ;
+
+                INSERT INTO `ventes`.`tmp_Lieu`(`designation`)
+                  SELECT CONCAT_WS(" ", `Province`, `Ville`)
+                  FROM ventes_avant.province
+                ;
+
+                CREATE TABLE `ventes`.`tmp_lieu2` AS
+                  SELECT *, SUBSTRING_INDEX(`designation`, " ", 1) AS province
+                  FROM ventes.tmp_lieu
+                ;
+
+                CREATE TABLE `ventes`.`tmp_lieu3` AS
+                  SELECT tmp_lieu2.ID, SUBSTRING_INDEX(tmp_lieu2.designation, " ", -1) AS `designation`, tmp_Lieu.ID AS `ID_province`
+                  FROM ventes.tmp_lieu2
+                  LEFT JOIN ventes.tmp_lieu
+                  ON tmp_lieu2.province = tmp_lieu.designation
+                ;
+
+                INSERT INTO ventes.lieu (`ID`, `designation`, `ID_Province`)
+                  SELECT ID, designation , ID_Province
+                  FROM ventes.tmp_lieu3
+                ;
+
+                UPDATE ventes.lieu SET id_province = NULL
+                WHERE ID = ID_Province;
+
+
+                ALTER TABLE `ventes`.`lieu`
+                  MODIFY `ID` INT UNSIGNED AUTO_INCREMENT NOT NULL
+                ;
+
+                DROP TABLE `ventes`.`tmp_lieu`;
+                DROP TABLE `ventes`.`tmp_lieu2`;
+                DROP TABLE `ventes`.`tmp_lieu3`;
+
+                -- -----------------------------------------------------------------------------
+                -- Table : inspirer
+                -- -----------------------------------------------------------------------------
+
+                CREATE TABLE ventes_avant.`tmp_inspirer` AS
+                  SELECT DISTINCT `pouvoir`, `Decoration`
+                  FROM ventes_avant.moulaga2
+                ;
+
+                CREATE TABLE ventes_avant.`tmp_inspirer2` AS
+                  SELECT pouvoir, SUBSTRING_INDEX(decoration, " & ", 1) AS Deco
+                  FROM ventes_avant.tmp_inspirer
+                  WHERE decoration LIKE "% & %"
+
+                  UNION
+
+                  SELECT pouvoir, SUBSTRING_INDEX(decoration, " & ", -1) AS Deco
+                  FROM ventes_avant.tmp_inspirer
+                  WHERE decoration LIKE "% & %"
+
+                  UNION
+
+                  SELECT pouvoir, decoration
+                  FROM ventes_avant.tmp_inspirer
+                  WHERE decoration NOT LIKE "% & %"
+                ;
+
+                DELIMITER |
+                DROP FUNCTION IF EXISTS ventes_avant.SF_split|
+
+                CREATE FUNCTION ventes_avant.SF_split (
+                  Decorazion  VARCHAR(256),
+                  Choice      TINYINT
+                ) RETURNS VARCHAR(256)
+
+                BEGIN
+
+                DECLARE TheExit   VARCHAR(256);
+                DECLARE DecoName  VARCHAR(256);
+                DECLARE GodName   VARCHAR(256);
+                DECLARE done      INT DEFAULT FALSE;
+
+                DECLARE CurGod CURSOR FOR SELECT  `nom` FROM ventes.Dieu;
+                DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+                OPEN CurGod;
+
+                LaBoucle: LOOP
+                  FETCH CurGod INTO GodName;
+                  IF done THEN
+                    LEAVE LaBoucle;
+
+                  ELSEIF (Decorazion LIKE CONCAT("%",GodName,"%")) THEN
+                    IF (Choice = 2) THEN
+                      SET TheExit = GodName;
+
+                    ELSEIF (Choice = 1) THEN
+                      SET DecoName = SUBSTRING_INDEX(Decorazion, GodName, 1);
+
+                      IF (DecoName LIKE "% d'") THEN
+                        SET TheExit = SUBSTRING_INDEX(DecoName, " d'", 1);
+
+                      ELSEIF (DecoName LIKE "% de " AND DecoName NOT LIKE "% de % de ") THEN
+                        SET TheExit = SUBSTRING_INDEX(DecoName, " de", 1);
+
+                      ELSEIF (DecoName LIKE "% de % de ") THEN
+                        SET TheExit = SUBSTRING_INDEX(DecoName, " de", 2);
+
+                      ELSE
+                        SET TheExit = "je n'existe pas";
+
+                      END IF;
+
+                    ELSE
+                      SET TheExit = "Error : 2nd argument is incorrect";
+
+                    END IF;
+
+                  END IF;
+
+                  END LOOP LaBoucle;
+                  CLOSE CurGod;
+                  RETURN TRIM(TheExit);
+                END|
+
+                CREATE TABLE `tmp_inspirer3` AS
+                  SELECT inspired.*, dto.ID AS ID_Deco, beerus.ID AS ID_Dieu, powa.ID AS ID_powa
+                  FROM (
+                    SELECT Pouvoir,SF_split(Deco, 1) AS decorazion, SF_split(Deco, 2) AS God
+                    FROM ventes_avant.tmp_inspirer2
+                  ) AS inspired
+                  LEFT JOIN ventes.option AS dto
+                  ON inspired.decorazion = dto.designation
+                  LEFT JOIN ventes.dieu AS beerus
+                  ON inspired.God = beerus.nom
+                  LEFT JOIN ventes.option AS powa
+                  ON inspired.pouvoir = powa.designation
+                ;
+
+
+                SELECT * FROM ventes.Dieu
+                WHERE nom LIKE "Kronos"; -- > 11
+
+                UPDATE `tmp_inspirer3`
+                SET `ID_Dieu` = 11
+                WHERE pouvoir = "Appétit de Kronos";
+
+                -- -----------------------------------------------------------------------------
+                CREATE TABLE ventes.`inspirer` (
+
+                  `ID_Option` INT UNSIGNED NOT NULL,
+                  `ID_Dieu`   INT UNSIGNED NOT NULL
+
+                ) ENGINE = InnoDB;
+
+                INSERT INTO ventes.inspirer (ID_Option, ID_Dieu)
+                  SELECT ID_Deco, ID_Dieu
+                  FROM ventes_avant.tmp_inspirer3
+                  WHERE ID_Deco IS NOT NULL
+
+                  UNION
+
+                  SELECT ID_powa, ID_Dieu
+                  FROM ventes_avant.tmp_inspirer3
+                  WHERE ID_powa IS NOT NULL AND ID_Dieu IS NOT NULL
+                ;
+
+                -- -----------------------------------------------------------------------------
+                -- Table : optionner
+                -- -----------------------------------------------------------------------------
+                CREATE TABLE `ventes_avant`.`tmp_optionner` AS
+                  SELECT ID, pouvoir
+                  FROM ventes_avant.moulaga2
+                  WHERE pouvoir NOT LIKE ""
+                ;
+
+                CREATE TABLE `ventes_avant`.`tmp_optionner2` AS
+                  SELECT ID, SUBSTRING_INDEX(decoration, " &", 1) AS Deco
+                  FROM ventes_avant.moulaga2
+                  WHERE decoration NOT LIKE ""
+
+                  UNION ALL
+
+                  SELECT ID, SUBSTRING_INDEX(decoration, "& ", -1)
+                  FROM ventes_avant.moulaga2
+                  WHERE decoration NOT LIKE ""
+                  AND decoration LIKE "%&%"
+                ;
+
+
+                -- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                CREATE TABLE ventes_avant.tmp_optionner3 (
+
+                  `ID_vente`     INT UNSIGNED NOT NULL,
+                  `designation`  VARCHAR(256) NOT NULL
+
+                );
+
+                INSERT INTO ventes_avant.tmp_optionner3 (ID_vente, designation)
+                  SELECT ID, SF_split(Deco, 1) AS decorazion
+                  FROM ventes_avant.tmp_optionner2
+                ;
+
+                -- à faire sur invite de commande car très lourd
+                -- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+                CREATE TABLE ventes.`optionner` (
+                  `ID_Vente`  INT UNSIGNED NOT NULL,
+                  `ID_Option` INT UNSIGNED NOT NULL
+
+                ) ENGINE = InnoDB;
+
+                INSERT INTO ventes.optionner (ID_Vente, ID_Option)
+                  SELECT ID_Vente, table2.ID AS ID_Option FROM (
+                    SELECT ID_Vente, designation FROM ventes_avant.tmp_optionner3
+                    UNION
+                    SELECT ID, pouvoir FROM ventes_avant.tmp_optionner
+                  ) AS table1
+                  INNER JOIN ventes.option AS table2
+                  ON table1.designation = table2.designation
+                ;
+
+
+                -- -----------------------------------------------------------------------------
+                -- Table : valoriser
+                -- -----------------------------------------------------------------------------
+
+                CREATE TABLE ventes_avant.tmp_valoriser AS
+                  SELECT ID AS ID_Vente, 1 AS ID_Monnaie, `Oo` AS Quantite
+                  FROM ventes_avant.Moulaga2
+                  WHERE `Oo` <> 0
+                ;
+                CREATE TABLE ventes_avant.tmp_valoriser2 AS
+                  SELECT ID AS ID_Vente, 2 AS ID_Monnaie, `Oa` AS Quantite
+                  FROM ventes_avant.Moulaga2
+                  WHERE `Oa` <> 0
+                ;
+                CREATE TABLE ventes_avant.tmp_valoriser3 AS
+                  SELECT ID AS ID_Vente, 3 AS ID_Monnaie, moulaga2.`Of` AS Quantite
+                  FROM ventes_avant.Moulaga2
+                  WHERE `Of` <> 0
+                ;
+
+                -- -----------------------------------------------------------------------------
+
+                CREATE TABLE ventes.`valoriser` (
+
+                  `ID_Vente`          INT UNSIGNED NOT NULL,
+                  `ID_Monnaie`        INT NOT NULL,
+                  `quantite_monnaie`  INT UNSIGNED NOT NULL
+
+                ) ENGINE = InnoDB;
+
+                INSERT INTO ventes.valoriser(ID_Vente, ID_Monnaie, quantite_monnaie)
+                  SELECT ID_Vente, ID_Monnaie, Quantite
+                  FROM ventes_avant.tmp_valoriser
+
+                  UNION
+
+                  SELECT ID_Vente, ID_Monnaie, Quantite
+                  FROM ventes_avant.tmp_valoriser2
+
+                  UNION
+
+                  SELECT ID_Vente, ID_Monnaie, Quantite
+                  FROM ventes_avant.tmp_valoriser3
+                ;
+
+                -- -----------------------------------------------------------------------------
+                -- Table : moulaga3
+                -- -----------------------------------------------------------------------------
+
+                CREATE TABLE ventes_avant.moulaga3 AS
+                  SELECT ID, `Date`, Objet, Pouvoir, Decoration, Lieu, Quantite
+                  FROM ventes_avant.Moulaga2
+                ;
+
+                -- -----------------------------------------------------------------------------
+                -- Table : Vente
+                -- -----------------------------------------------------------------------------
+
+                -- Relier aux Dieux-------------------------------------------------------------
+
+                -- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                CREATE TABLE ventes_avant.tmp_vente AS
+                  SELECT ID, SF_split(decoration, 2) AS DecoDieu
+                  FROM ventes_avant.moulaga3
+                  WHERE (decoration NOT LIKE "" AND pouvoir LIKE "")
+                  OR (decoration NOT LIKE "" AND pouvoir NOT LIKE "")
+                ; -- invite de commande
+                -- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+                SELECT tablea.ID AS ID_Vente, tableb.ID AS ID_Dieu
+                FROM ventes_avant.tmp_vente AS tablea
+                INNER JOIN ventes.Dieu AS tableb
+                ON tablea.decodieu = tableb.nom
+
+
+                CREATE TABLE ventes_avant.tmp_vente2 AS
+                  SELECT ID, pouvoir
+                  FROM ventes_avant.moulaga3
+                  WHERE pouvoir NOT LIKE "" AND decoration LIKE ""
+                ;
+
+
+                CREATE TABLE ventes_avant.tmp_vente3 AS
+                  SELECT tablea.ID AS ID_Vente, tableb.ID AS ID_Dieu
+                  FROM ventes_avant.tmp_vente AS tablea
+                  INNER JOIN ventes.Dieu AS tableb
+                  ON tablea.decodieu = tableb.nom
+
+                  UNION
+
+                  SELECT table1.ID AS ID_Vente, table3.ID_Dieu
+                  FROM ventes_avant.tmp_vente2 AS table1
+                  INNER JOIN ventes.option AS table2
+                  ON table1.pouvoir = table2.designation
+                  INNER JOIN ventes.inspirer AS table3
+                  ON table2.ID = table3.ID_Option
+                ;
+
+                -- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                CREATE TABLE ventes_avant.moulaga4 (
+                  `ID`        INT UNSIGNED NOT NULL,
+                  `Date`      VARCHAR(256) NOT NULL,
+                  `Objet`     VARCHAR(256) NOT NULL,
+                  `Lieu`      VARCHAR(256) NOT NULL,
+                  `Quantite`  INT UNSIGNED NOT NULL,
+                  `ID_Dieu`   INT UNSIGNED
+                );
+
+                ALTER TABLE ventes_avant.moulaga3
+                  ADD INDEX moulaga3(`ID`)
+                ;
+
+                ALTER TABLE ventes_avant.tmp_vente3
+                  ADD INDEX tmp_vente3(`ID_Vente`)
+                ;
+
+
+                INSERT INTO ventes_avant.moulaga4 (`ID`, `Date`, `Objet`, `Lieu`, `Quantite`, `ID_Dieu`)
+                  SELECT table1.ID, table1.Date, table1.Objet, table1.Lieu, table1.Quantite, table2.ID_Dieu
+                  FROM ventes_avant.moulaga3 AS table1
+                  LEFT JOIN ventes_avant.tmp_vente3 AS table2
+                  ON table1.ID = table2.ID_Vente
+                ; -- invite de commande
+                -- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+                -- Relier Objet-----------------------------------------------------------------
+
+                CREATE TABLE ventes_avant.moulaga5 (
+                  `ID`        INT UNSIGNED NOT NULL,
+                  `Date`      VARCHAR(256) NOT NULL,
+                  `Lieu`      VARCHAR(256) NOT NULL,
+                  `Quantite`  INT UNSIGNED NOT NULL,
+                  `ID_Dieu`   INT UNSIGNED,
+                  `ID_Objet`  INT UNSIGNED NOT NULL
+                );
+
+                ALTER TABLE ventes_avant.moulaga4
+                  ADD INDEX moulaga4(`ID`)
+                ;
+
+                INSERT INTO ventes_avant.moulaga5 (`ID`, `Date`, `Lieu`, `Quantite`, `ID_Dieu`, `ID_Objet`)
+                  SELECT table1.`ID`, `Date`, `Lieu`, `Quantite`, `ID_Dieu`, table2.ID AS ID_Objet
+                  FROM ventes_avant.moulaga4 AS table1
+                  INNER JOIN ventes.Objet AS table2
+                  ON table1.Objet = table2.designation
+                ;
+
+                -- Relier Lieu et demidieu------------------------------------------------------
+
+
+                ALTER TABLE ventes_avant.moulaga5
+                  ADD INDEX DemiLieu(`lieu`)
+                ;
+
+                CREATE TABLE ventes_avant.relierlieu1 AS
+                  SELECT table1.ID, table2.ID AS ID_Lieu FROM (
+                    SELECT ID, `Date`, TRIM(SUBSTRING_INDEX(Lieu, "- ", -1)) AS lieu,
+                      Quantite, ID_Dieu, ID_Objet
+                    FROM ventes_avant.moulaga5
+                  ) AS table1
+                  INNER JOIN  ventes.lieu AS table2
+                  ON table1.Lieu = table2.designation
+                ;
+
+                CREATE TABLE ventes_avant.relierlieu2 AS
+                  SELECT table3.ID, table4.ID AS ID_DemiDieu FROM (
+                    SELECT ID, `Date`, SUBSTRING(SUBSTRING_INDEX(lieu, " ", -1) FROM 2) AS DD,
+                      Quantite, ID_Dieu, ID_Objet
+                    FROM ventes_avant.moulaga5
+                    WHERE lieu LIKE "Demi Dieu%"
+                  ) AS table3
+                  LEFT JOIN ventes.DemiDieu AS table4
+                  ON table3.DD = table4.nom
+                ;
+
+                ALTER TABLE ventes_avant.moulaga5
+                  ADD INDEX moulaga5(`ID`)
+                ;
+
+                ALTER TABLE ventes_avant.relierlieu1
+                  ADD INDEX relierlieu1(`ID`)
+                ;
+                ALTER TABLE ventes_avant.relierlieu2
+                  ADD INDEX relierlieu2(`ID`)
+                ;
+
+                CREATE TABLE ventes_avant.moulaga6 (
+                  `ID`          INT UNSIGNED NOT NULL,
+                  `Date`        VARCHAR(256) NOT NULL,
+                  `Quantite`    INT UNSIGNED NOT NULL,
+                  `ID_Dieu`     INT UNSIGNED,
+                  `ID_Objet`    INT UNSIGNED NOT NULL,
+                  `ID_Lieu`     INT UNSIGNED,
+                  `ID_DemiDieu` INT UNSIGNED
+                );
+
+                INSERT INTO ventes_avant.moulaga6 (`ID`, `Date`, `Quantite`, `ID_Dieu`, `ID_Objet`, `ID_Lieu`, `ID_DemiDieu`)
+                  SELECT table1.ID, `Date`, Quantite, ID_Dieu, ID_Objet, table2.ID_Lieu, table3.ID_DemiDieu
+                  FROM ventes_avant.moulaga5 AS table1
+                  LEFT JOIN ventes_avant.relierlieu1 AS table2
+                  ON table1.ID = table2.ID
+                  LEFT JOIN ventes_avant.relierlieu2 AS table3
+                  ON table1.ID = table3.ID
+                ;
+
+                -- Décomposition de la date et finalisation de la table vente-------------------
+
+
+                CREATE TABLE ventes.`Vente` (
+                  `ID`              INT UNSIGNED NOT NULL,
+                  `jour`            DECIMAL(2,0) NOT NULL,
+                  `annee`           DECIMAL(3,0) NOT NULL,
+                  `siecle`          DECIMAL(1,0) NOT NULL DEFAULT 0,
+                  `quantite_objet`  INT UNSIGNED NOT NULL,
+                  `ID_Objet`        INT UNSIGNED NOT NULL,
+                  `ID_Mois`         INT UNSIGNED NOT NULL,
+                  `ID_DemiDieu`     INT UNSIGNED,
+                  `ID_Lieu`         INT UNSIGNED,
+                  `ID_Dieu`         INT,
+
+                  CONSTRAINT PK_Vente
+                    PRIMARY KEY(`ID`)
+                ) ENGINE = InnoDB;
+
+                INSERT INTO ventes.vente (`ID`, `annee`, `jour`, `quantite_objet`,
+                `ID_Dieu`, `ID_Objet`, `ID_Lieu`, `ID_DemiDieu`, `ID_Mois`)
+                  SELECT table1.ID, annee, jour, quantite, table1.id_dieu, id_objet,
+                    id_lieu, ID_DemiDieu, table2.ID AS `ID_Mois` FROM (
+                    SELECT ID, SUBSTRING_INDEX(`Date`, ",", 1) AS annee,
+                      SUBSTRING_INDEX(SUBSTRING_INDEX(`Date`, " ", 2), " ", -1) AS mois,
+                      SUBSTRING_INDEX(`Date`, " ", -1) AS jour,
+                      Quantite, ID_Dieu, ID_Objet, ID_Lieu, ID_DemiDieu
+                    FROM ventes_avant.moulaga6
+                  ) AS table1
+                  INNER JOIN ventes.mois AS table2
+                  ON table1.mois = table2.designation
+                ;
+
+                ALTER TABLE ventes.vente
+                  MODIFY `ID` INT UNSIGNED AUTO_INCREMENT NOT NULL
+                ;
+
+                UPDATE ventes.vente SET siecle = 1
+                WHERE annee BETWEEN 0 AND 99;
+
+                UPDATE ventes.vente SET siecle = 2
+                WHERE annee BETWEEN 100 AND 199;
+
+                UPDATE ventes.vente SET siecle = 3
+                WHERE annee BETWEEN 200 AND 299;
+
+                UPDATE ventes.vente SET siecle = 4
+                WHERE annee BETWEEN 300 AND 399;
+
+                UPDATE ventes.vente SET siecle = 5
+                WHERE annee BETWEEN 400 AND 499;
+
+                -- -----------------------------------------------------------------------------
+                -- Mise en place des relations
+                -- -----------------------------------------------------------------------------
+
+                SET AUTOCOMMIT = 0;
+                START TRANSACTION;
+
+                ALTER TABLE ventes.conclure
+                  ADD CONSTRAINT FK_conclure_Vente
+                    FOREIGN KEY (`ID_Vente`) REFERENCES vente(`ID`),
+                  ADD CONSTRAINT FK_conclure_Artisan
+                    FOREIGN KEY (`ID_Artisan`) REFERENCES Artisan(`ID`)
+                ;
+
+
+                ALTER TABLE ventes.demidieu
+                  ADD CONSTRAINT FK_DemiDieu_Dieu
+                    FOREIGN KEY (`ID_Dieu`) REFERENCES Dieu(`ID`)
+                ;
+
+                ALTER TABLE ventes.guerre
+                  ADD CONSTRAINT FK_Guere_DemiDieu
+                    FOREIGN KEY (`ID_DemiDieu`) REFERENCES DemiDieu(`ID`),
+                  ADD CONSTRAINT FK_Guerre_Lieu
+                    FOREIGN KEY (`ID_Lieu`) REFERENCES Lieu(`ID`)
+                ;
+
+                ALTER TABLE ventes.inspirer
+                  ADD CONSTRAINT FK_inspirer_Dieu
+                    FOREIGN KEY (`ID_Dieu`) REFERENCES Dieu(`ID`),
+                  ADD CONSTRAINT FK_inspirer_Option
+                    FOREIGN KEY (`ID_Option`) REFERENCES `Option`(`ID`)
+                ;
+
+                ALTER TABLE ventes.lieu
+                  ADD CONSTRAINT FK_Lieu_Province
+                    FOREIGN KEY (`ID_Province`) REFERENCES Lieu(`ID`)
+                ;
+
+                ALTER TABLE ventes.mois
+                  ADD CONSTRAINT FK_Mois_Dieu
+                    FOREIGN KEY (`ID_Dieu`) REFERENCES Dieu(`ID`)
+                ;
+
+                ALTER TABLE ventes.monnaie
+                  ADD CONSTRAINT FK_Monnaie_Monnaie_conversion
+                    FOREIGN KEY (`ID_Monnaie_conversion`) REFERENCES Monnaie(`ID`)
+                ;
+
+                ALTER TABLE ventes.option
+                  ADD CONSTRAINT FK_Option_Type_Option
+                    FOREIGN KEY (`ID_Type_Option`) REFERENCES Type_Option(`ID`)
+                ;
+
+                ALTER TABLE ventes.optionner
+                  ADD CONSTRAINT FK_optionner_Vente
+                    FOREIGN KEY (`ID_Vente`) REFERENCES Vente(`ID`),
+                  ADD CONSTRAINT FK_optionner_Option
+                    FOREIGN KEY (`ID_Option`) REFERENCES `Option`(`ID`)
+                ;
+
+
+                ALTER TABLE ventes.valoriser
+                  ADD CONSTRAINT FK_valoriser_Vente
+                    FOREIGN KEY (`ID_Vente`) REFERENCES Vente(`ID`),
+                  ADD CONSTRAINT FK_valoriser_Monnaie
+                    FOREIGN KEY (`ID_Monnaie`) REFERENCES Monnaie(`ID`)
+                ;
+
+                -- tmp-----------------------------------------------------------------------
+                ALTER TABLE ventes.valoriser
+                DROP FOREIGN KEY FK_valoriser_Vente,
+                DROP FOREIGN KEY FK_valoriser_Monnaie;
+                -- --------------------------------------------------------------
+
+                ALTER TABLE ventes.vente
+                  ADD CONSTRAINT FK_Vente_Objet
+                    FOREIGN KEY (`ID_Objet`) REFERENCES Objet(`ID`),
+                  ADD CONSTRAINT FK_Vente_Mois
+                    FOREIGN KEY (`ID_Mois`) REFERENCES Mois(`ID`),
+                  ADD CONSTRAINT FK_Vente_DemiDieu
+                    FOREIGN KEY (`ID_DemiDieu`) REFERENCES DemiDieu(`ID`),
+                  ADD CONSTRAINT FK_Vente_Lieu
+                    FOREIGN KEY (`ID_Lieu`) REFERENCES Lieu(`ID`),
+                  ADD CONSTRAINT FK_Vente_Dieu
+                    FOREIGN KEY (`ID_Dieu`) REFERENCES Dieu(`ID`)
+                ;
+
+                COMMIT;
+
+                -- -----------------------------------------------------------------------------
+                -- Triggers et table Erreur
+                -- -----------------------------------------------------------------------------
+
+                CREATE TABLE YFANSI.`Erreur`(
+
+                  `ID`          INT AUTO_INCREMENT NOT NULL,
+                  `description` VARCHAR(512) NOT NULL,
+
+                  CONSTRAINT PK_Erreur
+                    PRIMARY KEY(`ID`),
+                  CONSTRAINT UC_description
+                    UNIQUE(`description`)
+
+                ) ENGINE = InnoDB;
+
+                INSERT INTO YFANSI.Erreur(`description`)
+                VALUES("There can't be more than 2 craftpersons per sale."),
+                      ("There can't be more than 2 decoration per sale."),
+                      ("There can't be more than 1 power per sale."),
+                      ("Decorations and power must be inspired by the same god for each sale."),
+                      ("A sale can't be linked with both place and demigod."),
+                      ("That sale is a sponsor so no money is required.")
+                ;
+
+                -- -----------------------------------------------------------------------------
+                DELIMITER |
+
+                DROP TRIGGER IF EXISTS before_insert_conclure|
+
+                CREATE TRIGGER before_insert_conclure BEFORE INSERT
+                ON YFANSI.conclure FOR EACH ROW
+
+                BEGIN
+
+                DECLARE LaVente INT(11) UNSIGNED;
+                DECLARE NbArtisans TINYINT;
+
+                SET LaVente = NEW.ID_Vente;
+
+                SELECT COUNT(*) INTO NbArtisans
+                FROM YFANSI.conclure
+                WHERE ID_Vente = LaVente
+                GROUP BY ID_Vente;
+
+                IF (NbArtisans = 2) THEN
+
+                  INSERT INTO YFANSI.erreur(description)
+                  VALUES
+                    ("There can't be more than 2 craftpersons per sale.");
+
+                END IF;
+
+                END|
+
+
+                INSERT INTO conclure (ID_Vente, ID_Artisan)
+                VALUES (19, 58); -- test
+
+                -- -----------------------------------------------------------------------------
+
+                DELIMITER |
+
+                DROP TRIGGER IF EXISTS LimitDecoPower|
+
+                CREATE TRIGGER LimitDecoPower BEFORE INSERT
+                ON YFANSI.optionner FOR EACH ROW
+
+                BEGIN
+
+                DECLARE LaVente  INT(11) UNSIGNED;
+                DECLARE LaOption INT(11) UNSIGNED;
+                DECLARE LeType   VARCHAR(100);
+                DECLARE NbOption TINYINT;
+
+                SET LaOption = NEW.ID_Option;
+                SET LaVente  = NEW.ID_Vente;
+
+                SELECT Type_Option.designation INTO LeType
+                FROM YFANSI.Option
+                INNER JOIN YFANSI.Type_Option
+                ON Option.ID_Type_Option = Type_Option.ID
+                WHERE Option.ID = LaOption;
+
+                IF (LeType = "décoration") THEN
+
+                  SELECT COUNT(*) INTO NbOption
+                  FROM YFANSI.optionner
+                  INNER JOIN YFANSI.Option
+                  ON optionner.ID_Option = Option.ID
+                  INNER JOIN YFANSI.Type_Option
+                  ON Option.ID_Type_Option = Type_Option.ID
+                  WHERE ID_Vente = LaVente AND Type_Option.ID = 2
+                  GROUP BY ID_vente;
+
+                  IF (NbOption = 2) THEN
+
+                    INSERT INTO YFANSI.Erreur (`description`)
+                    VALUES("There can't be more than 2 decoration per sale.");
+
+                  END IF;
+
+                ELSEIF (LeType = "pouvoir") THEN
+
+                  SELECT COUNT(*) INTO NbOption
+                  FROM YFANSI.optionner
+                  INNER JOIN YFANSI.Option
+                  ON optionner.ID_Option = Option.ID
+                  INNER JOIN YFANSI.Type_Option
+                  ON Option.ID_Type_Option = Type_Option.ID
+                  WHERE ID_Vente = LaVente AND Type_Option.ID = 1
+                  GROUP BY ID_vente;
+
+                  IF (NbOption = 1) THEN
+
+                    INSERT INTO YFANSI.Erreur (`description`)
+                    VALUES("There can't be more than 1 power per sale.");
+
+                  END IF;
+
+                END IF;
+
+                END|
+
+                INSERT INTO YFANSI.optionner (ID_Vente, ID_Option)
+                VALUES(1, 2); -- test
+
+                INSERT INTO YFANSI.optionner (ID_Vente, ID_Option)
+                VALUES(2, 75); -- test
+
+                -- -----------------------------------------------------------------------------
+
+                DELIMITER |
+
+                DROP TRIGGER IF EXISTS MMDieu|
+
+                CREATE TRIGGER MMDieu BEFORE INSERT
+                ON YFANSI.optionner FOR EACH ROW
+
+                BEGIN
+
+                DECLARE LaOption INT(11) UNSIGNED;
+                DECLARE LeDieu   VARCHAR(256);
+                DECLARE LaVente  INT(11) UNSIGNED;
+
+                SET LaVente  = NEW.ID_Vente;
+                SET LaOption = NEW.ID_Option;
+
+                SELECT ID_Dieu INTO LeDieu
+                FROM YFANSI.vente
+                WHERE ID = LaVente;
+
+
+                IF (LaOption NOT IN
+                    (SELECT ID_Option FROM YFANSI.inspirer WHERE ID_Dieu = LeDieu)
+                ) THEN
+
+                  INSERT INTO YFANSI.Erreur (`description`)
+                  VALUES("Decorations and power must be inspired by the same god for each sale.");
+
+
+                END IF;
+
+                END|
+
+                INSERT INTO YFANSI.optionner (ID_Vente, ID_Option)
+                VALUES(1, 82); -- test
+
+                -- -----------------------------------------------------------------------------
+
+                DELIMITER |
+
+                DROP TRIGGER IF EXISTS PlaceOrDemigod|
+
+                CREATE TRIGGER PlaceOrDemigod BEFORE INSERT
+                ON YFANSI.vente FOR EACH ROW
+
+                BEGIN
+
+                DECLARE LeLieu      INT(11) UNSIGNED;
+                DECLARE LeDemiDieu  INT(11) UNSIGNED;
+
+                SET LeLieu     = NEW.ID_Lieu;
+                SET LeDemiDieu = NEW.ID_DemiDieu;
+
+                IF (LeLieu IS NOT NULL AND LeDemiDieu IS NOT NULL) THEN
+
+                  INSERT INTO YFANSI.Erreur (`description`)
+                  VALUES("A sale can't be linked with both place and demigod.");
+
+                END IF;
+
+                END|
+
+                -- -----------------------------------------------------------------------------
+
+                DELIMITER |
+
+                DROP TRIGGER IF EXISTS DemigodOrMoney|
+
+                CREATE TRIGGER DemigodOrMoney BEFORE INSERT
+                ON YFANSI.valoriser FOR EACH ROW
+
+                BEGIN
+
+                DECLARE LaVente      INT(11) UNSIGNED;
+                DECLARE LeDemiDieu   INT(11) UNSIGNED;
+
+                SET LaVente    = NEW.ID_Vente;
+
+                SELECT ID_DemiDieu INTO LeDemiDieu
+                FROM YFANSI.vente
+                WHERE ID = LaVente;
+
+                IF (LeDemiDieu IS NOT NULL) THEN
+
+                  INSERT INTO YFANSI.Erreur (`description`)
+                  VALUES("That sale is a sponsor so no money is required.");
+
+                END IF;
+
+                END|
+
+                -- -----------------------------------------------------------------------------
+              </code>
+            </pre>
+          </div>
+          <h4>Souhaits</h4>
+          <div class="CodeBlock">
+            <pre class="Preformate">
+              <code class="language-sql">
+                -- -----------------------------------------------------------------------------
+                -- Wish 1
+                -- -----------------------------------------------------------------------------
+
+                CREATE TABLE `Wish 1` AS
+
+                  SELECT Lieu.designation, top, Dieu.nom, compte
+                  FROM (
+
+                    SELECT @row_number:=CASE
+                      WHEN @place_no = ID_Lieu
+                        THEN @row_number + 1
+                      ELSE 1
+                      END AS top,
+                      @place_no:= ID_Lieu ID_Lieu, compte, ID_Dieu
+                    FROM (
+
+                      SELECT ID_Lieu, ID_Dieu, COUNT(*) AS `compte` FROM `vente`
+                      WHERE ID_Lieu IS NOT NULL
+                      AND ID_Dieu IS NOT NULL
+                      GROUP BY ID_Dieu, ID_Lieu
+                      ORDER BY ID_Lieu ASC, compte DESC
+
+                    ) AS b, (SELECT @place_no:=0, @row_number:=0) AS a
+                  ) AS c
+
+                  INNER JOIN YFANSI.Dieu
+                  ON c.ID_Dieu = Dieu.ID
+                  INNER JOIN YFANSI.Lieu
+                  ON c.ID_Lieu = Lieu.ID
+
+                  WHERE top <= 5
+                  ORDER BY Lieu.designation, top
+                ;
+
+                -- -----------------------------------------------------------------------------
+                -- Wish 2
+                -- -----------------------------------------------------------------------------
+
+                CREATE VIEW `Wish 2` AS
+
+                  SELECT Objet.designation AS `Objet`, ROUND(AVG(`Prix/Unité`)) AS `Prix Moyen`
+                  FROM (
+                    SELECT  ID_Vente, ID_Objet ,
+                      SUM((quantite_monnaie * Monnaie.quantite )/quantite_objet) AS `Prix/Unité`
+
+                    FROM valoriser
+
+                    INNER JOIN vente
+                    ON valoriser.ID_Vente = vente.ID
+
+                    INNER JOIN monnaie
+                    ON valoriser.ID_Monnaie = monnaie.ID
+
+                    GROUP BY ID_Vente
+                  ) AS t1
+
+                  INNER JOIN Objet
+                  ON t1.ID_Objet = objet.ID
+
+                  GROUP BY ID_Objet
+                ;
+
+                -- -----------------------------------------------------------------------------
+                -- Wish 3
+                -- -----------------------------------------------------------------------------
+
+                CREATE VIEW `Wish 3` AS
+
+                  SELECT Dieu.nom AS `Nom de la divinité`, nombre AS `Nombre d'objets vendus`
+                  FROM (
+                    SELECT ID_Dieu, COUNT(*) AS Nombre
+                    FROM vente
+
+                    WHERE ID_Dieu IS NOT NULL
+
+                    GROUP BY ID_Dieu
+                    HAVING Nombre = (
+                      SELECT MAX(nombre) FROM (
+                        SELECT ID_Dieu, COUNT(*) AS Nombre
+                        FROM vente
+
+                        WHERE ID_Dieu IS NOT NULL
+
+                        GROUP BY ID_Dieu
+                      ) AS t2
+                    )
+                  ) AS t1
+
+                  INNER JOIN Dieu
+                  ON t1.ID_Dieu = Dieu.ID
+                ;
+
+                -- -----------------------------------------------------------------------------
+                -- Wish 4
+                -- -----------------------------------------------------------------------------
+
+                CREATE VIEW `Wish 4` AS
+
+                  SELECT LaProvince.*, lesAutres.Autres
+                  FROM (
+                    SELECT annee, COUNT(*) AS `AEgypte`
+                    FROM vente
+
+                    WHERE ID_Lieu = 4
+
+                    GROUP BY vente.annee
+                  ) AS LaProvince
+
+                  INNER JOIN (
+
+                    SELECT annee, ROUND(AVG(`Autres`)) AS `Autres`
+                    FROM (
+
+                      SELECT annee, ID_Lieu, COUNT(*) AS `Autres` FROM vente
+
+                      WHERE ID_Lieu != 4
+
+                      GROUP BY ID_Lieu, annee
+
+                    ) AS t1
+
+                    GROUP BY annee
+
+                  ) AS LesAutres
+
+                  ON LaProvince.annee = LesAutres.annee
+                ;
+                -- -----------------------------------------------------------------------------
+                -- Wish 5
+                -- -----------------------------------------------------------------------------
+
+                CREATE VIEW `Wish 5` AS
+
+                  SELECT Dieu.nom AS `Nom du Dieu`, Mois.designation AS `Mois`, compte AS `Nombre de vente`
+                  FROM (
+
+                    SELECT COUNT(*) AS compte, ID_Mois, ID_Dieu FROM vente
+                    WHERE (ID_Mois,ID_Dieu) IN (SELECT ID, ID_Dieu FROM mois)
+                    GROUP BY ID_Mois
+
+                    UNION ALL
+
+                    SELECT ROUND(AVG(compte)) AS moyenne,"restant de l'année",  ID_Dieu
+                    FROM(
+
+                      SELECT COUNT(*) AS compte, ID_Dieu, ID_Mois FROM vente
+                      WHERE ID_Dieu IN (SELECT ID_Dieu FROM mois)
+                      AND (ID_Mois,ID_Dieu) NOT IN (SELECT ID, ID_Dieu FROM mois)
+                      GROUP BY ID_Dieu, ID_Mois
+
+                    ) AS table1
+                    GROUP BY ID_Dieu
+                  ) AS table2
+
+                  LEFT JOIN mois
+                  ON table2.ID_Mois = mois.ID
+                  INNER JOIN dieu
+                  ON table2.ID_Dieu = Dieu.ID
+
+                  ORDER BY table2.ID_Dieu
+                ;
+                -- -----------------------------------------------------------------------------
+                -- Wish 6
+                -- -----------------------------------------------------------------------------
+
+                CREATE VIEW `Wish 6` AS
+
+                  SELECT Lieu.designation AS `Lieu`, table3.a AS `Situation`, table3.compte AS `Nombre de ventes`
+                  FROM (
+
+                    SELECT ROUND(AVG(compte)) AS compte, ID_Lieu, "guerre" AS a
+                    FROM (
+
+                      SELECT COUNT(*) AS compte, annee, ID_Lieu
+                      FROM vente
+                      WHERE (annee, ID_Lieu) IN (SELECT annee, ID_Lieu FROM guerre)
+                      GROUP BY ID_Lieu, annee
+                    ) AS table1
+                    GROUP BY ID_Lieu
+
+                    UNION ALL
+
+                    SELECT ROUND(AVG(compte)) AS compte, ID_Lieu,"pas guerre" AS a
+                    FROM (
+
+                      SELECT COUNT(*) AS compte, annee, ID_Lieu
+                      FROM vente
+                      WHERE (annee, ID_Lieu) NOT IN (SELECT annee, ID_Lieu FROM guerre)
+                      GROUP BY ID_Lieu, annee
+                    ) AS table2
+                    GROUP BY ID_Lieu
+                  ) AS table3
+
+                  INNER JOIN lieu
+                  ON table3.ID_Lieu = lieu.ID
+
+                  ORDER BY ID_Lieu
+                ;
+
+                -- -----------------------------------------------------------------------------
+                -- Wish 7
+                -- -----------------------------------------------------------------------------
+
+                CREATE TABLE `NewVente` (
+
+                  `jour`              DECIMAL(2,0) NOT NULL,
+                  `mois`              VARCHAR(100) NOT NULL,
+                  `annee`             DECIMAL(3,0),
+                  `objet`             VARCHAR(256) NOT NULL,
+                  `quantité d'objet`  INT UNSIGNED NOT NULL,
+                  `Don à`             VARCHAR(256),
+                  `Lieu`              VARCHAR(256),
+                  `Divinité associée` VARCHAR(256)
+
+                ) ENGINE = InnoDB;
+
+                DELIMITER |
+
+                DROP TRIGGER IF EXISTS insert_NV|
+
+                CREATE TRIGGER insert_NV AFTER INSERT
+                ON YFANSI.NewVente FOR EACH ROW
+
+                BEGIN
+
+                DECLARE LeJour    DECIMAL(2,0);
+                DECLARE LeMois    VARCHAR(100);
+                DECLARE LaAnnee   DECIMAL(3,0);
+                DECLARE LeObjet   VARCHAR(256);
+                DECLARE LaQte     INT UNSIGNED;
+                DECLARE LeDon     VARCHAR(256);
+                DECLARE LeLieu    VARCHAR(256);
+                DECLARE LeDieu    VARCHAR(256);
+
+                SET LeJour = NEW.jour;
+                SET LeMois = NEW.mois;
+                SET LaAnnee = NEW.annee;
+                SET LeObjet = NEW.objet;
+                SET LaQte = NEW.`quantité d'objet`;
+                SET LeDon = NEW.`Don à`;
+                SET LeLieu = NEW.Lieu;
+                SET LeDieu = NEW.`Divinité associée`;
+
+                CALL SP_insert_NV(LeJour, LeMois, LaAnnee, LeObjet, LaQte, LeDon, LeLieu, LeDieu);
+
+                END|
+
+                DELIMITER |
+
+                DROP PROCEDURE IF EXISTS SP_insert_NV|
+
+                CREATE PROCEDURE SP_insert_NV (
+
+                  IN Pjour      DECIMAL(2,0),
+                  IN Pmois      VARCHAR(256),
+                  IN Pannee     DECIMAL(3,0),
+                  IN Pobjet     VARCHAR(256),
+                  IN Pqte       INT UNSIGNED,
+                  IN Pdon       VARCHAR(256),
+                  IN Plieu      VARCHAR(256),
+                  IN Pdieu      VARCHAR(256)
+
+                )
+
+                BEGIN
+
+                DECLARE Psiecle   DECIMAL(1,0);
+                DECLARE ID_Pmois  INT UNSIGNED;
+                DECLARE ID_Pobjet INT UNSIGNED;
+                DECLARE ID_Pdon   INT UNSIGNED DEFAULT NULL;
+                DECLARE ID_Plieu  INT UNSIGNED DEFAULT NULL;
+                DECLARE ID_Pdieu  INT DEFAULT NULL;
+
+                SELECT SUBSTRING(Pannee FROM 1 FOR 1) + 1 INTO Psiecle;
+
+
+                SELECT ID INTO ID_Pobjet
+                FROM objet
+                WHERE designation = Pobjet;
+
+                SELECT ID INTO ID_Pmois
+                FROM mois
+                WHERE designation = Pmois;
+
+                IF (Pdon IS NOT NULL) THEN
+
+                  SELECT ID INTO ID_Pdon
+                  FROM demidieu
+                  WHERE nom = Pdon;
+
+                END IF;
+
+                IF (Plieu IS NOT NULL) THEN
+
+                  SELECT ID INTO ID_Plieu
+                  FROM lieu
+                  WHERE designation = Plieu;
+
+                END IF;
+
+                IF (Pdieu IS NOT NULL) THEN
+
+                  SELECT ID INTO ID_Pdieu
+                  FROM dieu
+                  WHERE nom = Pdieu;
+
+                END IF;
+
+                INSERT INTO YFANSI.vente (`jour`, `annee`, `siecle`, `quantite_objet`,
+                   `ID_Objet`, `ID_Mois`, `ID_DemiDieu`, `ID_Lieu`, `ID_Dieu`)
+                VALUES (Pjour, Pannee, Psiecle, Pqte, ID_Pobjet, ID_Pmois, ID_Pdon, ID_Plieu, ID_Pdieu);
+
+                END|
+
+
+                -- test with Thargélion, Cuirasse de cuir, Achaïe, Apollon
+
+                -- -----------------------------------------------------------------------------
+                -- Wish 8
+                -- -----------------------------------------------------------------------------
+
+                CREATE VIEW `Wish 8` AS
+
+                  SELECT lieu.designation AS lieu,guerre.annee, objet.designation AS Objet,
+                    SUM(CASE WHEN vente2.annee BETWEEN guerre.annee AND (guerre.annee + 10) THEN 1 ELSE 0 END) AS apres,
+                    SUM(CASE WHEN vente2.annee BETWEEN (guerre.annee -50) AND guerre.annee THEN 1 ELSE 0 END)/5 AS avant
+                  FROM guerre
+
+                  INNER JOIN vente AS vente1
+                  ON guerre.ID_DemiDieu = vente1.ID_DemiDieu
+                  AND vente1.annee < guerre.annee
+
+                  INNER JOIN vente AS vente2
+                  ON vente1.ID_Objet = vente2.ID_Objet
+                  AND guerre.ID_Lieu = vente2.ID_Lieu
+
+                  INNER JOIN lieu
+                  ON guerre.ID_Lieu = lieu.ID
+
+                  INNER JOIN objet
+                  ON vente1.ID_Objet = objet.ID
+
+                  GROUP BY guerre.annee, guerre.ID_Lieu, vente1.ID_Objet
+
+                  ORDER BY lieu.designation, guerre.annee, objet.designation
+                ;
+
+                -- -----------------------------------------------------------------------------
+                -- Wish 9
+                -- -----------------------------------------------------------------------------
+
+                CREATE VIEW `Wish 9`AS
+
+                  SELECT Artisan.nom AS `Artisan`,vente.siecle, count(*) AS `Nombre de ventes` FROM conclure
+                  INNER JOIN vente
+                  ON vente.ID = conclure.ID_Vente
+                  INNER JOIN artisan
+                  ON conclure.ID_Artisan = artisan.ID
+                  GROUP BY conclure.ID_Artisan, siecle
+                  ORDER BY Artisan.nom, vente.siecle ASC
+                ;
+
+                -- -----------------------------------------------------------------------------
+                -- Wish 10
+                -- -----------------------------------------------------------------------------
+
+                SELECT first.nom AS `Artisan 1`, sec.nom AS `Artisan 2`, dieu.nom AS `Divinité`, prix AS `Prix Moyen`
+                FROM (
+
+                  SELECT ID_Dieu, art1, art2, MAX(compte), Prix
+                  FROM (
+
+                    SELECT ID_Dieu, art1, art2, COUNT(*) AS compte, ROUND(AVG(Prix)) AS Prix
+                    FROM (
+
+                      SELECT binomes.ID_Vente, binomes.art1, binomes.art2,
+                        SUM(valoriser.quantite_monnaie * Mney.quantite) AS Prix
+                      FROM (
+                        SELECT conclure.ID_Vente, conclure.ID_Artisan AS art1, Liste2.ID_Artisan AS art2
+                        FROM conclure
+
+                        INNER JOIN (
+                          SELECT ID_Artisan, ID_Vente FROM (
+                            SELECT @row_number:=CASE
+                              WHEN @place_no = ID_Vente THEN @row_number + 1 ELSE 1 END AS top,
+                              @place_no:= ID_Vente ID_Lieu, a.*
+
+                            FROM (SELECT * FROM conclure ORDER BY ID_Vente) AS a,
+                              (SELECT @place_no:=0, @row_number:=0) AS b
+                          ) AS c
+
+                          WHERE top = 2
+                        ) AS Liste2
+
+                        ON conclure.ID_Vente = Liste2.ID_vente
+                        AND conclure.ID_Artisan <> Liste2.ID_Artisan
+                      ) AS binomes
+
+                      INNER JOIN valoriser
+                      ON binomes.ID_Vente = valoriser.ID_Vente
+
+                      INNER JOIN (SELECT ID, quantite FROM Monnaie) AS Mney
+                      ON valoriser.ID_Monnaie = Mney.ID
+
+                      GROUP BY binomes.ID_Vente, binomes.art1, binomes.art2
+                    ) AS BiPrix
+                    INNER JOIN (SELECT ID_Dieu, ID FROM vente WHERE ID_Dieu IS NOT NULL) AS vt
+                    ON BiPrix.ID_Vente = vt.ID
+
+                    GROUP BY ID_Dieu, art1, art2
+                  ) AS Best
+
+                  GROUP BY art1, art2
+
+                ) AS IDS
+
+                INNER JOIN Dieu
+                ON IDS.ID_Dieu = Dieu.ID
+
+                INNER JOIN artisan AS first
+                ON IDS.art1 = first.ID
+
+                INNER JOIN artisan AS sec
+                ON IDS.art2 = sec.ID
+
+                UNION ALL
+
+                SELECT * FROM `Wish 10.z`
+
+                ORDER BY `Divinité`, `Prix Moyen`
+
+                INTO OUTFILE "E:\CESI\Projet\BDD\Scripts\Wish10z.csv"
+                FIELDS TERMINATED BY ','
+                ENCLOSED BY '"'
+                LINES TERMINATED BY '\n'
+                ;
+                -- -----------------------------------------------------------------------------
+
+                CREATE VIEW `Wish 10.z` AS
+
+                  SELECT art.nom AS `Artisan 1`, NULL AS `Artisan 2`, dieu.nom AS `Divinité`, prix AS `Prix Moyen`
+                  FROM (
+
+                    SELECT ID_Dieu, ID_Artisan, MAX(compte), Prix
+                    FROM (
+
+                      SELECT ID_Dieu, ID_Artisan, COUNT(*) AS compte, ROUND(AVG(Prix)) AS Prix
+                      FROM (
+
+                        SELECT solo.ID_Vente, solo.ID_Artisan,
+                          SUM(valoriser.quantite_monnaie * Mney.quantite) AS Prix
+                        FROM (
+
+                          SELECT ID_Vente, ID_Artisan, COUNT(*) FROM conclure
+                          GROUP BY ID_vente
+                          HAVING COUNT(*) < 2
+                        ) AS solo
+
+                        INNER JOIN valoriser
+                        ON solo.ID_Vente = valoriser.ID_Vente
+
+                        INNER JOIN (SELECT ID, quantite FROM Monnaie) AS Mney
+                        ON valoriser.ID_Monnaie = Mney.ID
+
+                        GROUP BY solo.ID_Vente, solo.ID_Artisan
+                      ) AS SoPrix
+
+                      INNER JOIN (SELECT ID_Dieu, ID FROM vente WHERE ID_Dieu IS NOT NULL) AS vt
+                      ON SoPrix.ID_Vente = vt.ID
+
+                      GROUP BY ID_Dieu, ID_Artisan
+                    ) AS Beste
+
+                    GROUP BY ID_Artisan
+                  ) AS IDSS
+
+                  INNER JOIN Dieu
+                  ON IDSS.ID_Dieu = Dieu.ID
+
+                  INNER JOIN artisan AS art
+                  ON IDSS.ID_Artisan = art.ID
+                ;
+
+                -- -----------------------------------------------------------------------------
+                -- Wish 11
+                -- -----------------------------------------------------------------------------
+
+                CREATE VIEW `Wish 11.1` AS
+
+                  SELECT ListeDons.ID_DemiDieu AS ID_DD, ListeDons.annee, ListeDons.ID_Objet AS ID_Obj,
+                    SUM(CASE WHEN vente2.annee BETWEEN (ListeDons.annee -35) AND ListeDons.annee THEN 1 ELSE 0 END)/5 AS avant,
+                    SUM(CASE WHEN vente2.annee BETWEEN ListeDons.annee AND (ListeDons.annee +35) THEN 1 ELSE 0 END)/5 AS apres
+                  FROM (
+                    SELECT annee, ID_DemiDieu, ID_Objet
+                    FROM vente
+                    WHERE vente.ID_DemiDieu IS NOT NULL
+                  ) AS ListeDons
+                  INNER JOIN vente AS vente2
+                  ON ListeDons.ID_Objet = vente2.ID_Objet
+
+                  GROUP BY ListeDons.annee, ListeDons.ID_Objet
+                ;
+
+                CREATE VIEW `Wish 11.f` AS
+
+                  SELECT DemiDieu.nom AS Sponsor, wish.annee, objet.designation AS Objet, avant, apres
+                  FROM `Wish 11.1` AS wish
+
+                  INNER JOIN objet
+                  ON wish.ID_Obj = objet.ID
+
+                  INNER JOIN demidieu
+                  ON wish.ID_DD = DemiDieu.ID
+
+                  ORDER BY DemiDieu.nom, wish.annee, objet.designation
+                ;
+
+                CREATE VIEW `Wish 11.z` AS
+
+                  SELECT wisheu.*, wisheuu.`Prix Moyen` AS `Prix moyen`
+                  FROM `Wish 11.f` AS wisheu
+                  INNER JOIN `Wish 2` AS wisheuu
+                  ON wisheu.Objet = wisheuu.Objet
+
+                ;
+
+                -- -----------------------------------------------------------------------------
+                -- Wish 12
+                -- -----------------------------------------------------------------------------
+
+                CREATE VIEW `Wish 12` AS
+
+                  SELECT lieu.designation AS Lieu, AVG((GoldPart/Total*100)) AS `Percentage of gold`
+                  FROM (
+                    SELECT * FROM (
+                      SELECT valoriser.ID_Vente, SUM(quantite_monnaie*quantite) AS Total
+                      FROM valoriser
+
+                      INNER JOIN monnaie
+                      ON valoriser.ID_Monnaie = monnaie.ID
+
+                      GROUP BY ID_Vente
+                    ) AS toto
+
+                    INNER JOIN (
+                      SELECT valoriser.ID_Vente AS a, SUM(quantite_monnaie*quantite) AS GoldPart
+                      FROM valoriser
+
+                      INNER JOIN monnaie
+                      ON valoriser.ID_Monnaie = monnaie.ID
+
+                      WHERE ID_Monnaie = 1
+                      GROUP BY ID_Vente
+                    ) AS gold
+                    ON toto.ID_Vente = gold.a
+                  ) AS percent
+
+                  INNER JOIN vente
+                  ON percent.ID_Vente = vente.ID
+
+                  INNER JOIN lieu
+                  ON vente.ID_Lieu = lieu.ID
+
+                  GROUP BY ID_Lieu
+
+                  ORDER BY `Percentage of gold` DESC
+                ;
+              </code>
+            </pre>
+          </div>
         </div>
       </div>
 

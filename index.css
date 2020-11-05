@@ -284,7 +284,7 @@ header .HeaderMenu .Contacts:hover .DropDown i:hover {
 }
 
 .ModalContent {
-  width: 65%;
+  width: 80%;
   height: 75vh;
   background-color: rgb(40, 44, 52);
   color: rgb(151, 158, 170);
@@ -336,18 +336,26 @@ header .HeaderMenu .Contacts:hover .DropDown i:hover {
   text-indent: 5vh;
 }
 
+.ModalContent h4 {
+  font-size: 1.5em;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.ModalContent .ModalImage {
+  text-align: center;
+}
+
 .ModalContent img {
   position: relative;
-  left: 50%;
-  transform: translate(-50%);
   border-style: outset;
   border-color: rgb(255, 255, 255);
   border-radius: 1em;
-  border-width: 0.2em;
+  border-width: 0.5em;
   box-shadow: -3px 3px 3px rgb(0, 0, 0);
   max-width: 100%;
   height: auto;
-  margin: 5vh auto 5vh auto;
+  margin: 5vh auto;
 }
 
 .ModalContent p {
