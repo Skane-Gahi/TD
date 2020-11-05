@@ -1,0 +1,281 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Cuprum', sans-serif;
+  background-color: black;
+}
+
+/*---------------------HEADER-------------------------------------------------*/
+header {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  height: 7vh;
+  line-height: 7vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  border-bottom-style: solid;
+  border-width: 0.1em;
+  border-color: rgba(255, 255, 255, 0.3);
+  z-index: 10;
+}
+
+header .HeaderTitle {
+  color: rgb(255, 255, 255);
+  float: left;
+  padding: 0 30px;
+  text-decoration: none;
+}
+
+header .HeaderMenu {
+  float: right;
+}
+
+header .HeaderMenu .NavBar {
+  display: inline-block;
+  color: rgb(255, 255, 255);
+  padding: 0 5vh;
+  text-decoration: none;
+}
+
+header .HeaderMenu .Contacts {
+  float: right;
+  padding: 0;
+}
+
+header .HeaderMenu .Contacts .ContactsHead {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  padding: 0 5vh;
+  display: block;
+  height: 100%;
+}
+
+header .HeaderMenu .Contacts .DropDown {
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  position: absolute;
+  text-align: left;
+  padding-inline-start: 7vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-style: none solid solid solid;
+  border-width: 0.15em;
+  border-color: rgb(255, 255, 255);
+  display: none;
+}
+
+.fa-linkedin, .fa-envelope, .fa-phone-square {
+  color: rgb(255, 255, 255);
+}
+
+
+header .HeaderTitle:hover,
+header .HeaderMenu .NavBar:hover,
+header .HeaderMenu .Contacts:hover .ContactsHead {
+  color: rgb(0, 200, 255);
+  border-bottom-style: solid;
+  border-bottom-color: rgb(255, 255, 255);
+  border-bottom-width: 0.15em;
+}
+
+header .HeaderMenu .Contacts:hover .DropDown {
+  display: block;
+}
+
+header .HeaderMenu .Contacts:hover .DropDown i:hover {
+  color: rgb(0, 200, 255);
+}
+/*---------------------HEADER-------------------------------------------------*/
+
+/*--------------------BACKGROUND----------------------------------------------*/
+#background {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+}
+/*--------------------BACKGROUND----------------------------------------------*/
+
+
+/*--------------------BANNER--------------------------------------------------*/
+.Banner {
+  width: 100%;
+  height: auto;
+  background-color: rgba(0, 0, 0, 0);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 9;
+}
+
+.Banner .BannerContent {
+  width: 75%;
+  max-height: 90%;
+  position: relative;
+  margin-top: 15vh;
+  margin-bottom: 5vh;
+  background-color: rgb(8, 23, 56);
+  color: rgb(220, 220, 220);
+  padding: 2em;
+  border-style: outset;
+  border-color: (255, 255, 255);
+  border-width: 0.5em;
+  border-radius: 5em;
+}
+
+.Banner h3 {
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 2em;
+  color: rgb(255, 255, 255);
+}
+
+.Banner .AProposText {
+  margin: 5vh 1em 1em 1em;;
+  font-size: 1.2em;
+}
+
+.Banner .AProposText .AProposTitles {
+  text-transform: capitalize;
+  font-size: 1.5em;
+  color: rgb(255, 255, 255);
+}
+
+/*--------------------ModalContact--------------------------------------------*/
+#ModalContacts:target {
+  opacity: 1;
+  visibility: visible;
+}
+
+#ModalContacts:target .ModalContent {
+  opacity: 1;
+  visibility: visible;
+}
+
+.ModalContacts {
+  background: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 9;
+  opacity: 0;
+  visibility: hidden;
+  transition: .3s;
+  overflow: hidden;
+}
+
+.ModalContacts .ModalContent {
+  width: 25vh;
+  height: auto;
+  background-color: rgb(200, 200, 200);
+  color: rgb(0, 0, 0);
+  position: relative;
+  top: 12vh;
+  padding: 2em 4em;
+  border-style: outset;
+  border-color: (255, 255, 255);
+  border-width: 0.5em;
+  border-radius: 3em;
+  opacity: 0;
+  visibility: hidden;
+  transition: .3s;
+  overflow: hidden;
+}
+
+.ModalContacts .ModalContent .ContactsGrid {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto auto;
+  align-items: center;
+}
+
+.ModalContacts .ModalContent .ModalClose {
+  text-decoration: none;
+  font-size: 2em;
+  color: rgb(151, 158, 170);
+  position: absolute;
+  top: 0.7em;
+  right: 1em;;
+}
+
+.ModalContacts .ModalContent .ModalClose:hover {
+  color: rgb(207, 102, 111);
+}
+
+.ModalContacts h2 {
+  font-size: 2em;
+  color: rgb(57, 133, 164);
+  text-align: center;
+}
+
+.ModalContacts .ModalContent .ContactsGrid i {
+  color: rgb(0, 0, 0);
+  font-size: 1.5em;
+}
+
+.ModalContacts .ModalContent .ContactsGrid a,
+.ModalContacts .ModalContent .ContactsGrid div {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-size: 1.5em;
+  margin: 1vh 1vh;
+}
+/*--------------------BANNER--------------------------------------------------*/
+
+
+
+/*-----------------------FOOTER-----------------------------------------------*/
+footer {
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  margin-top: 5vh;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1vh 0;
+}
+
+footer button,
+footer p {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  margin: 1vh;
+}
+
+footer p {
+  font-size: 1.5em;
+}
+
+footer button {
+  width: auto;
+  font-size: 1.5em;
+  padding: 0.5em;
+  background-color: rgba(8, 23, 56, 1);
+  border-style: outset;
+  border-color: rgba(255, 255, 255, 0.8);
+  border-radius: 1em;
+  border-width: 0.3em;
+  cursor: pointer;
+}
+
+footer button:hover {
+  background-color: rgb(57, 133, 164);
+  transition: .3s;
+}
+/*-----------------------FOOTER-----------------------------------------------*/

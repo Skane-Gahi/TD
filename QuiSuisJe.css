@@ -1,0 +1,317 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Cuprum', sans-serif;
+  background-color: black;
+}
+
+/*---------------------HEADER-------------------------------------------------*/
+header {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  height: 7vh;
+  line-height: 7vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  border-bottom-style: solid;
+  border-width: 0.1em;
+  border-color: rgba(255, 255, 255, 0.3);
+  z-index: 10;
+}
+
+header .HeaderTitle {
+  color: rgb(255, 255, 255);
+  float: left;
+  padding: 0 30px;
+  text-decoration: none;
+}
+
+header .HeaderMenu {
+  float: right;
+}
+
+header .HeaderMenu .NavBar {
+  display: inline-block;
+  color: rgb(255, 255, 255);
+  padding: 0 5vh;
+  text-decoration: none;
+}
+
+header .HeaderMenu .Contacts {
+  float: right;
+  padding: 0;
+}
+
+header .HeaderMenu .Contacts .ContactsHead {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  padding: 0 5vh;
+  display: block;
+  height: 100%;
+}
+
+header .HeaderMenu .Contacts .DropDown {
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  position: absolute;
+  text-align: left;
+  padding-inline-start: 7vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-style: none solid solid solid;
+  border-width: 0.15em;
+  border-color: rgb(255, 255, 255);
+  display: none;
+}
+
+.fa-linkedin, .fa-envelope, .fa-phone-square {
+  color: rgb(255, 255, 255);
+}
+
+
+header .HeaderTitle:hover,
+header .HeaderMenu .NavBar:hover,
+header .HeaderMenu .Contacts:hover .ContactsHead {
+  color: rgb(0, 200, 255);
+  border-bottom-style: solid;
+  border-bottom-color: rgb(255, 255, 255);
+  border-bottom-width: 0.15em;
+}
+
+header .HeaderMenu .Contacts:hover .DropDown {
+  display: block;
+}
+
+header .HeaderMenu .Contacts:hover .DropDown i:hover {
+  color: rgb(0, 200, 255);
+}
+/*---------------------HEADER-------------------------------------------------*/
+
+/*--------------------BACKGROUND----------------------------------------------*/
+#background {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+}
+/*--------------------BACKGROUND----------------------------------------------*/
+
+.Banner {
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 9;
+}
+
+.Banner .BannerContent {
+  position: relative;
+  width: 70%;
+  margin-top: 15vh;
+  display: grid;
+  align-content: center;
+  grid-template-columns: 50% 50%;
+  grid-auto-rows: 30vh auto;
+  grid-template-areas: "photo QuiSuisJe"
+                       "LeTexte LeTexte";
+  text-align: center;
+}
+
+.Banner .BannerContent img {
+  max-width: 100%;
+  max-height: 100%;
+  grid-area: photo;
+  margin: 0 auto;
+  border-style: outset;
+  border-width: 1em;
+  border-color: rgb(255, 255, 255);
+  border-radius: 20em;
+  box-shadow: -3px 3px 3px rgb(0, 0, 0);
+}
+
+.Banner .BannerContent .TextBlock {
+  height: 25vh;
+  width: 80%;
+  margin: auto auto;
+  grid-area: QuiSuisJe;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(8, 23, 56);
+  color: rgb(255, 255, 255);
+  font-size: 4em;
+  border-style: outset;
+  border-width: 0.3em;
+  border-color: rgb(255, 255, 255);
+  border-radius: 3em;
+  box-shadow: -3px 3px 3px rgb(0, 0, 0);
+}
+
+.Banner .BannerContent .LeTexte {
+  margin-top: 10vh;
+  padding: 2em 2em 1em 2em;
+  grid-area: LeTexte;
+  background-color: rgb(8, 23, 56);
+  color: rgb(220, 220, 220);
+  font-size: 1.5em;
+  text-align: left;
+  border-style: outset;
+  border-width: 0.5em;
+  border-color: rgb(255, 255, 255);
+  border-radius: 3em;
+  box-shadow: -3px 3px 3px rgb(0, 0, 0);
+}
+
+.Banner .BannerContent .LeTexte .Titles {
+  width: 100%;
+  text-align: center;
+  font-size: 1.6em;
+  color: rgb(255, 255, 255);
+  text-transform: capitalize;
+}
+
+.Banner .BannerContent .LeTexte .fa-arrow-circle-down {
+  width: 100%;
+  text-align: center;
+  font-size: 3em;
+  color: rgb(255, 255, 255);
+}
+
+/*--------------------ModalContact--------------------------------------------*/
+#ModalContacts:target {
+  opacity: 1;
+  visibility: visible;
+}
+
+#ModalContacts:target .ModalContent {
+  opacity: 1;
+  visibility: visible;
+}
+
+.ModalContacts {
+  background: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 9;
+  opacity: 0;
+  visibility: hidden;
+  transition: .3s;
+  overflow: hidden;
+}
+
+.ModalContacts .ModalContent {
+  width: 25vh;
+  height: auto;
+  background-color: rgb(200, 200, 200);
+  color: rgb(0, 0, 0);
+  position: relative;
+  top: 12vh;
+  padding: 2em 4em;
+  border-style: outset;
+  border-color: (255, 255, 255);
+  border-width: 0.5em;
+  border-radius: 3em;
+  opacity: 0;
+  visibility: hidden;
+  transition: .3s;
+  overflow: hidden;
+}
+
+.ModalContacts .ModalContent .ContactsGrid {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto auto;
+  align-items: center;
+}
+
+.ModalContacts .ModalContent .ModalClose {
+  text-decoration: none;
+  font-size: 2em;
+  color: rgb(151, 158, 170);
+  position: absolute;
+  top: 0.7em;
+  right: 1em;;
+}
+
+.ModalContacts .ModalContent .ModalClose:hover {
+  color: rgb(207, 102, 111);
+}
+
+.ModalContacts h2 {
+  font-size: 2em;
+  color: rgb(57, 133, 164);
+  text-align: center;
+}
+
+.ModalContacts .ModalContent .ContactsGrid i {
+  color: rgb(0, 0, 0);
+  font-size: 1.5em;
+}
+
+.ModalContacts .ModalContent .ContactsGrid a,
+.ModalContacts .ModalContent .ContactsGrid div {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-size: 1.5em;
+  margin: 1vh 1vh;
+}
+/*-----------------------FOOTER-----------------------------------------------*/
+footer {
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  margin-top: 5vh;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1vh 0;
+}
+
+footer button,
+footer p {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  margin: 1vh;
+}
+
+footer p {
+  font-size: 1.5em;
+}
+
+footer button {
+  width: auto;
+  font-size: 1.5em;
+  padding: 0.5em;
+  background-color: rgba(8, 23, 56, 1);
+  border-style: outset;
+  border-color: rgba(255, 255, 255, 0.8);
+  border-radius: 1em;
+  border-width: 0.3em;
+  cursor: pointer;
+}
+
+footer button:hover {
+  background-color: rgb(57, 133, 164);
+  transition: .3s;
+}
+/*-----------------------FOOTER-----------------------------------------------*/
