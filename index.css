@@ -416,6 +416,11 @@ header .HeaderMenu .Contacts:hover .DropDown i:hover {
   margin: 1vh 1vh;
 }
 
+.ModalContacts .ModalContent .ContactsGrid a:hover {
+  text-decoration: underline;
+  transition: .3s;
+}
+
 /*---------------------MODALS-------------------------------------------------*/
 
 
