@@ -135,7 +135,7 @@
           <a href="#" class="ModalClose"><i class="far fa-times-circle"></i></i></a>
           <h2>Projet Communication</h2>
           <p>
-            Ce projet a pour but de faire communiquer deux ordinateurs avec du son sans que personne ne l'entende. Le premier ordinateur envoie des ultrasons qui traverse un mur pour ensuite être capté par un micro. Ce micro est relié par un réseau filaire à l'ordinateur receveur du message.
+            Nous devons faire communiquer deux ordinateurs avec du son sans que personne ne l'entende. Le premier ordinateur envoie des ultrasons qui traverse un mur pour ensuite être capté par un micro. Ce micro est relié par un réseau filaire à l'ordinateur receveur du message.
             <br><br>
             Le projet dans son ensemble m'a permis d'apprendre : <br>
             - Les modulations d'onde (ici sonore), fréquence, amplitude et phase. <br>
@@ -2630,7 +2630,668 @@
         <div class="ModalContent">
           <a href="#" class="ModalClose"><i class="far fa-times-circle"></i></a>
           <h2>Projet Système Embarqué</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>
+            Nous devons développer une station météo sous forme de système embarqué sur une base de arduino uno. Nous avions 5 capteurs pour capter des données météorologiques(hygrométrie, luminosité, horloge, température, pression).<br>
+            Le projet dans son ensemble m'a permis d'apprendre : <br>
+            - modélisation UML/SYSML (cas d'utilisation, activité, séquence) <br>
+            - langage C et C arduino (pointeurs, structures, allocations dynamiques) <br>
+            - création de makefiles
+            - concevoir une architecture programme
+            - les bases pour écrire une documentation utilisateur et technique
+          </p>
+          <h3>Analyse et Modélisation</h3>
+          <p>
+            Le système possède quatres modes de fonctionnements. Par exemple le mode standard qui capte les données et les enregistre sur un support SD toutes les 10 mins (par défaut). On navigue entre ces 4 modes avec 2 boutons poussoirs, 1 vert et 1 rouge. <br>
+            Nous avons donc réaliser un diagramme de séquence par mode. En voici un exemple.
+          </p>
+          <h4>Diagramme de séquence, mode économique</h4>
+          <div class="ModalImage">
+            <img src="images/Embq/sequenceEconomique.png" alt="Diagramme de séquence, mode économique">
+          </div>
+          <p>
+            Nous avons aussi réaliser un diagramme d'activité par mode. Ceux-ci nous aident par la suite pour l'architecture programme. En voici un exemple.
+          </p>
+          <h4>Diagramme d'activité, mode standard</h4>
+          <div class="ModalImage">
+            <img src="images/Embq/activiteStandard.png" alt="Diagramme d'activité, mode standard">
+          </div>
+          <p>
+           Finalement, il nous faut pas oublier que c'est un système embarqué, par conséquent il ne va pas se brancher tout seul. Rien de bien compliqué mais attention aux boutons poussoirs qui doivent impérativement être branchés sur les pins 2 et 3. Les autres pins de l'arduino Uno ne gèrent pas les interruptions de programmes. Les schémas de cablage sont dans la documentation en bas de cette page.
+          </p>
+          <h3>Architecture programme</h3>
+          <p>
+            Nous avons du réfléchir à l'architecture programme, en d'autres termes quelles sont nos fonctions et que vont-elles réaliser. Il y a aussi des variables importantes comme nos variables volatiles utilisées par nos routines d'interruptions. Finalement il nous a paru évident de faire une fonction par mode de fonctionnement et de gérer le passage entre les modes dans le void loop(). Si vous voulez plus de détails le programme complet se trouve juste en dessous et la documentation technique en bas de cette page.
+          </p>
+          <h3>Réalisation programme</h3>
+          <p>
+            Voici donc notre programme final pour ceux que ça intéresse. Nous avons eu pas mal de soucis avec le capteur bme280 et la mémoire très limité de la carte arduino uno. Si nous avions eu le temps, nous aurions rajouté des pointeurs et des structures mais nous avons préféré avoir un programme simple et fonctionnel en priorité. La première structure aurait certainement été pour contenir les données à enregistrer sur le support SD.
+          </p>
+          <h4>Programme complet</h4>
+          <div class="CodeBlock">
+            <pre class="Preformate">
+              <code class="language-cpp">
+                //carte SD--------------------------------------------------------------------
+                #include <SPI.h>
+                #include <SD.h>
+                File dataFile;
+
+                //led RGB--------------------------------------------------------------------
+                #include <ChainableLED.h>
+                #define NUM_LEDS  1
+                ChainableLED leds(7, 8, NUM_LEDS);
+                //leds.setColorRGB(0, R, G, B); première valeur 0 pour allumer 1 pour étein
+
+                // Variables pour les interruptions--------------------------------------------------------------------
+                volatile char           ModeState = 1; // 1 = mode standard, 2 = mode config, 3 = mode maintenance, 4 = mode éco
+                volatile unsigned long  start = 0;
+                volatile unsigned long  end = 0;
+                volatile bool           ButtonState = false;
+                volatile char           PressedRB = 0;
+                volatile char           PressedGB = 0;
+                volatile char           PreviousMode = 0;
+
+                //BME280--------------------------------------------------------------------
+                #include <BME280I2C.h>
+                #include <Wire.h>
+
+                BME280I2C bme;
+
+                //RTC --------------------------------------------------------------------
+                #include "RTClib.h"
+                RTC_DS1307 rtc;
+                char daysOfTheWeek[7][12] = {"Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"};
+
+                //Définition Pins
+                #define redButton 2
+                #define greenButton 3
+
+                //Variables ----------------------------------------------------------------
+                int LOG_INTERVAL = 10;    //Intervalle de temps entre les mesures en minutes
+                int FILE_MAX_SIZE = 4096; //Taille maximal d'un fichier de log
+                                          //Version du programme et numéro de lot
+                int  TIMEOUT = 30;        //Temps au bout de laquelle l'aquisition des donées d'un capteur est abandonnée
+                bool LUMIN = 1;           //Activation désactivation du capteur luminosité
+                int  LUMIN_LOW =255;      //Valeur en dessous de laquelle la luminosité est considéré comme faible
+                int  LUMIN_HIGH =768;     //Valeur au dessus de laquelle la luminosité est considéré comme forte
+                bool TEMP_AIR = 1;        //Activation désactivation du capteur température d'air
+                int  MIN_TEMP_AIR = -10;  //Seuil de la température de l'air en dessous duquel le capteur se mettre en erreur
+                int  MAX_TEMP_AIR = 60;   //Seuil de la température de l'air au dessus duquel le capteur se mettre en erreur
+                bool HYGR = 1;            //Activation désactivation du capteur d'hygrométrie
+                int  HYGR_MINT = 0;       //Valeur de la température en dessous de laquelle les mesures d'hygrométrie ne seront pas prises en compte
+                int  HYGR_MAXT = 50;      //Valeur de la température au dessus de laquelle les mesures d'hygrométrie ne seront pas prises en compte
+                bool PRESSURE = 1;        //Activation désactivation du capteur d'hygrométrie
+                int  PRESSURE_MIN = 850;  //Seuil de la pression atmosphérique en dessous duquel le capteur se mettre en erreur
+                int  PRESSURE_MAX = 1080; //Seuil de la pression atmosphérique au dessus duquel le capteur se mettre en erreur
+                int v; // variable pour le mode configuration
+                int w; // variable pour le mode configuration
+
+                void setup() {
+                  Serial.begin(9600);          // Initialisation moniteur série à 9600 bauds
+                  sdInit();	                   // Initialisation carte SD
+                  bme280Init();                // Initialisation capteur température/humidité/pression
+                  rtcInit();		           // Initialisation horloge rtc
+                  pinMode(redButton, INPUT);
+                  pinMode(greenButton, INPUT);
+                  attachInterrupt(digitalPinToInterrupt(redButton), PressingRB, FALLING);
+                  attachInterrupt(digitalPinToInterrupt(greenButton), PressingGB, FALLING);
+                }
+
+                //----------------------------------------------------------------------------------------
+
+                void loop() {
+                  if (PressedRB == 1 && millis() <= 5000) {
+                  PreviousMode = ModeState;
+                    ModeState = 2;
+                    PressedRB = 0;
+                  }
+                  else if(PressedRB == 2 && millis() >= 5000) {
+                    switch(ModeState) {
+                      case 1:
+                    PreviousMode = ModeState;
+                      ModeState = 3;
+                      break;
+                      case 4:
+                    PreviousMode = ModeState;
+                      ModeState = 1;
+                      break;
+                      case 3:
+                    ModeState = PreviousMode;
+                      break;
+                    }
+                    PressedRB = 0;
+                  }
+                  if (PressedGB == 1 && millis() >= 5000) {
+                    switch(ModeState) {
+                      case 1:
+                    PreviousMode = ModeState;
+                      ModeState = 4;
+                      break;
+                      case 4:
+                    PreviousMode = ModeState;
+                      ModeState = 3;
+                      break;
+                    }
+                    PressedGB = 0;
+                  }
+                  switch (ModeState) { // switch entre les modes de fonctionnement en fonction de la variable ModeState
+                    case 1:
+                    standardMode(LOG_INTERVAL);
+                    break;
+                    case 2:
+                    configMode();
+                    break;
+                    case 3:
+                    mtnceMode(LOG_INTERVAL);
+                    break;
+                    case 4:
+                    ecoMode();
+                    break;
+                  }
+                }
+
+                //---------------------------------------------------------------------------
+
+                void standardMode(int INTERVAL) {
+                  unsigned long ModeStart = millis();
+                  leds.setColorRGB(0, 0, 255, 0);
+                  rtcRead();
+                  bme280Read();
+                  lumRead();
+                  delay(1000);
+                  unsigned long ModeTimer = millis();
+                  while (PressedRB == 0 && PressedGB == 0 && (ModeTimer - ModeStart) <= 1000*INTERVAL) {
+                    ModeTimer = millis();
+                  }
+                  if ((ModeTimer - ModeStart) <= 1000*INTERVAL) {
+                    standardMode(LOG_INTERVAL);
+                }
+
+                //-------------------------------------------------------------------
+
+                void ecoMode() {
+                  leds.setColorRGB(0, 0, 0, 255);
+                  int ECO_LOG_INTERVAL = LOG_INTERVAL*2;
+                  standardMode(ECO_LOG_INTERVAL);
+                }
+
+                //---------------------------------------------------------------------
+
+                void mtnceMode(int INTERVAL){
+                  unsigned long ModeStart = millis();
+                  leds.setColorRGB(0, 255,127, 0);
+                  rtcPrint();
+                  bme280Print();
+                  lumPrint();
+                  delay(1000);
+                  unsigned long ModeTimer = millis();
+                  while (PressedRB == 0 && PressedGB == 0 && (ModeTimer - ModeStart) <= 1000*INTERVAL) {
+                    ModeTimer = millis();
+                  }
+                  if ((ModeTimer - ModeStart) <= 1000*INTERVAL) {
+                    mtnceMode(LOG_INTERVAL);
+                }
+
+                //---------------------------------------------------------------------
+                void configMode(){
+                  leds.setColorRGB(0, 255, 255, 0);
+
+                  //Interface du mode configuration
+                  Serial.println(F("0- EXIT"));
+                  Serial.println(F("1- LOG_INTERVALL"));
+                  Serial.println(F("2- FILE_MAX_SIZE"));
+                  Serial.println(F("3- RESET"));
+                  Serial.println(F("4- VERSION"));
+                  Serial.println(F("5- TIMEOUT"));
+                  Serial.println(F("6- Capteur de luminosité"));
+                  Serial.println(F("7- Capteur de température"));
+                  Serial.println(F("8- Capteur d'hygrométrie"));
+                  Serial.println(F("9- Capteur de pression"));
+                  Serial.println(F("10- Horloge RTC"));
+                  //Configuration
+                  while (Serial.available() == 0){
+                  }
+                  int chooseMode = Serial.parseInt();
+                  switch (chooseMode){
+                    case 0:
+                      Serial.println(F("Sortie du mode configuration"));
+                      ModeState = 1;
+                      break;
+                    case 1:
+                      Serial.println(F("Entrez l'intervalle entre deux mesures de capteur (LOG_INTERVALL): "));
+                      LOG_INTERVAL = getSerialData();
+                      Serial.println(LOG_INTERVAL);
+                      configMode();
+                      break;
+
+                    case 2:
+                      Serial.println(F("Entrez la nouvelle taille maximale d'un fichier log (FILE_MAX_SIZE): "));
+                      FILE_MAX_SIZE = getSerialData();
+                      configMode();
+                      break;
+
+                    case 3:
+                      Serial.println(F("RESET de tous les paramètres à leur valeur par défaut..."));
+                      LOG_INTERVAL = 10;
+                      FILE_MAX_SIZE = 4096;
+                      TIMEOUT = 30;
+                      LUMIN = 1;
+                      LUMIN_LOW =255;
+                      LUMIN_HIGH =768;
+                      TEMP_AIR = 1;
+                      MIN_TEMP_AIR = -10;
+                      MAX_TEMP_AIR = 60;
+                      HYGR = 1;
+                      HYGR_MINT = 0;
+                      HYGR_MAXT = 50;
+                      PRESSURE = 1;
+                      PRESSURE_MIN = 850;
+                      PRESSURE_MAX = 1080;
+                      configMode();
+                      break;
+
+                    case 4:
+                      Serial.println(F("La VERSION du programme est : "));
+                      Serial.print(F("1.0"));
+                      configMode();
+                      break;
+
+                    case 5:
+                      Serial.println(F("Entrez la nouvelle valeur du TIMEOUT: "));
+                      TIMEOUT = getSerialData();;
+                      configMode();
+                      break;
+
+                    case 6:
+                      Serial.println(F("Choisir le paramètre à modifier"));
+                      Serial.println(F("1- LUMIN"));
+                      Serial.println(F("2- LUMIN_LOW"));
+                      Serial.println(F("3- LUMIN_HIGH"));
+                      v = getSerialData();
+                      w = 0;
+                      if (v == 1){
+                        Serial.println(F("Entrez la nouvelle valeur de LUMIN: "));
+                        w = getSerialData();
+                        LUMIN = w;
+                      }
+                      else if (v == 2){
+                        Serial.println(F("Entrez la nouvelle valeur de LUMIN_LOW: "));
+                        w = getSerialData();
+                        LUMIN_LOW = w;
+                      }
+                      else if (v == 3){
+                        Serial.println(F("Entrez la nouvelle valeur de LUMIN_HIGH: "));
+                        w = getSerialData();
+                        LUMIN_HIGH = w;
+                      }
+                      configMode();
+                      break;
+
+                    case 7:
+                      Serial.println(F("Choisir le paramètre à modifier"));
+                      Serial.println(F("1- TEMP_AIR"));
+                      Serial.println(F("2- MIN_TEMP_AIR"));
+                      Serial.println(F("3- MAX_TEMP_AIR"));
+                      v = getSerialData();
+                      w = 0;
+                      if (v == 1){
+                        Serial.println(F("Entrez la nouvelle valeur de TEMP_AIR: "));
+                        w = getSerialData();
+                        TEMP_AIR = w;
+                      }
+                      else if (v == 2){
+                        Serial.println(F("Entrez la nouvelle valeur de MIN_TEMP_AIR: "));
+                        w = getSerialData();
+                        MIN_TEMP_AIR = w;
+                      }
+                      else if (v == 3){
+                        Serial.println(F("Entrez la nouvelle valeur de MAX_TEMP_AIR: "));
+                        w = getSerialData();
+                        MAX_TEMP_AIR = w;
+                      }
+                      configMode();
+                      break;
+
+                    case 8:
+                      Serial.println(F("Choisir le paramètre à modifier"));
+                      Serial.println(F("1- HYGR"));
+                      Serial.println(F("2- HYGR_MINT"));
+                      Serial.println(F("3- HYGR_MAXT"));
+                      v = getSerialData();
+                      w = 0;
+                      if (v == 1){
+                        Serial.println(F("Entrez la nouvelle valeur de HYGR: "));
+                        w = getSerialData();
+                        HYGR = w;
+                      }
+                      else if (v == 2){
+                        Serial.println(F("Entrez la nouvelle valeur de HYGR_MINT: "));
+                        w = getSerialData();
+                        HYGR_MINT = w;
+                      }
+                      else if (v == 3){
+                        Serial.println(F("Entrez la nouvelle valeur de HYGR_MAXT: "));
+                        w = getSerialData();
+                        HYGR_MAXT = w;
+                      }
+                      configMode();
+                      break;
+
+                    case 9:
+                      Serial.println(F("Choisir le paramètre à modifier"));
+                      Serial.println(F("1- PRESSURE"));
+                      Serial.println(F("2- PRESSURE_MIN"));
+                      Serial.println(F("3- PRESSURE_MAX"));
+                      v = getSerialData();
+                      w = 0;
+                      if (v == 1){
+                        Serial.println(F("Entrez la nouvelle valeur de PRESSURE: "));
+                        w = getSerialData();
+                        PRESSURE = w;
+                      }
+                      else if (v == 2){
+                        Serial.println(F("Entrez la nouvelle valeur de PRESSURE_MIN: "));
+                        w = getSerialData();
+                        PRESSURE_MIN = w;
+                      }
+                      else if (v == 3){
+                        Serial.println(F("Entrez la nouvelle valeur de PRESSURE_MAX: "));
+                        w = getSerialData();
+                        PRESSURE_MAX = w;
+                      }
+                      configMode();
+                      break;
+                  }
+                }
+
+                // ---------------------------------------------------------------------------------
+
+                int getSerialData(){ // fonction permettant de récupérer des entrées sur le moniteur série
+                 unsigned long timer = 0;
+                 unsigned long endTimer = 0;
+                 long count = 0;
+                 timer = millis();
+                 Serial.println(F("Valeur : "));
+                 while(Serial.available() <= 0 && count <= 30000) {
+                  count = endTimer-timer;
+                  endTimer = millis();
+                 }
+                 if (count >= 30000){
+                  Serial.println(F("TIMEOUT"));
+                 }
+                 int serialData = Serial.parseInt();
+                 Serial.flush();
+                 return serialData;
+                }
+
+                // -----------------------------------------------------------------------------
+                //                            CARTE SD
+                //------------------------------------------------------------------------------
+
+                void sdInit(){
+                  Serial.println(F("Initialisation de la carte SD"));
+                  if (!SD.begin(4)) {
+                    Serial.println(F("L'initialisation de la carte SD n'as pas aboutie"));
+                    while (1);
+                  }
+                  if (SD.exists("data.txt") == true){
+                    Serial.println(F("Initialisation réussie"));
+                  } else if (SD.exists("data.txt") == false) {
+                    Serial.println(F("Le fichier data.txt n'existe pas"));
+                    Serial.println(F("Création du fichier data.txt"));
+                    dataFile = SD.open("data.txt", FILE_WRITE);
+                    dataFile.close();
+                    if (SD.exists("data.txt") == false){
+                      Serial.println(F("La création du ficher data.txt à raté"));
+                    } else if (SD.exists("data.txt") == true){
+                      Serial.println(F("Création du fichier data.txt réussit"));
+                    }
+                  }
+                }
+
+                //---------------------------------------------------------------------------
+                //                  CAPTEUR TEMPÉRATURE/HUMIDITÉ/PRESSION
+                //--------------------------------------------------------------------------
+
+                void bme280Init(){
+                  Wire.begin();
+                  while(!bme.begin()) {
+                    Serial.println(F("Capteur BME280 non trouvé"));
+                    delay(1000);
+                  }
+                  switch(bme.chipModel()) {
+                     case BME280::ChipModel_BME280:
+                       Serial.println(F("Capteur BME280 trouvé"));
+                       break;
+                     default:
+                       Serial.println(F("Capteur BM280 non trouvé"));
+                  }
+                }
+
+                // -------------------------------------------------------------------------------
+
+                void bme280Read() {
+                  float temp(NAN), hum(NAN), pres(NAN);
+                  BME280::TempUnit tempUnit(BME280::TempUnit_Celsius);
+                  BME280::PresUnit presUnit(BME280::PresUnit_Pa);
+                  bme.read(pres, temp, hum, tempUnit, presUnit);
+                  dataFile = SD.open("data.txt", FILE_WRITE);
+                  dataFile.print("TEMP:");
+                  dataFile.print(temp, 2);
+                  dataFile.print("C-");
+                  dataFile.print("HUM:");
+                  dataFile.print(hum);
+                  dataFile.print("%-");
+                  dataFile.print("PRES:");
+                  dataFile.print(pres);
+                  dataFile.print("Pa");
+                  dataFile.print("||");
+                  dataFile.close();
+                }
+
+                //--------------------------------------------------------------------------
+
+                void bme280Print() {
+                  float temp(NAN), hum(NAN), pres(NAN);
+                  BME280::TempUnit tempUnit(BME280::TempUnit_Celsius);
+                  BME280::PresUnit presUnit(BME280::PresUnit_Pa);
+                  bme.read(pres, temp, hum, tempUnit, presUnit);
+                  serial.print("TEMP:");
+                  serial.print(temp, 2);
+                  serial.print("C-");
+                  serial.print("HUM:");
+                  serial.print(hum);
+                  serial.print("%-");
+                  serial.print("PRES:");
+                  serial.print(pres);
+                  serial.print("Pa");
+                  serial.print("||");
+                  serial.close();
+                }
+
+                //--------------------------------------------------------------------------
+                //                          HORLOGE RTC
+                //--------------------------------------------------------------------------
+
+                void rtcInit(){
+                  if (! rtc.begin()) {
+                    Serial.println(F("Couldn't find RTC"));
+                    Serial.flush();
+                    abort();
+                  }
+                  if (! rtc.isrunning()) {
+                    Serial.println(F("RTC is NOT running, let's set the time!"));
+                    rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
+                    // rtc.adjust(DateTime(2014, 1, 21, 3, 0, 0));
+                  }
+                }
+
+                //--------------------------------------------------------------------------
+
+                void rtcConfig(){
+                  int newYear;
+                  int newMonth;
+                  int newDay;
+                  int newHour;
+                  int newMin;
+                  int newSec;
+                  Serial.println(F("Bienvenue dans le mode configation de l'horlge RTC"));
+                  Serial.println(F("Entrez l'année actuelle"));
+                  newYear = getSerialData();
+                  Serial.println(F("Entrez le mois actuel"));
+                  newMonth = getSerialData();
+                  Serial.println(F("Entrez le jour actuel"));
+                  newDay = getSerialData();
+                  Serial.println(F("Entrez l'heure actuelle"));
+                  newHour = getSerialData();
+                  Serial.println(F("Entrez la minute actuelle"));
+                  newMin = getSerialData();
+                  Serial.println(F("Entrez la seconde actuelle"));
+                  newSec = getSerialData();
+                  rtc.adjust(DateTime(newYear, newMonth, newDay, newHour, newMin, newSec));
+                  Serial.println(F("La configuration de l'horloge est terminée"));
+                  Serial.print(F("Il est actuellement : "));
+                  rtcRead();
+                }
+
+                //--------------------------------------------------------------------------
+
+                void rtcRead(){
+                  dataFile = SD.open("data.txt", FILE_WRITE);
+                  DateTime now = rtc.now();
+                  dataFile.print(now.year(), DEC);
+                  dataFile.print('/');
+                  dataFile.print(now.month(), DEC);
+                  dataFile.print('/');
+                  dataFile.print(now.day(), DEC);
+                  dataFile.print(" (");
+                  dataFile.print(daysOfTheWeek[now.dayOfTheWeek()]);
+                  dataFile.print(") ");
+                  dataFile.print(now.hour(), DEC);
+                  dataFile.print(':');
+                  dataFile.print(now.minute(), DEC);
+                  dataFile.print(':');
+                  dataFile.print(now.second(), DEC);
+                  dataFile.print("||");
+                  dataFile.close();
+                }
+
+                //------------------------------------------------------------------------
+
+                void rtcPrint(){
+                  DateTime now = rtc.now();
+                  serial.print(now.year(), DEC);
+                  serial.print('/');
+                  serial.print(now.month(), DEC);
+                  serial.print('/');
+                  serial.print(now.day(), DEC);
+                  serial.print(" (");
+                  serial.print(daysOfTheWeek[now.dayOfTheWeek()]);
+                  serial.print(") ");
+                  serial.print(now.hour(), DEC);
+                  serial.print(':');
+                  serial.print(now.minute(), DEC);
+                  serial.print(':');
+                  serial.print(now.second(), DEC);
+                  serial.print("||");
+                }
+
+                //--------------------------------------------------------------------------
+                //                      CAPTEUR LUIMIÈRE
+                //--------------------------------------------------------------------------
+
+                void lumRead(){
+                  dataFile = SD.open("data.txt", FILE_WRITE);
+                  int lValue = analogRead(A0);
+                  lValue = map(lValue, 0, 800, 0, 10);
+                  dataFile.print("LUM:");
+                  dataFile.print(lValue, DEC);
+                  dataFile.println("/10");
+                  dataFile.close();
+                }
+
+                //--------------------------------------------------------------------------
+
+                void lumRead(){
+                  int lValue = analogRead(A0);
+                  lValue = map(lValue, 0, 800, 0, 10);
+                  serial.print("LUM:");
+                  serial.print(lValue, DEC);
+                  serial.println("/10");
+                }
+
+                //--------------------------------------------------------------------------
+                //                         ROUTINE D'INTERRUPTIONS
+                //--------------------------------------------------------------------------
+
+                void PressingRB() { // routine d'interruption quand bouton rouge est pressé
+
+                  ButtonState = !ButtonState;
+
+                  if (ButtonState) {
+
+                    start = millis();
+
+                  	detachInterrupt(digitalPinToInterrupt(redButton));
+                    attachInterrupt(digitalPinToInterrupt(redButton), PressingRB, FALLING);
+                  }
+
+                  else {
+
+                    end = millis();
+
+                    if (end - start >= 5000){
+
+                      PressedRB = 2;
+                    }
+                    else {
+
+                      PressedRB = 1;
+                    }
+
+                    detachInterrupt(digitalPinToInterrupt(redButton));
+                    attachInterrupt(digitalPinToInterrupt(redButton), PressingRB, RISING);
+                  }
+                 }
+
+                //----------------------------------------------------------------------------
+
+                void PressingGB() { // routine d'interruption quand bouton vert est pressé
+
+                  ButtonState = !ButtonState;
+
+                  if (ButtonState) {
+
+                    start = millis();
+
+                  	detachInterrupt(digitalPinToInterrupt(greenButton));
+                    attachInterrupt(digitalPinToInterrupt(greenButton), PressingGB, FALLING);
+                  }
+
+                  else {
+
+                    end = millis();
+
+                    if (end - start >= 5000){
+
+                      PressedGB = 1;
+                    }
+
+                    detachInterrupt(digitalPinToInterrupt(greenButton));
+                    attachInterrupt(digitalPinToInterrupt(greenButton), PressingGB, RISING);
+                  }
+                }
+
+                // --------------------------------------------------------------------------------
+              </code>
+            </pre>
+          </div>
+          <h3>Documentation utilisateur et technique</h3>
+          <p>
+            Pour conclure le projet nous avons écrit une documentation utilisateur et technique qui récapitule dans le détail l'ensemble du projet. Voici un lien vers cette documentation au format PDF.<br>
+          </p>
+          <a class="ModalLink"href="Documents/Embq/Documentation.pdf">
+            <h4>Documentation utilisateur et technique</h4>
+          </a>
         </div>
       </div>
 

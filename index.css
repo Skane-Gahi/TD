@@ -346,6 +346,11 @@ header .HeaderMenu .Contacts:hover .DropDown i:hover {
   text-align: center;
 }
 
+.ModalContent .ModalLink {
+  text-decoration: underline;
+  color: rgb(255, 255, 255);
+}
+
 .ModalContent img {
   position: relative;
   border-style: outset;
