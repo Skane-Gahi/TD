@@ -304,6 +304,19 @@ footer p {
   font-size: 1.5em;
 }
 
+footer .FooterLinks {
+  width: 100%;
+  margin-top: 2vh;
+  display: inline;
+  text-align: center;
+}
+
+footer a {
+  font-size: 1em;
+  color: rgb(255, 255, 255);
+  margin: 0 2vh;
+}
+
 footer button {
   width: auto;
   font-size: 1.5em;
