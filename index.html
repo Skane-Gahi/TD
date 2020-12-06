@@ -50,16 +50,14 @@
     <!--//////////////////////HEADER///////////////////////////////////////////-->
     <!-- ///////////////////Corp du site///////////////////////////////////////-->
 
-    <img src="images/Galaxy.jpg" alt="Un univers de possibilités" id="background">
+    <img src="images/stars-5696814_1920.png" alt="Un univers de possibilités" id="background">
 
     <div class="Banner">
 
       <!--///////////////////Bannière de bienvenue/////////////////////////////-->
       <div class="BannerContent">
         <h1> Bienvenue sur mon site portfolio </h1>
-        <button onclick="window.location.href = 'QuiSuisJe.html';">
-          Qui suis-je ? <br> <span class="ClickMe">cliquez pour le savoir</span>
-        </button>
+        <button onclick="window.location.href = 'QuiSuisJe.html';"> Qui suis-je ? </button>
         <h2> Découvrez mes travaux ainsi que mon univers </h2>
       </div>
       <!--///////////////////Bannière de bienvenue/////////////////////////////-->
@@ -100,19 +98,19 @@
         </div>
         </a>
 
-        <a href="#" class="element">
-          <h2>À venir...</h2>
+        <a href="#ModalPOO" class="element">
+          <h2>Programmation orientée objet</h2>
           <div class="ProjectImage">
-            <img src="images/POO.png" alt="C'est le projet com">
+            <img src="images/POO.png" alt="C'est le projet POO">
             <div class="caption">
-              <p>Programmation orientée objet</p>
+              <p>En savoir plus sur le projet</p>
             </div>
           </div>
         </a>
         <a href="#" class="element">
           <h2>À venir...</h2>
           <div class="ProjectImage">
-            <img src="images/Reseau.jpg" alt="C'est le projet BDD">
+            <img src="images/Reseau.jpg" alt="C'est le projet Réseaux">
             <div class="caption">
               <p>Systèmes et Réseaux</p>
             </div>
@@ -121,7 +119,7 @@
         <a href="#" class="element">
           <h2>À venir...</h2>
           <div class="ProjectImage">
-            <img src="images/Web.jpg" alt="C'est le projet embarqué">
+            <img src="images/Web.jpg" alt="C'est le projet Web">
             <div class="caption">
               <p>Web</p>
             </div>
@@ -3292,6 +3290,79 @@
           </p>
           <a class="ModalLink"href="Documents/Embq/Documentation.pdf">
             <h4>Documentation utilisateur et technique</h4>
+          </a>
+        </div>
+      </div>
+
+      <div class="ModalPOO" id="ModalPOO">
+        <div class="ModalContent">
+          <a href="#" class="ModalClose"><i class="far fa-times-circle"></i></a>
+          <h2>Projet Programmation orientée objet</h2>
+          <p>
+            Une entreprise nous a contacté afin de digitaliser certains de ses services et faciliter la gestion de l'entreprise. La solution se présente sous forme d'application permettant d'intéragir avec la base de données de l'entreprise. Il s'agit principalement de Créer/ Afficher / Modifier / Supprimer - Des - Clients / Commandes / Personnels / Articles<br>
+            Le projet dans son ensemble m'a permis d'apprendre : <br>
+            - modélisation UML (cas d'utilisation révision, activité révision, séquence révision, classe) <br>
+            - langage C++ et framework .NET (Winforms, ADO.NET)<br>
+            - Programmation orientée objet (classe, objet, héritage, polymorphisme etc...)<br>
+            - concevoir une architecture programme. <br>
+            - Révision du langage SQL et premier pas sur SQL server. <br>
+            - Utilisation de GitHub pour partager le travail et de Visual Studio comme IDE. <br>
+          </p>
+          <h3>Analyse et Modélisation</h3>
+          <p>
+            L'application se divise en 5 parties, gestion du personnel / des clients / des commandes / du stock, et de statistiques.
+            chaque partie correspond à un cas d'utilisation et à un acteur différent <br>
+            Nous avons donc réalisé le diagramme de cas d'utilisations, que voici ci-dessous.
+          </p>
+          <h4>Diagramme de cas d'utilisations</h4>
+          <div class="ModalImage">
+            <img src="images/POO/UseCase.png" alt="Diagramme de cas d'utilisations">
+          </div>
+          <p>
+            Nous avons aussi réalisé des diagrammes de séquences afin de visualiser les foncionnalités demandées dans l'application. En voici un exemple.
+          </p>
+          <h4>Diagramme de séquence, créer un personnel</h4>
+          <div class="ModalImage">
+            <img src="images/POO/sequence.png" alt="Diagramme de séquence, créer un personnel">
+          </div>
+          <p>
+           Nous avons bien sûre réaliser un diagramme de classe qui a bien évolué durant le projet. Par conséquent je vous montre la version qui représent notre architecture programme à la fin du projet.
+           <h4>Diagramme de classe de fin de projet</h4>
+           <div class="ModalImage">
+             <img src="images/POO/classes.png" alt="Diagramme de classe de fin de projet">
+           </div>
+          </p>
+          <h3>Base de données</h3>
+          <p>
+            Notre application c++/cli et rattacher à une base de données SQL server. Il nous a donc fallu créer cette base de données en commançant bien sûre par un dictionnaire de données. En découle le modèle conceptuel de données afin de déterminer les tables et relations de notre base de données. Et voici le Dictionnaire de données et le MCD.
+          </p>
+          <h4>Dictionnaire de données</h4>
+          <div class="ModalImage">
+            <img src="images/POO/DD.png" alt="Dictionnaire de données">
+          </div>
+          <h4>Modèle conceptuel de données</h4>
+          <div class="ModalImage">
+            <img src="images/POO/MCD.png" alt="Modèle conceptuel de données">
+          </div>
+          <h3>Réalisation programme</h3>
+          <p>
+          L'application se divise sur deux WinForms, la première nous permet de s'authentifier afin d'accéder à l'interaction avec la base de données. Si les informations rentrées ne sont pas dans la base de données, on ne peut accéder à la deuxième form. Voici comment se présente cette première forme.
+          <h4>MyForm, WinForm pour s'authentifier</h4>
+          <div class="ModalImage">
+            <img src="images/POO/MyForm.png" alt="MyForm, WinForm pour s'authentifier">
+          </div>
+          La deuxième Form se divise en 5 parties pour les 5 cas d'utilisations. Il y a une datagridview sur la gauche pour afficher les données de la base de données grâce à des requêtes SQL. Au centre des boutons pour naviguer dans la datagridview et remplissent automatiquement les textbox correspondantes juste au-dessus. Ensuite, dessous se trouve les boutons pour supprimer, créer et modifier les données dans la base données avec les informations comprises dans les textbox. Enfin le bouton afficher qui permet de raffraichir les données de la datagridview.
+          <h4>BackForm, WinForm pour intéragir avec la base de données</h4>
+          <div class="ModalImage">
+            <img src="images/POO/BackForm.png" alt="BackForm, WinForm pour intéragir avec la base de données">
+          </div>
+          </p>
+          <h3>Lien vers le GitHub</h3>
+          <p>
+            Le programme complet se trouve sur GitHub, alors si cela vous intéresse le lien ci-dessous vous emmenera sur le GitHub.<br>
+          </p>
+          <a class="ModalLink"href="https://github.com/Skane-Gahi/POO_Project/tree/master/POO_Project">
+            <h4>Lien vers GitHub</h4>
           </a>
         </div>
       </div>
