@@ -14,6 +14,7 @@ body::-webkit-scrollbar {
 /*---------------------HEADER-------------------------------------------------*/
 
 header {
+  
   margin-left: 0;
   margin-right: 0;
   width: 100%;
@@ -25,6 +26,7 @@ header {
 }
 
 header .HeaderTitle {
+  
   color: rgb(100, 255, 255);
   float: left;
   padding: 0 30px;
@@ -33,10 +35,12 @@ header .HeaderTitle {
 }
 
 header .HeaderMenu {
+  
   float: right;
 }
 
 header .HeaderMenu .NavBar {
+  
   display: inline-block;
   color: rgb(100, 255, 255);
   padding: 0 5vh;
@@ -44,11 +48,13 @@ header .HeaderMenu .NavBar {
 }
 
 header .HeaderMenu .Contacts {
+  
   float: right;
   padding: 0;
 }
 
 header .HeaderMenu .Contacts .ContactsHead {
+  
   text-decoration: none;
   color: rgb(100, 255, 255);
   text-align: center;
@@ -58,6 +64,7 @@ header .HeaderMenu .Contacts .ContactsHead {
 }
 
 header .HeaderMenu .Contacts .DropDown {
+  
   width: 100%;
   list-style-type: none;
   margin: 0;
@@ -72,6 +79,7 @@ header .HeaderMenu .Contacts .DropDown {
 }
 
 .fa-linkedin, .fa-envelope, .fa-phone-square {
+  
   color: rgb(255, 255, 255);
 }
 
@@ -79,16 +87,19 @@ header .HeaderMenu .Contacts .DropDown {
 header .HeaderTitle:hover,
 header .HeaderMenu .NavBar:hover,
 header .HeaderMenu .Contacts:hover .ContactsHead {
+  
   border-bottom-style: solid;
   border-bottom-color: rgb(255, 255, 255);
   border-bottom-width: 0.15em;
 }
 
 header .HeaderMenu .Contacts:hover .DropDown {
+  
   display: block;
 }
 
 header .HeaderMenu .Contacts:hover .DropDown i:hover {
+  
   color: rgb(100, 255, 255);
 }
 /*---------------------HEADER-------------------------------------------------*/
@@ -96,6 +107,7 @@ header .HeaderMenu .Contacts:hover .DropDown i:hover {
 
 /*--------------------BACKGROUND----------------------------------------------*/
 #background {
+  
   filter: brightness(50%);
   position: absolute;
   width: 100%;
@@ -112,6 +124,7 @@ header .HeaderMenu .Contacts:hover .DropDown i:hover {
 /*--------------------BANNER--------------------------------------------------*/
 
 .Banner {
+  
   position: absolute;
   height: auto;
   width: 100%;
@@ -120,6 +133,7 @@ header .HeaderMenu .Contacts:hover .DropDown i:hover {
 /*-------------------TOPBANNER------------------------------------------------*/
 
 .TopBanner {
+  
   position: relative;
   height: 100vh;
   width: 100%;
@@ -131,6 +145,7 @@ header .HeaderMenu .Contacts:hover .DropDown i:hover {
 }
 
 .Banner .BannerContent {
+  
   position: relative;
   margin-top: 15vh;
   width: 50%;
@@ -146,10 +161,12 @@ header .HeaderMenu .Contacts:hover .DropDown i:hover {
 
 .Banner .BannerContent h1,
 .Banner .BannerContent h2 {
+  
   color: rgb(100, 255, 255);
 }
 
 .Banner .BannerContent button {
+  
   position: relative;
   width: 50%;
   height: auto;
@@ -165,6 +182,7 @@ header .HeaderMenu .Contacts:hover .DropDown i:hover {
 }
 
 .Banner .BannerContent button:hover {
+  
   transform: scale(1.1);
   transition: .3s;
 }
@@ -175,6 +193,7 @@ header .HeaderMenu .Contacts:hover .DropDown i:hover {
 
 /*-------------------BANNERLIST-----------------------------------------------*/
 .Banner .BannerList {
+  
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -188,6 +207,7 @@ header .HeaderMenu .Contacts:hover .DropDown i:hover {
 }
 
 .BannerList .element {
+  
   position: relative;
   width: 100%;
   height: auto;
@@ -197,6 +217,7 @@ header .HeaderMenu .Contacts:hover .DropDown i:hover {
 }
 
 .element img {
+  
   display: block;
   position: relative;
   right: 0;
@@ -206,6 +227,7 @@ header .HeaderMenu .Contacts:hover .DropDown i:hover {
 
 
 .ProjectImage .caption {
+  
   height: 100%;
   width: 100%;
   position: absolute;
@@ -223,17 +245,20 @@ header .HeaderMenu .Contacts:hover .DropDown i:hover {
 }
 
 .ProjectImage {
+  
   width: 100%;
   position: relative;
   overflow: hidden;
 }
 
 .BannerList .element:hover .ProjectImage img {
+  
   opacity: 0.5;
   transition: .3s;
 }
 
 .BannerList .element:hover .ProjectImage .caption {
+  
   visibility: visible;
   transition: .3s;
 }
@@ -242,6 +267,7 @@ header .HeaderMenu .Contacts:hover .DropDown i:hover {
 
 /*---------------------MODALS-------------------------------------------------*/
 .ModalCom, .ModalBDD, .ModalEmbq, .ModalPOO, .ModalContacts {
+  
   background: rgba(0, 0, 0, 0.3);
   width: 100%;
   height: 100%;
@@ -259,6 +285,7 @@ header .HeaderMenu .Contacts:hover .DropDown i:hover {
 }
 
 .ModalContent {
+  
   width: 80%;
   height: 75vh;
   background-color: rgb(40, 44, 52);
@@ -274,10 +301,12 @@ header .HeaderMenu .Contacts:hover .DropDown i:hover {
 }
 
 .ModalContent::-webkit-scrollbar {
+  
   display: none;
 }
 
 .ModalClose {
+  
   text-decoration: none;
   font-size: 2em;
   color: rgb(151, 158, 170);
@@ -287,47 +316,56 @@ header .HeaderMenu .Contacts:hover .DropDown i:hover {
 }
 
 .ModalClose:hover {
+  
   color: rgb(207, 102, 111);
 }
 
 #ModalCom:target, #ModalBDD:target, #ModalEmbq:target, #ModalPOO:target, #ModalContacts:target {
+  
   opacity: 1;
   visibility: visible;
 }
 
 #ModalCom:target .ModalContent, #ModalBDD:target .ModalContent, #ModalEmbq:target .ModalContent, #ModalPOO:target .ModalContent, #ModalContacts:target .ModalContent {
+  
   opacity: 1;
   visibility: visible;
 }
 /*----------------------------------------------------------------------------*/
 .ModalContent h2 {
+  
   font-size: 2em;
   color: rgb(86, 182, 194);
   text-align: center;
 }
 
 .ModalContent h3 {
+  
   font-size: 1.5em;
   color: rgb(138, 177, 113);
   text-indent: 5vh;
 }
 
 .ModalContent h4 {
+  
   font-size: 1.5em;
   color: rgb(255, 255, 255);
   text-align: center;
 }
 
 .ModalContent .ModalImage {
+  
   text-align: center;
 }
 
 .ModalContent .ModalLink {
+  
   text-decoration: underline;
   color: rgb(255, 255, 255);
 }
 
 .ModalContent img {
+  
   position: relative;
   max-width: 100%;
   height: auto;
@@ -335,20 +373,24 @@ header .HeaderMenu .Contacts:hover .DropDown i:hover {
 }
 
 .ModalContent p {
+  
   font-family: 'Changa', sans-serif;
 }
 
 .CodeBlock {
+  
   margin: 5vh 0;
 }
 
 .CodeBlock pre {
+  
   padding-right: -30vh;
   max-height: 70vh;
 }
 
 /*--------------------ModalContact--------------------------------------------*/
 .ModalContacts .ModalContent {
+  
   width: 25vh;
   height: auto;
   background-color: rgb(200, 200, 200);
@@ -357,6 +399,7 @@ header .HeaderMenu .Contacts:hover .DropDown i:hover {
 }
 
 .ModalContacts .ModalContent .ContactsGrid {
+  
   display: grid;
   grid-template-columns: auto auto;
   grid-template-rows: auto auto auto;
@@ -364,23 +407,27 @@ header .HeaderMenu .Contacts:hover .DropDown i:hover {
 }
 
 .ModalContacts .ModalContent .ModalClose {
+  
   top: 0.7em;
   right: 1em;;
 }
 
 .ModalContacts h2 {
+  
   font-size: 2em;
   color: rgb(57, 133, 164);
   text-align: center;
 }
 
 .ModalContacts .ModalContent .ContactsGrid i {
+  
   color: rgb(0, 0, 0);
   font-size: 1.5em;
 }
 
 .ModalContacts .ModalContent .ContactsGrid a,
 .ModalContacts .ModalContent .ContactsGrid div {
+  
   color: rgb(0, 0, 0);
   text-decoration: none;
   font-size: 1.5em;
@@ -388,6 +435,7 @@ header .HeaderMenu .Contacts:hover .DropDown i:hover {
 }
 
 .ModalContacts .ModalContent .ContactsGrid a:hover {
+  
   text-decoration: underline;
   transition: .3s;
 }
@@ -398,25 +446,30 @@ header .HeaderMenu .Contacts:hover .DropDown i:hover {
 
 /*--------------------ArrowAndText--------------------------------------------*/
 .Arrows {
+ 
   margin-bottom: 10vh;
 }
 
 .fa-angle-double-down {
+ 
   color: rgb(100, 255, 255);
   font-size: 5em;
 }
 
 #ArrowLeft {
+ 
   float: left;
   margin-right: 25vh;
 }
 
 #ArrowRight {
+ 
   float: right;
   margin-left: 25vh;
 }
 
 .BannerText {
+ 
   color: rgb(100, 255, 255);
   font-size: 2em;
   text-align: center;
@@ -429,6 +482,7 @@ header .HeaderMenu .Contacts:hover .DropDown i:hover {
 
 /*-----------------------FOOTER-----------------------------------------------*/
 footer {
+ 
   text-align: center;
   position: relative;
   bottom: 0;
@@ -445,17 +499,20 @@ footer {
 
 footer button,
 footer p {
+ 
   text-decoration: none;
   color: rgb(255, 255, 255);
   margin: 1vh;
 }
 
 footer p {
+  
   font-size: 1.5em;
   color: rgb(100, 255, 255);
 }
 
 footer .FooterLinks {
+ 
   width: 100%;
   margin-top: 2vh;
   display: inline;
@@ -463,12 +520,14 @@ footer .FooterLinks {
 }
 
 footer a {
+  
   font-size: 1em;
   color: rgb(100, 255, 255);
   margin: 0 2vh;
 }
 
 footer button {
+  
   width: auto;
   font-size: 1.5em;
   padding: 0.5em;
@@ -481,6 +540,7 @@ footer button {
 }
 
 footer button:hover {
+  
   transform: scale(1.1);
   transition: .3s;
 }
