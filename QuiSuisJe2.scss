@@ -1,7 +1,7 @@
 body {
 
     margin: 0;
-    padding: 0;
+    padding: 10vh 0 0 0;
 
     /* Hide scrollbar  */
     &::-webkit-scrollbar {
@@ -10,6 +10,7 @@ body {
 
     font-family: 'Cuprum', sans-serif;
     font-weight: bold;
+    font-size: 1em;
 
     background-image: url("images/facade.jpg");
     background-attachment: fixed;
@@ -35,6 +36,7 @@ a {
     text-decoration: none;
     color: white;
 }
+
 /*---------------------HEADER-------------------------------------------------*/
 
 header {
@@ -116,91 +118,119 @@ header .HeaderNav .Contacts:hover .DropDown {
 /*---------------------HOVERS-------------------------------------------------*/
 /*---------------------HEADER-------------------------------------------------*/
 
-/*--------------------MAIN----------------------------------------------------*/
-/*--------------------WELCOMEBANNER-------------------------------------------*/
-.WelcomeBanner {
+/*---------------------MAIN---------------------------------------------------*/
+main {
 
-    height: auto;
-    width: 100%;
-    padding: 10vh 0 5vh 0;
-    text-align: center;
-    background: rgb(0,29,100);
-    background: linear-gradient(90deg, rgba(0,29,100,1) 0%, rgba(0,60,135,1) 35%, rgba(0,152,241,1) 100%);
-    color: white;
+    & .Top {
 
-    & .TopWelcomeBanner {
+        width: 100%;
+        margin-top: 15vh;
+        padding-bottom: 15vh;
         
-        margin-bottom: 5vh;
-
-        & button {
-
-            font-size: 2em;
-        }
-
         & h1 {
-            font-size: 2em;
+
+            text-align: center;
+            color: white;
+            font-size: 3em;
+        }
+
+        & img {
+
+            position: absolute;
+            right: 0;
+            top: 15vh;
+            width: 10%;
+            border-style: solid;
+            border-color: rgb(30, 30, 30);
+            border-width: 0.5em;
+            margin: 0 5vw;
+        }
+    }
+
+    & article {
+        
+        & .Intro {
+
+            background: rgb(0,29,100);
+            background: linear-gradient(90deg, rgba(0,29,100,1) 0%, rgba(0,60,135,1) 35%, rgba(0,152,241,1) 100%);
+            color: white;
+            padding: 5vh 5vw;
+            font-size: 1.5em;
+            text-align: center;
+        }
+    
+        & .QnA {
+    
+            display: grid;
+            grid-template-columns: 25% 75%;
+            grid-template-rows: 1fr 1fr 1fr 1fr;
+
+            & h3, p {
+
+                display: block;
+                margin: 0;
+                padding: 3vh 5vw;
+                font-size: 1.5em;
+            }
+
+            & h3 {
+
+                font-size: 1.5em;
+                text-align: right;
+                padding: 3vh 2vw;
+
+            }
+
+            & p {
+
+                font-weight: normal;
+                text-align: justify;
+            }
         }
     }
 }
 
-#universe {
-    margin-top: 2vh;
-    font-size: 1.5em;
-}
+#whyme {
 
-.WelcomeBanner .TopWelcomeBanner button:hover {
-   
-    transform: scale(1.1);
-    transition: .5s;
+    background-color: rgb(218, 218, 218);
+    color: rgb(0,29,100);
 }
-/*--------------------WELCOMEBANNER-------------------------------------------*/
-/*--------------------PROJECTLIST---------------------------------------------*/
-.ProjectList {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 40vh 40vh;
+#whymep {
 
-    & .Project {
-
-        background-size: cover;
-        background-position: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-decoration: none;
-        color: transparent;
-        font-size: 2.5em;
-    }
+    background-color: rgb(0,29,100);
+    color: rgb(150, 150, 150);
 }
-/*---------------------HOVERS-------------------------------------------------*/
-.ProjectList .Project:hover{
-    background-image: none;
+#whyinfo {
+
     background-color: rgb(242, 242, 242);
     color: rgb(0,29,100);
-    transition: var(--trans,opacity .4s ease 0s);
 }
-/*---------------------HOVERS-------------------------------------------------*/
-/*--------------------IMAGES--------------------------------------------------*/
-.Com {
-    background-image: url(images/com.jpg);
+#whyinfop {
+
+    background-color: rgb(0, 36, 115);
+    color: rgb(218, 218, 218);
 }
-.BDD {
-    background-image: url(images/BDD.jpg);
+#workengines {
+
+    background-color: rgb(218, 218, 218);
+    color: rgb(0,29,100);
 }
-.Embq {
-    background-image: url(images/Embq.jpg);
+#workenginesp {
+
+    background-color: rgb(0, 60, 135);
+    color: rgb(242, 242, 242);
 }
-.POO {
-    background-image: url(images/POO.png);
+#hobbies {
+    
+    background-color: rgb(242, 242, 242);
+    color: rgb(0,29,100);
 }
-.Net {
-    background-image: url(images/Reseau.jpg);
+#hobbiesp {
+
+    background-color: rgb(0, 152, 241);
+    color: rgb(255, 255, 255);
 }
-.WEB {
-    background-image: url(images/Web.jpg);
-}
-/*--------------------IMAGES--------------------------------------------------*/
-/*--------------------PROJECTLIST---------------------------------------------*/
+
 main .TextBanner {
     width: 100%;
     background-color: rgb(30, 30, 30);
@@ -209,7 +239,7 @@ main .TextBanner {
     text-align: center;
     padding: 3vh 0
 }
-/*--------------------MAIN----------------------------------------------------*/
+/*---------------------MAIN---------------------------------------------------*/
 
 /*--------------------FOOTER--------------------------------------------------*/
 footer {
@@ -221,7 +251,6 @@ footer {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin-top: 40vh;
     padding: 10vh 0; 
     color: white;
 
