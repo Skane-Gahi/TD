@@ -1,0 +1,358 @@
+body {
+  margin: 0;
+  padding: 10vh 0 0 0;
+  /* Hide scrollbar  */
+  font-family: 'Cuprum', sans-serif;
+  font-weight: bold;
+  font-size: 1em;
+  background-image: url("images/facade.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.fa-linkedin, .fa-envelope, .fa-phone-square {
+  color: white;
+}
+
+button {
+  padding: 1em 3em;
+  color: white;
+  background-color: #1e1e1e;
+  border-style: none;
+  border-radius: 1.5em;
+  cursor: pointer;
+  font-family: 'Cuprum', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+/*---------------------HEADER-------------------------------------------------*/
+header {
+  top: 0;
+  width: 100%;
+  height: 7vh;
+  line-height: 7vh;
+  position: fixed;
+  color: white;
+  z-index: 10;
+}
+
+header .HeaderTitle h1 {
+  color: white;
+  float: left;
+  padding: 0 1vw 0 1vw;
+  margin: 0 1vw;
+  text-decoration: none;
+  font-size: 1.5em;
+}
+
+header .HeaderNav {
+  float: right;
+}
+
+header .HeaderNav .NavChoice {
+  display: inline-block;
+  color: white;
+  padding: 0 1vw;
+  text-decoration: none;
+}
+
+header .HeaderNav .Contacts {
+  float: right;
+  padding: 0 1vw 0 0;
+}
+
+header .HeaderNav .Contacts .ContactsHead {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  padding: 0 1vw;
+  height: 100%;
+}
+
+header .HeaderNav .Contacts .DropDown {
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  position: absolute;
+  background-color: transparent;
+  display: none;
+}
+
+/*---------------------HOVERS-------------------------------------------------*/
+header .HeaderTitle h1:hover,
+header .HeaderNav .NavChoice:hover,
+header .HeaderNav .Contacts:hover .ContactsHead {
+  border-bottom-style: solid;
+  border-bottom-color: white;
+  border-bottom-width: 0.15em;
+}
+
+header .HeaderNav .Contacts:hover .DropDown {
+  display: block;
+}
+
+/*---------------------HOVERS-------------------------------------------------*/
+/*---------------------HEADER-------------------------------------------------*/
+/*---------------------MAIN---------------------------------------------------*/
+/*---------------------MAIN---------------------------------------------------*/
+main h2 {
+  margin: 15vh 0;
+  text-align: center;
+  color: white;
+  font-size: 3em;
+}
+
+main article .Intro {
+  background: #001d64;
+  background: -webkit-gradient(linear, left top, right top, from(#001d64), color-stop(35%, #003c87), to(#0098f1));
+  background: linear-gradient(90deg, #001d64 0%, #003c87 35%, #0098f1 100%);
+  color: white;
+  padding: 5vh 5vw;
+  font-size: 1.5em;
+  text-align: justify;
+}
+
+main article .Content {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 15% 85%;
+      grid-template-columns: 15% 85%;
+  -ms-grid-rows: auto auto auto;
+      grid-template-rows: auto auto auto;
+}
+
+main article .Content section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main article .Content section a {
+  font-size: 1.5em;
+  margin: 5vh 0;
+}
+
+main article .Content h3, main article .Content p {
+  display: block;
+  margin: 0;
+  padding: 3vh 5vw;
+  font-size: 1.5em;
+}
+
+main article .Content h3 {
+  font-size: 1.5em;
+  text-align: right;
+  padding: 3vh 2vw;
+}
+
+main article .Content p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: normal;
+  text-align: justify;
+}
+
+main article .Content h4 {
+  font-size: 1.5em;
+  text-align: center;
+  margin: 3vh 0;
+  color: white;
+}
+
+main article .Content img {
+  border-style: solid;
+  border-color: #1e1e1e;
+  border-width: 0.3em;
+  margin: 5vh 0;
+}
+
+#modu {
+  background-color: #f2f2f2;
+  color: #001d64;
+}
+
+#modup {
+  background-color: #003c87;
+  color: #f2f2f2;
+}
+
+#prot {
+  background-color: #dadada;
+  color: #001d64;
+}
+
+#protp {
+  background-color: #002473;
+  color: #dadada;
+}
+
+#prog {
+  background-color: #f2f2f2;
+  color: #001d64;
+}
+
+#progp {
+  background-color: #001d64;
+  color: #969696;
+}
+
+/*--------------------HOVERS--------------------------------------------------*/
+main article section section a:hover {
+  border-bottom-style: solid;
+  border-bottom-color: white;
+  border-bottom-width: 0.15em;
+}
+
+/*--------------------HOVERS--------------------------------------------------*/
+/*--------------------FOOTER--------------------------------------------------*/
+footer {
+  width: 100%;
+  background: #001d64;
+  background: -webkit-gradient(linear, left top, right top, from(#001d64), color-stop(35%, #003c87), to(#0098f1));
+  background: linear-gradient(90deg, #001d64 0%, #003c87 35%, #0098f1 100%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10vh 0;
+  color: white;
+}
+
+footer button {
+  font-size: 1.3em;
+  margin-bottom: 5vh;
+}
+
+footer .FooterLinks a {
+  color: white;
+  text-decoration: none;
+  margin: 0 1vw;
+}
+
+#inspired {
+  margin: 2vh 0;
+}
+
+#inspired p {
+  margin: 0 1vh 0 0;
+  float: left;
+}
+
+#inspired a {
+  float: right;
+}
+
+/*---------------------HOVERS-------------------------------------------------*/
+footer button:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+footer .FooterLinks a:hover {
+  border-bottom-style: solid;
+  border-bottom-color: white;
+  border-bottom-width: 0.15em;
+}
+
+/*---------------------HOVERS-------------------------------------------------*/
+/*--------------------FOOTER--------------------------------------------------*/
+/*--------------------CODE MODALS---------------------------------------------*/
+.CodeBlock {
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 9;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: .3s;
+  transition: .3s;
+  overflow: hidden;
+}
+
+.CodeBlock pre {
+  width: 80vw;
+  height: 75vh;
+  position: relative;
+  top: 12vh;
+  padding: 2em 4em;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.CodeBlock .ModalClose {
+  text-decoration: none;
+  font-size: 2em;
+  color: #1e1e1e;
+  position: absolute;
+  top: 1em;
+  right: 2em;
+}
+
+.CodeBlock .ModalClose:hover {
+  color: #828282;
+}
+
+/*--------------------MODALS OPENING------------------------------------------*/
+#modal1:target, #modal2:target {
+  opacity: 1;
+  visibility: visible;
+}
+
+#modal1:target pre, #modal2:target pre {
+  opacity: 1;
+  visibility: visible;
+}
+
+/*--------------------MODALS OPENING------------------------------------------*/
+/*--------------------CODE MODALS---------------------------------------------*/
+/*# sourceMappingURL=Com.css.map */
