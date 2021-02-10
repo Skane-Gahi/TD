@@ -104,62 +104,36 @@ header .HeaderNav .Contacts:hover .DropDown {
 /*---------------------HOVERS-------------------------------------------------*/
 /*---------------------HEADER-------------------------------------------------*/
 /*---------------------MAIN---------------------------------------------------*/
-main .Top {
-  width: 100%;
-  margin-top: 15vh;
-  padding-bottom: 15vh;
-}
-
-main .Top h1 {
+main h1 {
+  margin: 15vh 0;
   text-align: center;
   color: white;
   font-size: 3em;
 }
 
-main .Top img {
-  position: absolute;
-  right: 0;
-  top: 15vh;
-  width: 10%;
-  border-style: solid;
-  border-color: #1e1e1e;
-  border-width: 0.5em;
-  margin: 0 5vw;
-}
-
-main article .Intro {
-  background: #001d64;
-  background: -webkit-gradient(linear, left top, right top, from(#001d64), color-stop(35%, #003c87), to(#0098f1));
-  background: linear-gradient(90deg, #001d64 0%, #003c87 35%, #0098f1 100%);
-  color: white;
-  padding: 5vh 5vw;
-  font-size: 1.5em;
-  text-align: center;
-}
-
-main article .QnA {
+main article {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 25% 75%;
       grid-template-columns: 25% 75%;
-  -ms-grid-rows: 1fr 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
 }
 
-main article .QnA h3, main article .QnA p {
+main article h3, main article p {
   display: block;
   margin: 0;
   padding: 3vh 5vw;
   font-size: 1.5em;
 }
 
-main article .QnA h3 {
+main article h3 {
   font-size: 1.5em;
   text-align: right;
   padding: 3vh 2vw;
 }
 
-main article .QnA p {
+main article p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -170,42 +144,32 @@ main article .QnA p {
   text-align: justify;
 }
 
-#whyme {
+#whysite {
   background-color: #dadada;
   color: #001d64;
 }
 
-#whymep {
-  background-color: #0098f1;
-  color: white;
-}
-
-#whyinfo {
-  background-color: #f2f2f2;
-  color: #001d64;
-}
-
-#whyinfop {
+#whysitep {
   background-color: #003c87;
   color: #f2f2f2;
 }
 
-#workengines {
-  background-color: #dadada;
-  color: #001d64;
-}
-
-#workenginesp {
-  background-color: #002473;
-  color: #dadada;
-}
-
-#hobbies {
+#likesite {
   background-color: #f2f2f2;
   color: #001d64;
 }
 
-#hobbiesp {
+#likesitep {
+  background-color: #002473;
+  color: #dadada;
+}
+
+#collab {
+  background-color: #dadada;
+  color: #001d64;
+}
+
+#collabp {
   background-color: #001d64;
   color: #969696;
 }
@@ -283,4 +247,4 @@ footer .FooterLinks a:hover {
 
 /*---------------------HOVERS-------------------------------------------------*/
 /*--------------------FOOTER--------------------------------------------------*/
-/*# sourceMappingURL=QuiSuisJe2.css.map */
+/*# sourceMappingURL=APropos2.css.map */

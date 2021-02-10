@@ -121,113 +121,72 @@ header .HeaderNav .Contacts:hover .DropDown {
 /*---------------------MAIN---------------------------------------------------*/
 main {
 
-    & .Top {
+    & h1 {
 
-        width: 100%;
-        margin-top: 15vh;
-        padding-bottom: 15vh;
-        
-        & h1 {
-
-            text-align: center;
-            color: white;
-            font-size: 3em;
-        }
-
-        & img {
-
-            position: absolute;
-            right: 0;
-            top: 15vh;
-            width: 10%;
-            border-style: solid;
-            border-color: rgb(30, 30, 30);
-            border-width: 0.5em;
-            margin: 0 5vw;
-        }
+        margin: 15vh 0;
+        text-align: center;
+        color: white;
+        font-size: 3em;
     }
 
     & article {
-        
-        & .Intro {
 
-            background: rgb(0,29,100);
-            background: linear-gradient(90deg, rgba(0,29,100,1) 0%, rgba(0,60,135,1) 35%, rgba(0,152,241,1) 100%);
-            color: white;
-            padding: 5vh 5vw;
+        display: grid;
+        grid-template-columns: 25% 75%;
+        grid-template-rows: 1fr 1fr 1fr;
+
+        & h3, p {
+
+            display: block;
+            margin: 0;
+            padding: 3vh 5vw;
             font-size: 1.5em;
-            text-align: center;
         }
-    
-        & .QnA {
-    
-            display: grid;
-            grid-template-columns: 25% 75%;
-            grid-template-rows: 1fr 1fr 1fr 1fr;
 
-            & h3, p {
+        & h3 {
 
-                display: block;
-                margin: 0;
-                padding: 3vh 5vw;
-                font-size: 1.5em;
-            }
+            font-size: 1.5em;
+            text-align: right;
+            padding: 3vh 2vw;
 
-            & h3 {
+        }
 
-                font-size: 1.5em;
-                text-align: right;
-                padding: 3vh 2vw;
+        & p {
 
-            }
-
-            & p {
-
-                            display: flex;
+            display: flex;
             align-items: center;
-                font-weight: normal;
-                text-align: justify;
-            }
+            font-weight: normal;
+            text-align: justify;
         }
     }
 }
 
-#whyme {
+#whysite {
 
     background-color: rgb(218, 218, 218);
     color: rgb(0,29,100);
 }
-#whymep {
-
-    background-color: rgb(0, 152, 241);
-    color: rgb(255, 255, 255);
-}
-#whyinfo {
-
-    background-color: rgb(242, 242, 242);
-    color: rgb(0,29,100);
-}
-#whyinfop {
+#whysitep {
 
     background-color: rgb(0, 60, 135);
     color: rgb(242, 242, 242);
 }
-#workengines {
+#likesite {
 
-    background-color: rgb(218, 218, 218);
+    background-color: rgb(242, 242, 242);
     color: rgb(0,29,100);
 }
-#workenginesp {
+#likesitep {
 
     background-color: rgb(0, 36, 115);
     color: rgb(218, 218, 218);
 }
-#hobbies {
-    
-    background-color: rgb(242, 242, 242);
+#collab {
+
+    background-color: rgb(218, 218, 218);
     color: rgb(0,29,100);
 }
-#hobbiesp {
+#collabp {
 
     background-color: rgb(0,29,100);
     color: rgb(150, 150, 150);
@@ -242,7 +201,6 @@ main .TextBanner {
     padding: 3vh 0
 }
 /*---------------------MAIN---------------------------------------------------*/
-
 /*--------------------FOOTER--------------------------------------------------*/
 footer {
 
