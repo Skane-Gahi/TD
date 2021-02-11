@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TD's Portfolio</title>
+
+    <!--FavIcon-->
+    <link rel="icon" type="image/png" href="Documents/favicons/icons8-accueil-40.png">
+    <!--FavIcon-->
+
+    <!--CSS Style Sheet-->
+    <link rel="stylesheet" href="APropos.css">
+    <!--CSS Style Sheet-->
+
+    <!--Prism-->
+    <link href="Documents/Prism/prism.css" rel="stylesheet" />
+    <script src="Documents/Prism/prism.js"></script>
+    <!--Prism-->
+
+    <!--Icons-->
+    <script src="https://kit.fontawesome.com/2f326c2d90.js" crossorigin="anonymous"></script>
+    <!--Icons-->
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cuprum&display=swap" rel="stylesheet">
+    <!-- FONTS -->
+    </head>
+
+    <body>
+        <!--/////////////////////HEADER////////////////////////////////////////////-->
+        <header>
+            <a href="QuiSuisJe.html" class="HeaderTitle"><h1>Tanguy Delage</h1></a>
+
+            <nav class="HeaderNav">
+                <a href="Index.html" class="NavChoice">Accueil</a>
+                <a href="APropos.html" class="NavChoice">À propos</a>
+                <div class="Contacts">
+                <a href="#modal0" class="ContactsHead">Contacts</a>
+                <ul class="DropDown">
+                    <li>
+                        <a href="https://www.linkedin.com/in/tanguy-delage-a085931a0/">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="modal0">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#modal0">
+                            <i class="fas fa-phone-square"></i>
+                        </a>
+                    </li>
+                </ul>
+                </div>
+            </nav>
+            </header>
+        <!--//////////////////////HEADER///////////////////////////////////////////-->
+
+        <!-- ///////////////////Corp du site///////////////////////////////////////-->
+        <main>
+              <h1>LOGO | SECTION À PROPOS</h1>
+              <article>
+                <h3 id="whysite">Pourquoi un site portfolio ? </h3>
+                <p id="whysitep">
+                    Ce site web a pour but de montrer les différents projets réalisés et donc par conséquent ce dont je suis capable. <br>
+                    Cependant, pour l'heure le site n'est pas là pour montrer mes talents de développeur web car j'ai monté ce projet et appris le développement web seul.<br>
+                    Le site n'est donc qu'un projet personnel qui me sert d'interface entre vous et moi. J'ai tout de même fait de mon mieux pour rendre la navigation agréable alors j'espère qu'elle vous plaira.
+                </p>
+                <h3 id="likesite">Vous appréciez ce site web ? </h3>
+                <p id="likesitep">
+                    Faites-le-moi savoir ! mes contacts sont en haut à droite de l'écran. À l'inverse si vous n'aimez pas le site ou une partie du site pour x raison, dites-le-moi aussi, je serai ravi d'entendre vos arguments et ainsi me permettre de faire évoluer le projet.
+                </p>
+                <h3 id="collab">Mes collaborateurs</h3>
+                <p id="collabp">
+                    Les projets que je vous montre sur ce site sont issus de ma formation au CESI. Chaque projet a été réalisé par quatre personnes. Par conséquent si vous souhaitez contacter les personnes qui m'ont aidé à réaliser ces projets voici leur mail professionnel : <br> <br>
+                    -  mouad.nossair@viacesi.fr <br>
+                    -  aristide.quilletjacquot@viacesi.fr <br>
+                    -  thomas.fevre@viacesi.fr <br>
+                    -  mathieu.cormier@viacesi.fr <br>
+                    -  guillaume.rouvin@viacesi.fr <br>
+                    -  alexandre.tellier@viacesi.fr <br>
+                </p>          
+              </article>
+              <section class="TextBanner">Merci de votre visite !</section>
+        </main>
+        <!-- ///////////////////Corp du site///////////////////////////////////////-->
+
+        <!-- ///////////////////FOOTER/////////////////////////////////////////////-->   
+        <footer>
+            <button onclick="window.location.href = '#modal0';">Contactez Moi</button>
+            <section id="inspired">
+                <p>© 2021 par Tanguy Delage. Inspiré de</p>
+                <a href="https://www.reutchen.com" id="Reut">Reut Chen</a>
+            </section>
+            <section class="FooterLinks">
+                <a href="https://icones8.fr/icons/set/favicon">Favicon de Icons8</a>
+                <a href="https://fontawesome.com">Icones de Font Awesome</a>
+                <a href="https://pixabay.com/fr/">Images de Pixabay</a>
+                <a href="https://fonts.google.com">Polices de Google Fonts</a>
+            </section>
+        </footer>
+        <!-- ///////////////////FOOTER/////////////////////////////////////////////--> 
+
+        <div class="Modal" id="modal0">
+            <div class="modalcontact">
+              <a href="#" class="ModalClose"><i class="far fa-times-circle"></i></a>
+              <section class="top0">
+                <h2>Contactez Moi</h2>
+                <p>tanguy.delage@viacesi.fr | 0661982334</p>
+              </section>
+              <form action="https://formspree.io/f/xpzonvnw" method="POST">
+                <label for="sender">Votre nom / Votre société</label>
+                <input type="text" id="sender" name="sender">
+                <label for="sendermail">Votre e-mail</label>
+                <input type="text" id="sendermail" name="sendermail">
+                <label for="object">Pourquoi m'envoyer ce message ?</label>
+                <input type="text" id="object" name="object">
+                <label for="msg">Votre message</label>
+                <textarea id="msg" name="msg" cols="30" rows="7"></textarea>
+                <input type="submit" value="ENVOYER">
+              </form>
+          </div>
+          
+    </body>
+</html>
