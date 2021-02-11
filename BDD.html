@@ -12,7 +12,7 @@
     <!--FavIcon-->
 
     <!--CSS Style Sheet-->
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="Project.css">
     <!--CSS Style Sheet-->
 
     <!--Prism-->
@@ -31,16 +31,16 @@
   </head>
 
   <body>
-
+    
     <!--/////////////////////HEADER////////////////////////////////////////////-->
     <header>
-      <a href="QuiSuisJe.html" class="HeaderTitle"><h1>Tanguy Delage</h1></a>
+      <a href="QuiSuisJe2.html" class="HeaderTitle"><h1>Tanguy Delage</h1></a>
 
       <nav class="HeaderNav">
-        <a href="#" class="NavChoice"> Accueil </a>
-        <a href="APropos.html" class="NavChoice"> À propos </a>
+        <a href="Index2.html" class="NavChoice">Accueil</a>
+        <a href="APropos2.html" class="NavChoice">À propos</a>
         <div class="Contacts">
-          <a href="#ModalContacts" class="ContactsHead"> Contacts </a>
+          <a href="#ModalContacts" class="ContactsHead">Contacts</a>
           <ul class="DropDown">
             <li>
               <a href="https://www.linkedin.com/in/tanguy-delage-a085931a0/">
@@ -63,592 +63,228 @@
       </nav>
     </header>
     <!--//////////////////////HEADER///////////////////////////////////////////-->
+
     <!-- ///////////////////Corp du site///////////////////////////////////////-->
+    <main>
+        <h2>LOGO | Projet Base de données</h2>
+        <article>
+            <section class="Intro">
+                <p>
+                    Nous avons des informations de ventes sur 5 siècles réunies sur 1 seul fichier excel(300 000+ lignes). L'image ci-dessous illustre la situation initiale.
+                  </p>
+                  <img src="images/BDD/initial.png" alt="Situation initiale">
+                  <p>
+                    Le but du projet est d'organiser une base de données à partir de ces données initiales. Il faut aussi préparer par la suite des requêtes permettant d'exploiter les données comme par exemple, rajouter les données relatives à une nouvelle vente.<br>
+                    Le projet dans son ensemble m'a permis d'apprendre : <br>
+                    - Les bases de l'UML/SYSML (Diagramme de cas d'utilisation, exigences et de machine à état) <br>
+                    - Dictionnaire de données et matrice des dépendances fonctionnelles <br>
+                    - Modèle conceptuel/logique/physique de données <br>
+                    - Langage SQL sur wamp server (MySQL) avec phpmyadmin<br>
+                    - Arbres algébriques et algèbre relationnel (jointure, union, intersection etc.) <br>
+                  </p>
+            </section>
+            
+            <section class="Content">
+                <h3 id="one">Analyse et Modélisation</h3>
+                <section id="onep">
+                    <p>
+                        Dans un premier temps, il nous a fallu établir précisément ce qu'il nous fallait réaliser pour répondre à la demande du client. C'est pourquoi nous avons réalisé des diagrammes UML comme le diagramme d'exigences. Nous avions 12 souhaits à réaliser et chacun nécessite des données de la situation initiale. L'image ci-dessous est un extrait du diagramme d'exigence.
+                    </p>
+                    <h4>Diagramme d'exigences</h4>
+                    <img src="images/BDD/exigences.png" alt="Diagramme d'exigences">
+                    <p>
+                        Ensuite nous avons créé notre dictionnaire de données et notre matrice de dépendances fonctionnelles en prenant en compte les données de départ.
+                        Une fois cela fait nous sommes passé à la modélisation de la base de données qui en découlait. Nous avons dû faire de nombreux choix parfois discutables comme mettre les provinces et cités dans la même entité. Cependant nous avons bien fait en sorte de simplifier au maximum la réalisation des souhaits(voir exigences) par la suite.
+                    </p>
+
+                    <h4>Dictionnaire de données</h4>
+                    <img src="images/BDD/DD.png" alt="Dictionnaire de donnée">
+
+                    <h4>Matrice des dépendances fonctionnelles</h4>
+                    <img src="images/BDD/MDF.png" alt="Matrice des dépendances fonctionnelles">
+
+                    <h4>Modèle conceptuel de données</h4>
+                    <img src="images/BDD/MCD.png" alt="Modèle conceptuel de données">
+                </section>
+      
+                <h3 id="two">Implémentation</h3>
+                <section id="twop">
+                    <p>
+                        Il est temps de passer à l'implémentation, c'est-à-dire créer la nouvelle base données à partir du modèle logique de données et migrer les données de départ dans cette nouvelle base. Il faut d'abord créer les tables puis réussir à récupérer les données à partir des données départ et cela fut le plus compliqué. L'exemple le plus flagrant est pour la table guerre où j'ai dû développer une fonction pour bien extraire chaque donnée. Voici un extrait des données initiales des guerres suivi de la solution réalisée.
+                    </p>
+                    <h4>Données "guerres" initiales</h4>
+                    <img src="images/BDD/guerres.png" alt="Données 'guerres' initiales">
+                    <a href="#modal1">Solution SQL apportée (Procédure stockée avec curseurs)</a>
+                    <p>
+                        Si cela vous intéresse le script complet (! 1200+ lignes) écrit à la main par mes soins se trouve tout en bas de cette page.
+                    </p>
+                </section>
+      
+                <h3 id="three">Exploiter/Opérer</h3>
+                <section id="threep">
+                    <p>
+                        Dernière phase du projet, il faut composer les requêtes permettant de répondre aux 12 souhaits de départ. Le principal problème a été d'optimiser les requêtes pour permettre à MySQL de les réaliser. L'un des souhaits les plus intéressants est pour l'ajout de nouvelles ventes. Celui-ci comprend un trigger qui déclenche une procédure stockée. Si cela vous intéresse, le script complet avec tous les souhaits se trouve tout en bas de cette page.
+                    </p>
+                    <a href="#modal2">Souhait "ajout de nouvelles ventes" en SQL</a>
+                    <p>
+                        Je vais prendre l'exemple du souhait 4 pour vous montrer un résultat final bien illustré. Ce souhait consiste à comparer l'évolution des ventes de l'Ægypte par rapport à toutes les autres provinces. Comme vous pourrez le constater le nombre de ventes évolue de façon similaire dans les deux cas. Voici le script SQL réalisé suivi du diagramme réalisé sur excel.
+                    </p>
+                    <a href="#modal3">Souhait 4 en SQL</a>
+                    <h4>Diagramme du souhait 4</h4>
+                    <img src="images/BDD/wish4.png" alt="Souhait 4 en SQL">
+                </section>
+
+                <h3 id="four">Scripts complets</h3>
+                <section id="fourp">
+                    <a href="#modal4">Implémentation</a>
+                    <a href="#modal5">Souhaits des Dieux</a>
+                </section>
+            </section>
+        </article>
+        <section class="TextBanner">Merci de votre visite !</section>
+    </main>
+    <!-- ///////////////////Corp du site///////////////////////////////////////-->
+    
+    <!-- ///////////////////FOOTER/////////////////////////////////////////////-->   
+    <footer>
+        <button onclick="window.location.href = '#ModalContacts';">Contactez Moi</button>
+        <section id="inspired">
+            <p>© 2021 par Tanguy Delage. Inspiré de</p>
+            <a href="https://www.reutchen.com" id="Reut">Reut Chen</a>
+        </section>
+        <section class="FooterLinks">
+            <a href="https://icones8.fr/icons/set/favicon">Favicon de Icons8</a>
+            <a href="https://fontawesome.com">Icones de Font Awesome</a>
+            <a href="https://pixabay.com/fr/">Images de Pixabay</a>
+            <a href="https://fonts.google.com">Polices de Google Fonts</a>
+        </section>
+    </footer>
+    <!-- ///////////////////FOOTER/////////////////////////////////////////////-->  
+    
+    
+    <div class="Modal" id="modal1">
+        <pre class="Preformate">
+            <a href="#" class="ModalClose"><i class="far fa-times-circle"></i></a>
+          <code class="language-sql">
+            -- -----------------------------------------------------------------------------
+            -- Table : Guerre
+            -- -----------------------------------------------------------------------------
 
+            CREATE TABLE `ventes`.`tmp_guerre` (
 
-    <div class="Banner">
-
-      <div class="TopBanner">
-
-        <img src="images/stars-5696814_1920.png" alt="Un univers de possibilités" id="background">
-
-        <!--///////////////////Bannière de bienvenue/////////////////////////////-->
-        <div class="BannerContent">
-          <h1> Bienvenue sur mon site portfolio </h1>
-          <button onclick="window.location.href = 'QuiSuisJe.html';"> Qui suis-je ? </button>
-          <h2> Découvrez mes travaux ainsi que mon univers </h2>
-        </div>
-        <!--///////////////////Bannière de bienvenue/////////////////////////////-->
-
-        <p class="BannerText">Cliquez sur le projet qui vous intéresse pour en savoir plus <br> sur son contenu et les compétences acquises</p>
-        <div class="Arrows">
-          <i class="fas fa-angle-double-down" id="ArrowRight"></i>
-          <i class="fas fa-angle-double-down" id="ArrowLeft"></i>
-        </div>
-      </div>
-      <!--///////////////////Liste des projets/////////////////////////////////-->
-      <div class="BannerList">
-        <a href="#ModalCom" class="element">
-          <div class="ProjectImage">
-            <img src="images/com.jpg" alt="C'est le projet com">
-            <div class="caption">
-              <p>Communication</p>
-            </div>
-          </div>
-        </a>
-        <a href="#ModalBDD" class="element">
-          <div class="ProjectImage">
-            <img src="images/BDD.jpg" alt="C'est le projet BDD">
-            <div class="caption">
-              <p>Base de données</p>
-            </div>
-        </div>
-        </a>
-        <a href="#ModalEmbq" class="element">
-          <div class="ProjectImage">
-            <img src="images/Embq.jpg" alt="C'est le projet embarqué">
-            <div class="caption">
-              <p>Systèmes embarqués</p>
-            </div>
-        </div>
-        </a>
-
-        <a href="#ModalPOO" class="element">
-          <div class="ProjectImage">
-            <img src="images/POO.png" alt="C'est le projet POO">
-            <div class="caption">
-              <p>Programmation orientée objet</p>
-            </div>
-          </div>
-        </a>
-        <a href="#" class="element">
-          <div class="ProjectImage">
-            <img src="images/Reseau.jpg" alt="C'est le projet Réseaux">
-            <div class="caption">
-              <p>Systèmes et Réseaux</p>
-            </div>
-        </div>
-        </a>
-        <a href="#" class="element">
-          <div class="ProjectImage">
-            <img src="images/Web.jpg" alt="C'est le projet Web">
-            <div class="caption">
-              <p>Web</p>
-            </div>
-        </div>
-        </a>
-      </div>
-      <!--///////////////////Liste des projets/////////////////////////////////-->
-      <!--////////////////Modales (Contenu projets)///////////////////////////// -->
-
-      <div class="ModalCom" id="ModalCom">
-        <div class="ModalContent">
-          <a href="#" class="ModalClose"><i class="far fa-times-circle"></i></i></a>
-          <h2>Projet Communication</h2>
-          <p>
-            Nous devons faire communiquer deux ordinateurs avec du son sans que personne ne l'entende. Le premier ordinateur envoie des ultrasons qui traverse un mur pour ensuite être capté par un micro. Ce micro est relié par un réseau filaire à l'ordinateur receveur du message.
-            <br><br>
-            Le projet dans son ensemble m'a permis d'apprendre : <br>
-            - Les modulations d'onde (ici sonore), fréquence, amplitude et phase. <br>
-            - Les filtres sonores. <br>
-            - Les bases des protocoles réseaux. <br>
-            - Les bases du langage python. <br>
-            <br>
-          </p>
-
-          <h3>Modulations</h3>
-          <p>
-            La modulation du son nous permet de transmettre des bits de données. Nous avons 4 modulations d'amplitude sur 2 bits et 2 modulations de phases sur 1 bit. Ainsi chaque période d'un signal envoie 3 bits de données. Nous envoyons 3 signaux en même temps qui sont portés par une onde ultrasonore. Nous avions donc un débit théorique d'envoi de 72 kbits/s. <br>
-            l'image ci-dessous récapitule l'encodage d'un signal sonore.
-          </p>
-          <h4>Tableau de correspondance bits/modulations</h4>
-          <div class="ModalImage">
-            <img src="images/Com/BitsTransmis.JPG" alt="Encodage d'un signal sonore">
-          </div><br>
+                `lieu` VARCHAR(256) NOT NULL ,
+                `annee` VARCHAR(256) NOT NULL ,
+                `demidieu` VARCHAR(256)
+            ) ENGINE = InnoDB;
 
-          <h3>Protocoles réseaux</h3>
-          <p>
-            Le protocole réseau nous permet bien identifier chaque portion de signal à décoder et permet aussi de détecter des erreurs de transmissions potentielles. Pour identifier chaque trame nous avons un bit de start, un bit de stop, un identificateur avec le numéro de trame, un bit de parité et finalement le segment. Le segment qui contient la donnée avec le code correcteur de Hamming par-dessus pour détecter les erreurs.<br>
-            l'image ci-dessous récapitule la composition d'une trame.<br>
-          </p>
-          <h4>Modélisation de l'encapsulement d'une donnée</h4>
-          <div class="ModalImage">
-            <img src="images/Com/ProtocoleReseau.JPG" alt="Composition d'une trame">
-          </div><br>
-
-          <h3>Programme en Python</h3>
-          <p>
-            Le programme en python nous permet de simuler l'envoie et la réception des données. c'est pourquoi nous avons un programme pour l'envoi et un autre pour la réception. <br>
-
-            Le programme d'envoi va lire le message depuis un fichier texte et faire la conversion des caractères en binaires. il va ensuite découper la suite de bits pour obtenir des segments en y rajoutant les bits de contrôles de Hamming. Le programme va composer les trames comme vu plus haut. Enfin le programme va composer le signal sonore modulé et lire le son produit. <br>
-            Voici le programme d'envoie complet.
-          </p>
-          <h4>Programme d'envoi</h4>
-          <div class="CodeBlock">
-            <pre class="Preformate">
-              <code class="language-py">
-                #coding:utf-8
-                #///////////////////////IMPORT DES MODULES////////////////////////////////////////////////////////
-                import pygame
-                import wave
-                import math
-                import binascii
-                import socket
-                import time
-
-                #//////////////////////////////PARTIE SOCKET///////////////////////////////////////////////////////
-
-                host, port = ('localhost',5566)
-
-                socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-
-                #/////////////////////COMPOSITION DES TRAMES//////////////////////////////////////////////////////
-
-                def decoupage(sequence,nb): # découpage de la données en octets
-
-                    sequence = str(sequence)
-                    segments = []
-
-                    while len(sequence)%nb != 0:
-                        sequence = sequence + '0'
-                        print("WARNING, ajout de bit de bourrage")
-
-                    for i in range(0,len(sequence),nb):
-                        segments.append(sequence[i:i+nb])
-
-                    return segments
-
-                def hamming(decoupage): # ajout du code correcteur de hamming sur nos octets
-
-                    if type(decoupage) != list:
-                        tmp = []
-                        for i in range(len(decoupage)):
-                            tmp.append(int(decoupage[i]))
-                        decoupage = tmp
-
-                    decoupage.insert(0,1) # insertion bit de contôle 1
-                    decoupage.insert(1,1) # insertion bit de contrôle 2
-                    decoupage.insert(3,1) #insertion bit de contrôle 4
-                    decoupage.insert(7,1) # insertion bit de control 8
-
-                    if (decoupage[2]+decoupage[4]+decoupage[6]+decoupage[8]+decoupage[10])%2 == 0:
-                        decoupage[0] = 0
-
-                    if (decoupage[2]+decoupage[5]+decoupage[6]+decoupage[9]+decoupage[10])%2 == 0:
-                        decoupage[1] = 0
-
-                    if (decoupage[4]+decoupage[5]+decoupage[6]+decoupage[11])%2 == 0:
-                        decoupage[3] = 0
-
-                    if (decoupage[8]+decoupage[9]+decoupage[10]+decoupage[11])%2 == 0:
-                        decoupage[7] = 0
-
-                    return decoupage
-
-                def numeroDeTrame(data,donnee):
-
-                    number = 0
-
-                    while 2**number < len(donnee)/8:
-                        number +=1
-
-                    liste = list(data)
-                    n=2**number
-                    x = bin(n)[2:]
-                    c = bin(b)[2:]
-
-                    liste_a = list(c)
-                    liste.insert(0,c)
-
-                    chaine = ''.join(str(i) for i in liste)
-                    chaine = chaine.zfill((len(data)+number))
-                    return list(chaine)
-
-                def rs232(hamming): # application du protocole rs232 + ajout N° de trame
-
-                    hamming.insert(len(hamming)+2,0)     # ajout du bit de parité
-                    if hamming.count(1)%2 == 0:
-                        hamming[-1] = 0
-                    else:
-                        hamming[-1] = 1
-
-                    hamming.insert(0,1)                  # ajout du bit de start
-                    hamming.insert(len(hamming)+2,1)     # ajout du bit de stop
-
-                    if hamming[1] == '1':
-                        hamming[0] = 0
-                    elif hamming[1] == '0':
-                        hamming[0] = 1
-
-                    if hamming[-2] == '1':
-                        hamming[-1] = 0
-                    elif hamming[-2] == '0':
-                        hamming[-1] = 1
-
-                    hamming = ''.join(str(i) for i in hamming)
-                    return hamming
-
-                def StrBin(texte):
-
-                    binaire = []
-                    for n in texte:
-                        binaire.insert(len(binaire)+1,bin(ord(n))[2:])
-
-                        while len(binaire[-1]) < 8:
-                            binaire[-1] = '0' + binaire[-1]
-
-                    binaire = ''.join(binaire)
-                    return binaire
-
-                #programme principal
-                config = open("E:/CESI/Projet/ondes/LeCode/config.txt","r")
-                texte = config.read()
-                print("\nVotre texte est : ",texte)
-                texte = StrBin(texte)
-
-                segments = decoupage(texte,8)
-                b = 1
-                for t in range(len(segments)):
-
-                    segments[t] = hamming(segments[t])
-                    segments[t] = numeroDeTrame(segments[t],texte)
-                    segments[t] = rs232(segments[t])
-                    print("\n",segments[t])
-                    b +=1
-                try:
-                    socket.connect((host,port))
-                    print("\nvous êtes connecté au serveur ;")
-                    data = ' '.join(segments)
-                    data = data.encode("utf8")
-                    socket.sendall(data)
-                except:
-                    print("\nconnexion au serveur échouée :(")
-                finally:
-                    socket.close()
-
-                #///////////////////////////PARTIE GÉNÉRATION DU SON/////////////////////////////////////////
-
-                Donnee = ''.join(segments)
-                TroisBits = decoupage(Donnee,3)
-
-                print("\nCréation d'un fichier audio au format WAV (PCM 8 bits mono 8000 Hz)")
-
-                NomFichier = 'son.wav'
-                Monson = wave.open(NomFichier,'w') # instanciation de l'objet Monson
-
-                nbCanal = 1    # mono
-                nbOctet = 1    # taille d'un échantillon : 1 octet = 8 bits
-                fech = 8000   # fréquence d'échantillonnage
-
-                frequence = float(input('\nFréquence du son(Hz) ? '))
-                niveau = 1              #float(input('Niveau du son du canal de gauche (0 à 1) ? '))
-
-                nbEchantillon = int(len(Donnee)/3)
-
-                parametres = (nbCanal,nbOctet,fech,nbEchantillon,'NONE','not compressed')# tuple
-                Monson.setparams(parametres)    # création de l'en-tête (44 octets)
-
-                print('\nVeuillez patienter...')
-
-                amplitude = 0
-                phi = 0
-
-                for i in range(0,nbEchantillon):
-
-                    if TroisBits[i][2] == '0':     #####################
-                        phi = 0                  # Modulation de Phase
-                    else:
-                        phi = math.pi/2          #####################
-
-                    if TroisBits[i][0:2] == '00':            ###########################
-                        amplitude = 127.5*niveau*0.25
-                    elif TroisBits[i][0:2] == '01':
-                        amplitude = 127.5*niveau*0.5       # Modulation d'amplitude
-                    elif TroisBits[i][0:2] == '10':
-                        amplitude = 127.5*niveau*0.75
-                    elif TroisBits[i][0:2] == '11':
-                        amplitude = 127.5*niveau*1.0       ############################
-
-
-                    valG = wave.struct.pack('B',int(128+amplitude*math.sin(2.0*math.pi *frequence *i/fech + phi)))
-                    Monson.writeframes(valG) # écriture frame
-
-                Monson.close()
-
-                print("\nFichier son crée.\nNombre d'échantillons : {}\nFréquence d'échantillonage : {}\nDurée du son : {}".format(nbEchantillon,fech,nbEchantillon/fech))
-
-                #//////////////////////////PARTIE LECTURE DU SON////////////////////////////////////////////////////////////////////////////
-
-                pygame.mixer.init()
-                pygame.mixer.Sound("son.wav").play()
-                while pygame.mixer.get_busy():
-                    # lecture en cours
-                    pass
-
-
-
-                time.sleep(500)
-              </code>
-            </pre>
-          </div>
-
-          <p>
-            Dans un souci nous n'avons pas pu travailler sur la réception du son par un ordinateur, Nous avons donc simulé en écrivant les trames dans un fichier texte. <br>
-
-            Le programme de réception va lire le fichier texte avec les trames envoyées, et reconvertir les bits en caractères. Le programme passe évidemment par la décomposition des trames ainsi que de tous les bits de contrôles.<br>
-            Voici le programme de réception complet.
-          </p>
-          <h4>Programme de réception</h4>
-          <div class="CodeBlock">
-            <pre class="Preformate">
-              <code class="language-py">
-                #coding:utf-8
-                import time
-
-
-                code = open("E:/CESI/Projet/ondes/LeCode/data.txt",'r')
-                LeCode = code.read()
-
-                def number(donnee):
-                    del donnee[1:-14]
-
-                    return donnee
-
-                def trame(number):
-                    number.pop(0)
-                    number.pop(-1)
-                    number.pop(-1)
-
-                    return number
-
-
-                def octet(trame):
-
-                    trame.pop(0)
-                    trame.pop(0)
-                    trame.pop(1)
-                    trame.pop(4)
-                    trame = ''.join(trame)
-
-                    return trame
-
-                LeCode = LeCode.split()
-                print(LeCode)
-                tampon = []
-
-                for n in range(len(LeCode)):
-                    LeCode[n] = list(LeCode[n])
-                    tampon.append(octet(trame(number(LeCode[n]))))
-
-                LeCode = tampon
-
-                print("\n",LeCode)
-
-                decimal = []
-
-                for n in range(len(LeCode)):
-                    LeCode[n] = list(LeCode[n])
-                    tampon = 0
-                    puissance = 7
-
-                    for m in range(len(LeCode[n])):
-
-                        if LeCode[n][m] == '1':
-                            tampon += 2**puissance
-
-                        puissance = puissance - 1
-                    decimal.append(chr(tampon))
-
-                decimal = ''.join(decimal)
-                print("\n",decimal)
-
-
-                time.sleep(500)
-              </code>
-           </pre>
-          </div>
-        </div>
-      </div>
-
-      <div class="ModalBDD" id="ModalBDD">
-        <div class="ModalContent">
-          <a href="#" class="ModalClose"><i class="far fa-times-circle"></i></a>
-          <h2>Projet Base de données</h2><br><br>
-          <p>
-            Nous avons des informations de ventes sur 5 siècles réunies sur 1 seul fichier excel(300 000+ lignes). L'image ci-dessous illustre la situation initiale.
-          </p>
-          <img src="images/BDD/initial.png" alt="Situation initiale">
-          <p>
-            Le but du projet est d'organiser une base de données à partir de ces données initiales. Il faut aussi préparer par la suite des requêtes permettant d'exploiter les données comme par exemple, rajouter les données relatives à une nouvelle vente.<br>
-            Le projet dans son ensemble m'a permis d'apprendre : <br>
-            - Les bases de l'UML/SYSML (Diagramme de cas d'utilisation, exigences et de machine à état) <br>
-            - Dictionnaire de données et matrice des dépendances fonctionnelles <br>
-            - Modèle conceptuel/logique/physique de données <br>
-            - Langage SQL sur wamp server (MySQL) avec phpmyadmin<br>
-            - Arbres algébriques et algèbre relationnel (jointure, union, intersection etc.) <br>
-          </p>
-          <h3>Analyse et Modélisation</h3>
-          <p>
-            Dans un premier temps, il nous a fallu établir précisément ce qu'il nous fallait réaliser pour répondre à la demande du client. C'est pourquoi nous avons réalisé des diagrammes UML comme le diagramme d'exigences. Nous avions 12 souhaits à réaliser et chacun nécessite des données de la situation initiale. L'image ci-dessous est un extrait du diagramme d'exigence.
-          </p>
-          <h4>Diagramme d'exigences</h4>
-          <div class="ModalImage">
-            <img src="images/BDD/exigences.png" alt="Diagramme d'exigences">
-          </div>
-
-          <p>
-            Ensuite nous avons créé notre dictionnaire de données et notre matrice de dépendances fonctionnelles en prenant en compte les données de départ.
-            Une fois cela fait nous sommes passé à la modélisation de la base de données qui en découlait. Nous avons dû faire de nombreux choix parfois discutables comme mettre les provinces et cités dans la même entité. Cependant nous avons bien fait en sorte de simplifier au maximum la réalisation des souhaits(voir exigences) par la suite.
-          </p>
-          <h4>Dictionnaire de données</h4>
-          <div class="ModalImage">
-            <img src="images/BDD/DD.png" alt="Dictionnaire de donnée">
-          </div>
-          <h4>Matrice des dépendances fonctionnelles</h4>
-          <div class="ModalImage">
-            <img src="images/BDD/MDF.png" alt="Matrice des dépendances fonctionnelles">
-          </div>
-          <h4>Modèle conceptuel de données</h4>
-          <div class="ModalImage">
-            <img src="images/BDD/MCD.png" alt="Modèle conceptuel de données">
-          </div>
-          <h3>Implémentation</h3>
-          <p>
-            Il est temps de passer à l'implémentation, c'est-à-dire créer la nouvelle base données à partir du modèle logique de données et migrer les données de départ dans cette nouvelle base. Il faut d'abord créer les tables puis réussir à récupérer les données à partir des données départ et cela fut le plus compliqué. L'exemple le plus flagrant est pour la table guerre où j'ai dû développer une fonction pour bien extraire chaque donnée. Voici un extrait des données initiales des guerres suivi de la solution réalisée.
-          </p>
-          <h4>Données "guerres" initiales</h4>
-          <div class="ModalImage">
-            <img src="images/BDD/guerres.png" alt="Données 'guerres' initiales">
-          </div>
-          <h4>Solution SQL apportée (Procédure stockée avec curseurs)</h4>
-          <div class="CodeBlock">
-            <pre class="Preformate">
-              <code class="language-sql">
-                -- -----------------------------------------------------------------------------
-                -- Table : Guerre
-                -- -----------------------------------------------------------------------------
-
-                CREATE TABLE `ventes`.`tmp_guerre` (
-
-                    `lieu` VARCHAR(256) NOT NULL ,
-                    `annee` VARCHAR(256) NOT NULL ,
-                    `demidieu` VARCHAR(256)
-                ) ENGINE = InnoDB;
-
-                -- -----------------------------------------------------------------------------
-                DELIMITER |
-                DROP FUNCTION IF EXISTS ventes_avant.reduce_str|
-
-                CREATE FUNCTION ventes_avant.reduce_str(
-                  str   VARCHAR(1312),
-                  delim VARCHAR(50),
-                  pos   INT
-                ) RETURNS VARCHAR(255)
-                RETURN
-                  REPLACE(SUBSTRING(SUBSTRING_INDEX(str, delim, pos),
-                  LENGTH(SUBSTRING_INDEX(str, delim, pos-1)) + 1),
-                  delim, '')
-                |
-
-                -- -----------------------------------------------------------------------------
-
-                DELIMITER |
-                DROP PROCEDURE IF EXISTS ventes_avant.NewWar|
-
-                CREATE PROCEDURE ventes_avant.NewWar()
-
-                  BEGIN
-
-                  DECLARE LeDemiDieu  VARCHAR(256); -- value
-                  DECLARE LaAnnee     VARCHAR(256);  -- part
-                  DECLARE LaGuerre    VARCHAR(256); -- val
-                  DECLARE compteur    INT UNSIGNED DEFAULT 1;
-                  DECLARE LaProvince  VARCHAR(256);
-                  DECLARE LesGuerres  VARCHAR(1312);
-                  DECLARE done        INT DEFAULT FALSE;
-
-                  DECLARE CurGuerre CURSOR FOR SELECT `Province/Citée`,
-                    `Année de guerre - (Demi Dieu éventuel)`
-                    FROM ventes_avant.guerre;
-                  DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
-                  OPEN CurGuerre;
-
-                  TRUNCATE TABLE ventes.tmp_guerre;
-
-                  LaBoucle: LOOP
-                    FETCH CurGuerre INTO LaProvince, LesGuerres;
-                    IF done THEN
-                      LEAVE LaBoucle;
-                    END IF;
-
-                    SET compteur = 1;
-                    WHILE (CHAR_LENGTH(reduce_str(LesGuerres,';',compteur)) > 0) DO
-
-                      SET LaGuerre = reduce_str(LesGuerres, ';', compteur);
-                      SET LaAnnee = reduce_str(LaGuerre, ' ', 1);
-                      SET LeDemiDieu = reduce_str(LaGuerre, ' ', 2);
-
-                      INSERT INTO ventes.tmp_guerre (lieu, annee, demidieu)
-                      VALUES (LaProvince, LaAnnee, LeDemiDieu);
-
-                      SET compteur = compteur +1;
-                    END WHILE;
-
-                  END LOOP Laboucle;
-                  CLOSE CurGuerre;
-                END |
-
-                CALL NewWar();
-
-                UPDATE ventes.tmp_guerre
-                SET demidieu = REPLACE(REPLACE(demidieu, "(", ""), ")", "")
-                WHERE demidieu LIKE "(%)";
-
-                UPDATE ventes.tmp_guerre
-                SET demidieu = NULL
-                WHERE demidieu LIKE "";
-
-                UPDATE ventes.tmp_guerre
-                SET lieu = SUBSTRING_INDEX(lieu, " - ", -1)
-                WHERE lieu LIKE "% - %";
-
-                CREATE TABLE ventes.`Guerre` (
-
-                  `ID`          INT UNSIGNED AUTO_INCREMENT NOT NULL,
-                  `annee`       INT NOT NULL,
-                  `ID_DemiDieu` INT UNSIGNED ,
-                  `ID_Lieu`     INT UNSIGNED NOT NULL,
-
-                  CONSTRAINT PK_Guerre
-                    PRIMARY KEY(`ID`)
-
-                ) ENGINE = InnoDB;
-
-
-                INSERT INTO ventes.guerre (`annee`, `ID_DemiDieu`, `ID_Lieu`)
-                  SELECT war.annee, fighter.ID, field.ID
-                  FROM ventes.tmp_guerre AS war
-                  LEFT JOIN ventes.demidieu AS fighter
-                  ON war.demidieu = fighter.nom
-                  INNER JOIN ventes.lieu AS field
-                  ON war.lieu = field.designation
-                ;
-
-                DROP TABLE ventes.tmp_guerre;
-              </code>
-            </pre>
-          </div>
-          <p>
-            Si cela vous intéresse le script complet (! 1200+ lignes) écrit à la main par mes soins se trouve tout en bas de cette page.
-          </p>
-          <h3>Exploiter/Opérer</h3>
-          <p>
-            Dernière phase du projet, il faut composer les requêtes permettant de répondre aux 12 souhaits de départ. Le principal problème a été d'optimiser les requêtes pour permettre à MySQL de les réaliser. L'un des souhaits les plus intéressants est pour l'ajout de nouvelles ventes. Celui-ci comprend un trigger qui déclenche une procédure stockée. Si cela vous intéresse, le script complet avec tous les souhaits se trouve tout en bas de cette page.
-          </p>
-          <h4>Souhait "ajout de nouvelles ventes" en SQL</h4>
-          <div class="CodeBlock">
-            <pre class="Preformate">
-              <code class="language-sql">
+            -- -----------------------------------------------------------------------------
+            DELIMITER |
+            DROP FUNCTION IF EXISTS ventes_avant.reduce_str|
+
+            CREATE FUNCTION ventes_avant.reduce_str(
+                str   VARCHAR(1312),
+                delim VARCHAR(50),
+                pos   INT
+            ) RETURNS VARCHAR(255)
+            RETURN
+                REPLACE(SUBSTRING(SUBSTRING_INDEX(str, delim, pos),
+                LENGTH(SUBSTRING_INDEX(str, delim, pos-1)) + 1),
+                delim, '')
+            |
+
+            -- -----------------------------------------------------------------------------
+
+            DELIMITER |
+            DROP PROCEDURE IF EXISTS ventes_avant.NewWar|
+
+            CREATE PROCEDURE ventes_avant.NewWar()
+
+                BEGIN
+
+                DECLARE LeDemiDieu  VARCHAR(256); -- value
+                DECLARE LaAnnee     VARCHAR(256);  -- part
+                DECLARE LaGuerre    VARCHAR(256); -- val
+                DECLARE compteur    INT UNSIGNED DEFAULT 1;
+                DECLARE LaProvince  VARCHAR(256);
+                DECLARE LesGuerres  VARCHAR(1312);
+                DECLARE done        INT DEFAULT FALSE;
+
+                DECLARE CurGuerre CURSOR FOR SELECT `Province/Citée`,
+                `Année de guerre - (Demi Dieu éventuel)`
+                FROM ventes_avant.guerre;
+                DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+                OPEN CurGuerre;
+
+                TRUNCATE TABLE ventes.tmp_guerre;
+
+                LaBoucle: LOOP
+                FETCH CurGuerre INTO LaProvince, LesGuerres;
+                IF done THEN
+                    LEAVE LaBoucle;
+                END IF;
+
+                SET compteur = 1;
+                WHILE (CHAR_LENGTH(reduce_str(LesGuerres,';',compteur)) > 0) DO
+
+                    SET LaGuerre = reduce_str(LesGuerres, ';', compteur);
+                    SET LaAnnee = reduce_str(LaGuerre, ' ', 1);
+                    SET LeDemiDieu = reduce_str(LaGuerre, ' ', 2);
+
+                    INSERT INTO ventes.tmp_guerre (lieu, annee, demidieu)
+                    VALUES (LaProvince, LaAnnee, LeDemiDieu);
+
+                    SET compteur = compteur +1;
+                END WHILE;
+
+                END LOOP Laboucle;
+                CLOSE CurGuerre;
+            END |
+
+            CALL NewWar();
+
+            UPDATE ventes.tmp_guerre
+            SET demidieu = REPLACE(REPLACE(demidieu, "(", ""), ")", "")
+            WHERE demidieu LIKE "(%)";
+
+            UPDATE ventes.tmp_guerre
+            SET demidieu = NULL
+            WHERE demidieu LIKE "";
+
+            UPDATE ventes.tmp_guerre
+            SET lieu = SUBSTRING_INDEX(lieu, " - ", -1)
+            WHERE lieu LIKE "% - %";
+
+            CREATE TABLE ventes.`Guerre` (
+
+                `ID`          INT UNSIGNED AUTO_INCREMENT NOT NULL,
+                `annee`       INT NOT NULL,
+                `ID_DemiDieu` INT UNSIGNED ,
+                `ID_Lieu`     INT UNSIGNED NOT NULL,
+
+                CONSTRAINT PK_Guerre
+                PRIMARY KEY(`ID`)
+
+            ) ENGINE = InnoDB;
+
+
+            INSERT INTO ventes.guerre (`annee`, `ID_DemiDieu`, `ID_Lieu`)
+                SELECT war.annee, fighter.ID, field.ID
+                FROM ventes.tmp_guerre AS war
+                LEFT JOIN ventes.demidieu AS fighter
+                ON war.demidieu = fighter.nom
+                INNER JOIN ventes.lieu AS field
+                ON war.lieu = field.designation
+            ;
+
+            DROP TABLE ventes.tmp_guerre;
+          </code>
+        </pre>
+    </div>
+
+    <div class="Modal" id="modal2">
+        <pre class="Preformate">
+            <a href="#" class="ModalClose"><i class="far fa-times-circle"></i></a>
+            <code class="language-sql">
                 -- -----------------------------------------------------------------------------
                 -- Wish 7
                 -- -----------------------------------------------------------------------------
@@ -763,16 +399,14 @@
                 VALUES (Pjour, Pannee, Psiecle, Pqte, ID_Pobjet, ID_Pmois, ID_Pdon, ID_Plieu, ID_Pdieu);
 
                 END|
-              </code>
-            </pre>
-          </div>
-          <p>
-            Je vais prendre l'exemple du souhait 4 pour vous montrer un résultat final bien illustré. Ce souhait consiste à comparer l'évolution des ventes de l'Ægypte par rapport à toutes les autres provinces. Comme vous pourrez le constater le nombre de ventes évolue de façon similaire dans les deux cas. Voici le script SQL réalisé suivi du diagramme réalisé sur excel.
-          </p>
-          <h4>Souhait 4 en SQL</h4>
-          <div class="CodeBlock">
-            <pre class="Preformate">
-              <code class="language-sql">
+            </code>
+        </pre>
+    </div>
+
+    <div class="Modal" id="modal3">
+        <pre class="Preformate">
+            <a href="#" class="ModalClose"><i class="far fa-times-circle"></i></a>
+            <code class="language-sql">
                 -- -----------------------------------------------------------------------------
                 -- Wish 4
                 -- -----------------------------------------------------------------------------
@@ -808,21 +442,14 @@
 
                   ON LaProvince.annee = LesAutres.annee
                 ;
-              </code>
-            </pre>
-          </div>
-          <h4>Diagramme du souhait 4</h4>
-          <div class="ModalImage">
-            <img src="images/BDD/wish4.png" alt="Souhait 4 en SQL">
-          </div>
-          <h3>Scripts complets</h3>
-          <h4>Implémentation</h4>
-          <div class="CodeBlock">
-            <pre class="Preformate">
-              <code class="language-sql">
+            </code>
+        </pre>
+    </div>
 
-
-
+    <div class="Modal" id="modal4">
+        <pre class="Preformate">
+            <a href="#" class="ModalClose"><i class="far fa-times-circle"></i></a>
+            <code class="language-sql">
                 -- -----------------------------------------------------------------------------
                 -- Table : Type_Option
                 -- -----------------------------------------------------------------------------
@@ -2056,13 +1683,14 @@
                 END|
 
                 -- -----------------------------------------------------------------------------
-              </code>
-            </pre>
-          </div>
-          <h4>Souhaits</h4>
-          <div class="CodeBlock">
-            <pre class="Preformate">
-              <code class="language-sql">
+            </code>
+        </pre>
+    </div>
+
+    <div class="Modal" id="modal5">
+        <pre class="Preformate">
+            <a href="#" class="ModalClose"><i class="far fa-times-circle"></i></a>
+            <code class="language-sql">
                 -- -----------------------------------------------------------------------------
                 -- Wish 1
                 -- -----------------------------------------------------------------------------
@@ -2631,785 +2259,9 @@
 
                   ORDER BY `Percentage of gold` DESC
                 ;
-              </code>
-            </pre>
-          </div>
-        </div>
-      </div>
-
-      <div class="ModalEmbq" id="ModalEmbq">
-        <div class="ModalContent">
-          <a href="#" class="ModalClose"><i class="far fa-times-circle"></i></a>
-          <h2>Projet Système Embarqué</h2>
-          <p>
-            Nous devons développer une station météo sous forme de système embarqué sur une base de arduino uno. Nous avions 5 capteurs pour capter des données météorologiques(hygrométrie, luminosité, horloge, température, pression).<br>
-            Le projet dans son ensemble m'a permis d'apprendre : <br>
-            - modélisation UML/SYSML (cas d'utilisation, activité, séquence) <br>
-            - langage C et C arduino (pointeurs, structures, allocations dynamiques) <br>
-            - création de makefiles
-            - concevoir une architecture programme
-            - les bases pour écrire une documentation utilisateur et technique
-          </p>
-          <h3>Analyse et Modélisation</h3>
-          <p>
-            Le système possède quatre modes de fonctionnement. Par exemple le mode standard qui capte les données et les enregistre sur un support SD toutes les 10 mins (par défaut). On navigue entre ces 4 modes avec 2 boutons poussoirs, 1 vert et 1 rouge. <br>
-            Nous avons donc réalisé un diagramme de séquence par mode. En voici un exemple.
-          </p>
-          <h4>Diagramme de séquence, mode économique</h4>
-          <div class="ModalImage">
-            <img src="images/Embq/sequenceEconomique.png" alt="Diagramme de séquence, mode économique">
-          </div>
-          <p>
-            Nous avons aussi réalisé un diagramme d'activité par mode. Ceux-ci nous aident par la suite pour l'architecture programme. En voici un exemple.
-          </p>
-          <h4>Diagramme d'activité, mode standard</h4>
-          <div class="ModalImage">
-            <img src="images/Embq/activiteStandard.png" alt="Diagramme d'activité, mode standard">
-          </div>
-          <p>
-           Finalement, il nous faut pas oublier que c'est un système embarqué, par conséquent il ne va pas se brancher tout seul. Rien de bien compliqué mais attention aux boutons poussoirs qui doivent impérativement être branchés sur les pins 2 et 3. Les autres pins de l'arduino Uno ne gèrent pas les interruptions de programmes. Les schémas de câblage sont dans la documentation en bas de cette page.
-          </p>
-          <h3>Architecture programme</h3>
-          <p>
-            Nous avons dû réfléchir à l'architecture programme, en d'autres termes quelles sont nos fonctions et que vont-elles réaliser. Il y a aussi des variables importantes comme nos variables volatiles utilisées par nos routines d'interruptions. Finalement il nous a paru évident de faire une fonction par mode de fonctionnement et de gérer le passage entre les modes dans le void loop(). Si vous voulez plus de détails le programme complet se trouve juste en dessous et la documentation technique en bas de cette page.
-          </p>
-          <h3>Réalisation programme</h3>
-          <p>
-            Voici donc notre programme final pour ceux que ça intéresse. Nous avons eu pas mal de soucis avec le capteur bme280 et la mémoire très limitée de la carte arduino uno. Si nous avions eu le temps, nous aurions rajouté des pointeurs et des structures mais nous avons préféré avoir un programme simple et fonctionnel en priorité. La première structure aurait certainement été pour contenir les données à enregistrer sur le support SD.
-          </p>
-          <h4>Programme complet</h4>
-          <div class="CodeBlock">
-            <pre class="Preformate">
-              <code class="language-cpp">
-                //carte SD--------------------------------------------------------------------
-                #include <SPI.h>
-                #include <SD.h>
-                File dataFile;
-
-                //led RGB--------------------------------------------------------------------
-                #include <ChainableLED.h>
-                #define NUM_LEDS  1
-                ChainableLED leds(7, 8, NUM_LEDS);
-                //leds.setColorRGB(0, R, G, B); première valeur 0 pour allumer 1 pour étein
-
-                // Variables pour les interruptions--------------------------------------------------------------------
-                volatile char           ModeState = 1; // 1 = mode standard, 2 = mode config, 3 = mode maintenance, 4 = mode éco
-                volatile unsigned long  start = 0;
-                volatile unsigned long  end = 0;
-                volatile bool           ButtonState = false;
-                volatile char           PressedRB = 0;
-                volatile char           PressedGB = 0;
-                volatile char           PreviousMode = 0;
-
-                //BME280--------------------------------------------------------------------
-                #include <BME280I2C.h>
-                #include <Wire.h>
-
-                BME280I2C bme;
-
-                //RTC --------------------------------------------------------------------
-                #include "RTClib.h"
-                RTC_DS1307 rtc;
-                char daysOfTheWeek[7][12] = {"Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"};
-
-                //Définition Pins
-                #define redButton 2
-                #define greenButton 3
-
-                //Variables ----------------------------------------------------------------
-                int LOG_INTERVAL = 10;    //Intervalle de temps entre les mesures en minutes
-                int FILE_MAX_SIZE = 4096; //Taille maximal d'un fichier de log
-                                          //Version du programme et numéro de lot
-                int  TIMEOUT = 30;        //Temps au bout de laquelle l'aquisition des donées d'un capteur est abandonnée
-                bool LUMIN = 1;           //Activation désactivation du capteur luminosité
-                int  LUMIN_LOW =255;      //Valeur en dessous de laquelle la luminosité est considéré comme faible
-                int  LUMIN_HIGH =768;     //Valeur au dessus de laquelle la luminosité est considéré comme forte
-                bool TEMP_AIR = 1;        //Activation désactivation du capteur température d'air
-                int  MIN_TEMP_AIR = -10;  //Seuil de la température de l'air en dessous duquel le capteur se mettre en erreur
-                int  MAX_TEMP_AIR = 60;   //Seuil de la température de l'air au dessus duquel le capteur se mettre en erreur
-                bool HYGR = 1;            //Activation désactivation du capteur d'hygrométrie
-                int  HYGR_MINT = 0;       //Valeur de la température en dessous de laquelle les mesures d'hygrométrie ne seront pas prises en compte
-                int  HYGR_MAXT = 50;      //Valeur de la température au dessus de laquelle les mesures d'hygrométrie ne seront pas prises en compte
-                bool PRESSURE = 1;        //Activation désactivation du capteur d'hygrométrie
-                int  PRESSURE_MIN = 850;  //Seuil de la pression atmosphérique en dessous duquel le capteur se mettre en erreur
-                int  PRESSURE_MAX = 1080; //Seuil de la pression atmosphérique au dessus duquel le capteur se mettre en erreur
-                int v; // variable pour le mode configuration
-                int w; // variable pour le mode configuration
-
-                void setup() {
-                  Serial.begin(9600);          // Initialisation moniteur série à 9600 bauds
-                  sdInit();	                   // Initialisation carte SD
-                  bme280Init();                // Initialisation capteur température/humidité/pression
-                  rtcInit();		           // Initialisation horloge rtc
-                  pinMode(redButton, INPUT);
-                  pinMode(greenButton, INPUT);
-                  attachInterrupt(digitalPinToInterrupt(redButton), PressingRB, FALLING);
-                  attachInterrupt(digitalPinToInterrupt(greenButton), PressingGB, FALLING);
-                }
-
-                //----------------------------------------------------------------------------------------
-
-                void loop() {
-                  if (PressedRB == 1 && millis() <= 5000) {
-                  PreviousMode = ModeState;
-                    ModeState = 2;
-                    PressedRB = 0;
-                  }
-                  else if(PressedRB == 2 && millis() >= 5000) {
-                    switch(ModeState) {
-                      case 1:
-                    PreviousMode = ModeState;
-                      ModeState = 3;
-                      break;
-                      case 4:
-                    PreviousMode = ModeState;
-                      ModeState = 1;
-                      break;
-                      case 3:
-                    ModeState = PreviousMode;
-                      break;
-                    }
-                    PressedRB = 0;
-                  }
-                  if (PressedGB == 1 && millis() >= 5000) {
-                    switch(ModeState) {
-                      case 1:
-                    PreviousMode = ModeState;
-                      ModeState = 4;
-                      break;
-                      case 4:
-                    PreviousMode = ModeState;
-                      ModeState = 3;
-                      break;
-                    }
-                    PressedGB = 0;
-                  }
-                  switch (ModeState) { // switch entre les modes de fonctionnement en fonction de la variable ModeState
-                    case 1:
-                    standardMode(LOG_INTERVAL);
-                    break;
-                    case 2:
-                    configMode();
-                    break;
-                    case 3:
-                    mtnceMode(LOG_INTERVAL);
-                    break;
-                    case 4:
-                    ecoMode();
-                    break;
-                  }
-                }
-
-                //---------------------------------------------------------------------------
-
-                void standardMode(int INTERVAL) {
-                  unsigned long ModeStart = millis();
-                  leds.setColorRGB(0, 0, 255, 0);
-                  rtcRead();
-                  bme280Read();
-                  lumRead();
-                  delay(1000);
-                  unsigned long ModeTimer = millis();
-                  while (PressedRB == 0 && PressedGB == 0 && (ModeTimer - ModeStart) <= 1000*INTERVAL) {
-                    ModeTimer = millis();
-                  }
-                  if ((ModeTimer - ModeStart) <= 1000*INTERVAL) {
-                    standardMode(LOG_INTERVAL);
-                }
-
-                //-------------------------------------------------------------------
-
-                void ecoMode() {
-                  leds.setColorRGB(0, 0, 0, 255);
-                  int ECO_LOG_INTERVAL = LOG_INTERVAL*2;
-                  standardMode(ECO_LOG_INTERVAL);
-                }
-
-                //---------------------------------------------------------------------
-
-                void mtnceMode(int INTERVAL){
-                  unsigned long ModeStart = millis();
-                  leds.setColorRGB(0, 255,127, 0);
-                  rtcPrint();
-                  bme280Print();
-                  lumPrint();
-                  delay(1000);
-                  unsigned long ModeTimer = millis();
-                  while (PressedRB == 0 && PressedGB == 0 && (ModeTimer - ModeStart) <= 1000*INTERVAL) {
-                    ModeTimer = millis();
-                  }
-                  if ((ModeTimer - ModeStart) <= 1000*INTERVAL) {
-                    mtnceMode(LOG_INTERVAL);
-                }
-
-                //---------------------------------------------------------------------
-                void configMode(){
-                  leds.setColorRGB(0, 255, 255, 0);
-
-                  //Interface du mode configuration
-                  Serial.println(F("0- EXIT"));
-                  Serial.println(F("1- LOG_INTERVALL"));
-                  Serial.println(F("2- FILE_MAX_SIZE"));
-                  Serial.println(F("3- RESET"));
-                  Serial.println(F("4- VERSION"));
-                  Serial.println(F("5- TIMEOUT"));
-                  Serial.println(F("6- Capteur de luminosité"));
-                  Serial.println(F("7- Capteur de température"));
-                  Serial.println(F("8- Capteur d'hygrométrie"));
-                  Serial.println(F("9- Capteur de pression"));
-                  Serial.println(F("10- Horloge RTC"));
-                  //Configuration
-                  while (Serial.available() == 0){
-                  }
-                  int chooseMode = Serial.parseInt();
-                  switch (chooseMode){
-                    case 0:
-                      Serial.println(F("Sortie du mode configuration"));
-                      ModeState = 1;
-                      break;
-                    case 1:
-                      Serial.println(F("Entrez l'intervalle entre deux mesures de capteur (LOG_INTERVALL): "));
-                      LOG_INTERVAL = getSerialData();
-                      Serial.println(LOG_INTERVAL);
-                      configMode();
-                      break;
-
-                    case 2:
-                      Serial.println(F("Entrez la nouvelle taille maximale d'un fichier log (FILE_MAX_SIZE): "));
-                      FILE_MAX_SIZE = getSerialData();
-                      configMode();
-                      break;
-
-                    case 3:
-                      Serial.println(F("RESET de tous les paramètres à leur valeur par défaut..."));
-                      LOG_INTERVAL = 10;
-                      FILE_MAX_SIZE = 4096;
-                      TIMEOUT = 30;
-                      LUMIN = 1;
-                      LUMIN_LOW =255;
-                      LUMIN_HIGH =768;
-                      TEMP_AIR = 1;
-                      MIN_TEMP_AIR = -10;
-                      MAX_TEMP_AIR = 60;
-                      HYGR = 1;
-                      HYGR_MINT = 0;
-                      HYGR_MAXT = 50;
-                      PRESSURE = 1;
-                      PRESSURE_MIN = 850;
-                      PRESSURE_MAX = 1080;
-                      configMode();
-                      break;
-
-                    case 4:
-                      Serial.println(F("La VERSION du programme est : "));
-                      Serial.print(F("1.0"));
-                      configMode();
-                      break;
-
-                    case 5:
-                      Serial.println(F("Entrez la nouvelle valeur du TIMEOUT: "));
-                      TIMEOUT = getSerialData();;
-                      configMode();
-                      break;
-
-                    case 6:
-                      Serial.println(F("Choisir le paramètre à modifier"));
-                      Serial.println(F("1- LUMIN"));
-                      Serial.println(F("2- LUMIN_LOW"));
-                      Serial.println(F("3- LUMIN_HIGH"));
-                      v = getSerialData();
-                      w = 0;
-                      if (v == 1){
-                        Serial.println(F("Entrez la nouvelle valeur de LUMIN: "));
-                        w = getSerialData();
-                        LUMIN = w;
-                      }
-                      else if (v == 2){
-                        Serial.println(F("Entrez la nouvelle valeur de LUMIN_LOW: "));
-                        w = getSerialData();
-                        LUMIN_LOW = w;
-                      }
-                      else if (v == 3){
-                        Serial.println(F("Entrez la nouvelle valeur de LUMIN_HIGH: "));
-                        w = getSerialData();
-                        LUMIN_HIGH = w;
-                      }
-                      configMode();
-                      break;
-
-                    case 7:
-                      Serial.println(F("Choisir le paramètre à modifier"));
-                      Serial.println(F("1- TEMP_AIR"));
-                      Serial.println(F("2- MIN_TEMP_AIR"));
-                      Serial.println(F("3- MAX_TEMP_AIR"));
-                      v = getSerialData();
-                      w = 0;
-                      if (v == 1){
-                        Serial.println(F("Entrez la nouvelle valeur de TEMP_AIR: "));
-                        w = getSerialData();
-                        TEMP_AIR = w;
-                      }
-                      else if (v == 2){
-                        Serial.println(F("Entrez la nouvelle valeur de MIN_TEMP_AIR: "));
-                        w = getSerialData();
-                        MIN_TEMP_AIR = w;
-                      }
-                      else if (v == 3){
-                        Serial.println(F("Entrez la nouvelle valeur de MAX_TEMP_AIR: "));
-                        w = getSerialData();
-                        MAX_TEMP_AIR = w;
-                      }
-                      configMode();
-                      break;
-
-                    case 8:
-                      Serial.println(F("Choisir le paramètre à modifier"));
-                      Serial.println(F("1- HYGR"));
-                      Serial.println(F("2- HYGR_MINT"));
-                      Serial.println(F("3- HYGR_MAXT"));
-                      v = getSerialData();
-                      w = 0;
-                      if (v == 1){
-                        Serial.println(F("Entrez la nouvelle valeur de HYGR: "));
-                        w = getSerialData();
-                        HYGR = w;
-                      }
-                      else if (v == 2){
-                        Serial.println(F("Entrez la nouvelle valeur de HYGR_MINT: "));
-                        w = getSerialData();
-                        HYGR_MINT = w;
-                      }
-                      else if (v == 3){
-                        Serial.println(F("Entrez la nouvelle valeur de HYGR_MAXT: "));
-                        w = getSerialData();
-                        HYGR_MAXT = w;
-                      }
-                      configMode();
-                      break;
-
-                    case 9:
-                      Serial.println(F("Choisir le paramètre à modifier"));
-                      Serial.println(F("1- PRESSURE"));
-                      Serial.println(F("2- PRESSURE_MIN"));
-                      Serial.println(F("3- PRESSURE_MAX"));
-                      v = getSerialData();
-                      w = 0;
-                      if (v == 1){
-                        Serial.println(F("Entrez la nouvelle valeur de PRESSURE: "));
-                        w = getSerialData();
-                        PRESSURE = w;
-                      }
-                      else if (v == 2){
-                        Serial.println(F("Entrez la nouvelle valeur de PRESSURE_MIN: "));
-                        w = getSerialData();
-                        PRESSURE_MIN = w;
-                      }
-                      else if (v == 3){
-                        Serial.println(F("Entrez la nouvelle valeur de PRESSURE_MAX: "));
-                        w = getSerialData();
-                        PRESSURE_MAX = w;
-                      }
-                      configMode();
-                      break;
-                  }
-                }
-
-                // ---------------------------------------------------------------------------------
-
-                int getSerialData(){ // fonction permettant de récupérer des entrées sur le moniteur série
-                 unsigned long timer = 0;
-                 unsigned long endTimer = 0;
-                 long count = 0;
-                 timer = millis();
-                 Serial.println(F("Valeur : "));
-                 while(Serial.available() <= 0 && count <= 30000) {
-                  count = endTimer-timer;
-                  endTimer = millis();
-                 }
-                 if (count >= 30000){
-                  Serial.println(F("TIMEOUT"));
-                 }
-                 int serialData = Serial.parseInt();
-                 Serial.flush();
-                 return serialData;
-                }
-
-                // -----------------------------------------------------------------------------
-                //                            CARTE SD
-                //------------------------------------------------------------------------------
-
-                void sdInit(){
-                  Serial.println(F("Initialisation de la carte SD"));
-                  if (!SD.begin(4)) {
-                    Serial.println(F("L'initialisation de la carte SD n'as pas aboutie"));
-                    while (1);
-                  }
-                  if (SD.exists("data.txt") == true){
-                    Serial.println(F("Initialisation réussie"));
-                  } else if (SD.exists("data.txt") == false) {
-                    Serial.println(F("Le fichier data.txt n'existe pas"));
-                    Serial.println(F("Création du fichier data.txt"));
-                    dataFile = SD.open("data.txt", FILE_WRITE);
-                    dataFile.close();
-                    if (SD.exists("data.txt") == false){
-                      Serial.println(F("La création du ficher data.txt à raté"));
-                    } else if (SD.exists("data.txt") == true){
-                      Serial.println(F("Création du fichier data.txt réussit"));
-                    }
-                  }
-                }
-
-                //---------------------------------------------------------------------------
-                //                  CAPTEUR TEMPÉRATURE/HUMIDITÉ/PRESSION
-                //--------------------------------------------------------------------------
-
-                void bme280Init(){
-                  Wire.begin();
-                  while(!bme.begin()) {
-                    Serial.println(F("Capteur BME280 non trouvé"));
-                    delay(1000);
-                  }
-                  switch(bme.chipModel()) {
-                     case BME280::ChipModel_BME280:
-                       Serial.println(F("Capteur BME280 trouvé"));
-                       break;
-                     default:
-                       Serial.println(F("Capteur BM280 non trouvé"));
-                  }
-                }
-
-                // -------------------------------------------------------------------------------
-
-                void bme280Read() {
-                  float temp(NAN), hum(NAN), pres(NAN);
-                  BME280::TempUnit tempUnit(BME280::TempUnit_Celsius);
-                  BME280::PresUnit presUnit(BME280::PresUnit_Pa);
-                  bme.read(pres, temp, hum, tempUnit, presUnit);
-                  dataFile = SD.open("data.txt", FILE_WRITE);
-                  dataFile.print("TEMP:");
-                  dataFile.print(temp, 2);
-                  dataFile.print("C-");
-                  dataFile.print("HUM:");
-                  dataFile.print(hum);
-                  dataFile.print("%-");
-                  dataFile.print("PRES:");
-                  dataFile.print(pres);
-                  dataFile.print("Pa");
-                  dataFile.print("||");
-                  dataFile.close();
-                }
-
-                //--------------------------------------------------------------------------
-
-                void bme280Print() {
-                  float temp(NAN), hum(NAN), pres(NAN);
-                  BME280::TempUnit tempUnit(BME280::TempUnit_Celsius);
-                  BME280::PresUnit presUnit(BME280::PresUnit_Pa);
-                  bme.read(pres, temp, hum, tempUnit, presUnit);
-                  serial.print("TEMP:");
-                  serial.print(temp, 2);
-                  serial.print("C-");
-                  serial.print("HUM:");
-                  serial.print(hum);
-                  serial.print("%-");
-                  serial.print("PRES:");
-                  serial.print(pres);
-                  serial.print("Pa");
-                  serial.print("||");
-                  serial.close();
-                }
-
-                //--------------------------------------------------------------------------
-                //                          HORLOGE RTC
-                //--------------------------------------------------------------------------
-
-                void rtcInit(){
-                  if (! rtc.begin()) {
-                    Serial.println(F("Couldn't find RTC"));
-                    Serial.flush();
-                    abort();
-                  }
-                  if (! rtc.isrunning()) {
-                    Serial.println(F("RTC is NOT running, let's set the time!"));
-                    rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
-                    // rtc.adjust(DateTime(2014, 1, 21, 3, 0, 0));
-                  }
-                }
-
-                //--------------------------------------------------------------------------
-
-                void rtcConfig(){
-                  int newYear;
-                  int newMonth;
-                  int newDay;
-                  int newHour;
-                  int newMin;
-                  int newSec;
-                  Serial.println(F("Bienvenue dans le mode configation de l'horlge RTC"));
-                  Serial.println(F("Entrez l'année actuelle"));
-                  newYear = getSerialData();
-                  Serial.println(F("Entrez le mois actuel"));
-                  newMonth = getSerialData();
-                  Serial.println(F("Entrez le jour actuel"));
-                  newDay = getSerialData();
-                  Serial.println(F("Entrez l'heure actuelle"));
-                  newHour = getSerialData();
-                  Serial.println(F("Entrez la minute actuelle"));
-                  newMin = getSerialData();
-                  Serial.println(F("Entrez la seconde actuelle"));
-                  newSec = getSerialData();
-                  rtc.adjust(DateTime(newYear, newMonth, newDay, newHour, newMin, newSec));
-                  Serial.println(F("La configuration de l'horloge est terminée"));
-                  Serial.print(F("Il est actuellement : "));
-                  rtcRead();
-                }
-
-                //--------------------------------------------------------------------------
-
-                void rtcRead(){
-                  dataFile = SD.open("data.txt", FILE_WRITE);
-                  DateTime now = rtc.now();
-                  dataFile.print(now.year(), DEC);
-                  dataFile.print('/');
-                  dataFile.print(now.month(), DEC);
-                  dataFile.print('/');
-                  dataFile.print(now.day(), DEC);
-                  dataFile.print(" (");
-                  dataFile.print(daysOfTheWeek[now.dayOfTheWeek()]);
-                  dataFile.print(") ");
-                  dataFile.print(now.hour(), DEC);
-                  dataFile.print(':');
-                  dataFile.print(now.minute(), DEC);
-                  dataFile.print(':');
-                  dataFile.print(now.second(), DEC);
-                  dataFile.print("||");
-                  dataFile.close();
-                }
-
-                //------------------------------------------------------------------------
-
-                void rtcPrint(){
-                  DateTime now = rtc.now();
-                  serial.print(now.year(), DEC);
-                  serial.print('/');
-                  serial.print(now.month(), DEC);
-                  serial.print('/');
-                  serial.print(now.day(), DEC);
-                  serial.print(" (");
-                  serial.print(daysOfTheWeek[now.dayOfTheWeek()]);
-                  serial.print(") ");
-                  serial.print(now.hour(), DEC);
-                  serial.print(':');
-                  serial.print(now.minute(), DEC);
-                  serial.print(':');
-                  serial.print(now.second(), DEC);
-                  serial.print("||");
-                }
-
-                //--------------------------------------------------------------------------
-                //                      CAPTEUR LUIMIÈRE
-                //--------------------------------------------------------------------------
-
-                void lumRead(){
-                  dataFile = SD.open("data.txt", FILE_WRITE);
-                  int lValue = analogRead(A0);
-                  lValue = map(lValue, 0, 800, 0, 10);
-                  dataFile.print("LUM:");
-                  dataFile.print(lValue, DEC);
-                  dataFile.println("/10");
-                  dataFile.close();
-                }
-
-                //--------------------------------------------------------------------------
-
-                void lumRead(){
-                  int lValue = analogRead(A0);
-                  lValue = map(lValue, 0, 800, 0, 10);
-                  serial.print("LUM:");
-                  serial.print(lValue, DEC);
-                  serial.println("/10");
-                }
-
-                //--------------------------------------------------------------------------
-                //                         ROUTINE D'INTERRUPTIONS
-                //--------------------------------------------------------------------------
-
-                void PressingRB() { // routine d'interruption quand bouton rouge est pressé
-
-                  ButtonState = !ButtonState;
-
-                  if (ButtonState) {
-
-                    start = millis();
-
-                  	detachInterrupt(digitalPinToInterrupt(redButton));
-                    attachInterrupt(digitalPinToInterrupt(redButton), PressingRB, FALLING);
-                  }
-
-                  else {
-
-                    end = millis();
-
-                    if (end - start >= 5000){
-
-                      PressedRB = 2;
-                    }
-                    else {
-
-                      PressedRB = 1;
-                    }
-
-                    detachInterrupt(digitalPinToInterrupt(redButton));
-                    attachInterrupt(digitalPinToInterrupt(redButton), PressingRB, RISING);
-                  }
-                 }
-
-                //----------------------------------------------------------------------------
-
-                void PressingGB() { // routine d'interruption quand bouton vert est pressé
-
-                  ButtonState = !ButtonState;
-
-                  if (ButtonState) {
-
-                    start = millis();
-
-                  	detachInterrupt(digitalPinToInterrupt(greenButton));
-                    attachInterrupt(digitalPinToInterrupt(greenButton), PressingGB, FALLING);
-                  }
-
-                  else {
-
-                    end = millis();
-
-                    if (end - start >= 5000){
-
-                      PressedGB = 1;
-                    }
-
-                    detachInterrupt(digitalPinToInterrupt(greenButton));
-                    attachInterrupt(digitalPinToInterrupt(greenButton), PressingGB, RISING);
-                  }
-                }
-
-                // --------------------------------------------------------------------------------
-              </code>
-            </pre>
-          </div>
-          <h3>Documentation utilisateur et technique</h3>
-          <p>
-            Pour conclure le projet nous avons écrit une documentation utilisateur et technique qui récapitule dans le détail l'ensemble du projet. Voici un lien vers cette documentation au format PDF.<br>
-          </p>
-          <a class="ModalLink"href="Documents/Embq/Documentation.pdf">
-            <h4>Documentation utilisateur et technique</h4>
-          </a>
-        </div>
-      </div>
-
-      <div class="ModalPOO" id="ModalPOO">
-        <div class="ModalContent">
-          <a href="#" class="ModalClose"><i class="far fa-times-circle"></i></a>
-          <h2>Projet Programmation orientée objet</h2>
-          <p>
-            Une entreprise nous a contacté afin de digitaliser certains de ses services et faciliter la gestion de l'entreprise. La solution se présente sous forme d'application permettant d'intéragir avec la base de données de l'entreprise. Il s'agit principalement de Créer/ Afficher / Modifier / Supprimer - Des - Clients / Commandes / Personnels / Articles<br>
-            Le projet dans son ensemble m'a permis d'apprendre : <br> 
-            - modélisation UML (cas d'utilisation révision, activité révision, séquence révision, classe) <br>
-            - langage C++ et framework .NET (Winforms, ADO.NET)<br>
-            - Programmation orientée objet (classe, objet, héritage, polymorphisme etc...)<br>
-            - concevoir une architecture programme. <br>
-            - Révision du langage SQL et premier pas sur SQL server. <br>
-            - Utilisation de GitHub pour partager le travail et de Visual Studio comme IDE. <br>
-          </p>
-          <h3>Analyse et Modélisation</h3>
-          <p>
-            L'application se divise en 5 parties, gestion du personnel / des clients / des commandes / du stock, et de statistiques.
-            chaque partie correspond à un cas d'utilisation et à un acteur différent <br>
-            Nous avons donc réalisé le diagramme de cas d'utilisations, que voici ci-dessous.
-          </p>
-          <h4>Diagramme de cas d'utilisations</h4>
-          <div class="ModalImage">
-            <img src="images/POO/UseCase.png" alt="Diagramme de cas d'utilisations">
-          </div>
-          <p>
-            Nous avons aussi réalisé des diagrammes de séquences afin de visualiser les foncionnalités demandées dans l'application. En voici un exemple.
-          </p>
-          <h4>Diagramme de séquence, créer un personnel</h4>
-          <div class="ModalImage">
-            <img src="images/POO/sequence.png" alt="Diagramme de séquence, créer un personnel">
-          </div>
-          <p>
-           Nous avons bien sûre réaliser un diagramme de classe qui a bien évolué durant le projet. Par conséquent je vous montre la version qui représent notre architecture programme à la fin du projet.
-           <h4>Diagramme de classe de fin de projet</h4>
-           <div class="ModalImage">
-             <img src="images/POO/classes.png" alt="Diagramme de classe de fin de projet">
-           </div>
-          </p>
-          <h3>Base de données</h3>
-          <p>
-            Notre application c++/cli et rattacher à une base de données SQL server. Il nous a donc fallu créer cette base de données en commançant bien sûre par un dictionnaire de données. En découle le modèle conceptuel de données afin de déterminer les tables et relations de notre base de données. Et voici le Dictionnaire de données et le MCD.
-          </p>
-          <h4>Dictionnaire de données</h4>
-          <div class="ModalImage">
-            <img src="images/POO/DD.png" alt="Dictionnaire de données">
-          </div>
-          <h4>Modèle conceptuel de données</h4>
-          <div class="ModalImage">
-            <img src="images/POO/MCD.png" alt="Modèle conceptuel de données">
-          </div>
-          <h3>Réalisation programme</h3>
-          <p>
-          L'application se divise sur deux WinForms, la première nous permet de s'authentifier afin d'accéder à l'interaction avec la base de données. Si les informations rentrées ne sont pas dans la base de données, on ne peut accéder à la deuxième form. Voici comment se présente cette première forme.
-          <h4>MyForm, WinForm pour s'authentifier</h4>
-          <div class="ModalImage">
-            <img src="images/POO/MyForm.png" alt="MyForm, WinForm pour s'authentifier">
-          </div>
-          La deuxième Form se divise en 5 parties pour les 5 cas d'utilisations. Il y a une datagridview sur la gauche pour afficher les données de la base de données grâce à des requêtes SQL. Au centre des boutons pour naviguer dans la datagridview et remplissent automatiquement les textbox correspondantes juste au-dessus. Ensuite, dessous se trouve les boutons pour supprimer, créer et modifier les données dans la base données avec les informations comprises dans les textbox. Enfin le bouton afficher qui permet de raffraichir les données de la datagridview.
-          <h4>BackForm, WinForm pour intéragir avec la base de données</h4>
-          <div class="ModalImage">
-            <img src="images/POO/BackForm.png" alt="BackForm, WinForm pour intéragir avec la base de données">
-          </div>
-          </p>
-          <h3>Lien vers le GitHub</h3>
-          <p>
-            Le programme complet se trouve sur GitHub, alors si cela vous intéresse le lien ci-dessous vous emmenera sur le GitHub.<br>
-          </p>
-          <a class="ModalLink"href="https://github.com/Skane-Gahi/POO_Project/tree/master/POO_Project">
-            <h4>Lien vers GitHub</h4>
-          </a>
-        </div>
-      </div>
-
-      <div class="ModalContacts" id="ModalContacts">
-        <div class="ModalContent">
-          <a href="#" class="ModalClose"><i class="far fa-times-circle"></i></a>
-          <h2>Contactez Moi !</h2>
-          <div class="ContactsGrid">
-            <i class="fab fa-linkedin"></i>
-            <a href="https://www.linkedin.com/in/tanguy-delage-a085931a0/">Tanguy DELAGE</a>
-            <i class="fas fa-envelope"></i>
-            <a href="mailto:tanguy.delage@viacesi.fr">tanguy.delage@viacesi.fr</a>
-            <i class="fas fa-phone-square"></i>
-            <div>0661982334</div>
-            <p></p>
-          </div>
-        </div>
-      </div>
-
-      <!--////////////////Modales (Contenu projets)///////////////////////////// -->
-      <footer>
-        <button onclick="window.location.href = '#ModalContacts';">Contactez Moi</button>
-        <p>Merci de votre visite !</p>
-        <div class="FooterLinks">
-          <a href="https://icones8.fr/icons/set/favicon">Favicon by Icons8</a>
-          <a href="https://fontawesome.com">Icons by Font Awesome</a>
-          <a href="https://pixabay.com/fr/">Images by Pixabay</a>
-          <a href="https://fonts.google.com">Fonts by Google Fonts</a>
-        </div>
-      </footer>
+            </code>
+        </pre>
     </div>
-    <!-- ///////////////////Corp du site///////////////////////////////////////-->
+
   </body>
-
 </html>
-
-

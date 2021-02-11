@@ -6,13 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>TD's Portfolio</title>
+
+    <!--Scripts-->
+    <script type="text/javascript" src="scroll.js"></script>
+    <!--Scripts-->
     
     <!--FavIcon-->
     <link rel="icon" type="image/png" href="Documents/favicons/icons8-accueil-40.png">
     <!--FavIcon-->
 
     <!--CSS Style Sheet-->
-    <link rel="stylesheet" href="Com.css">
+    <link rel="stylesheet" href="Project.css">
     <!--CSS Style Sheet-->
 
     <!--Prism-->
@@ -82,8 +86,8 @@
             </section>
             
             <section class="Content">
-                <h3 id="modu">Modulations</h3>
-                <section id="modup">
+                <h3 id="one">Modulations</h3>
+                <section id="onep">
                     <p>
                         La modulation du son nous permet de transmettre des bits de données. Nous avons 4 modulations d'amplitude sur 2 bits et 2 modulations de phases sur 1 bit. Ainsi chaque période d'un signal envoie 3 bits de données. Nous envoyons 3 signaux en même temps qui sont portés par une onde ultrasonore. Nous avions donc un débit théorique d'envoi de 72 kbits/s. <br>
                         l'image ci-dessous récapitule l'encodage d'un signal sonore.
@@ -92,8 +96,8 @@
                     <img src="images/Com/BitsTransmis.JPG" alt="Encodage d'un signal sonore">
                 </section>
       
-                <h3 id="prot">Protocoles réseaux</h3>
-                <section id="protp">
+                <h3 id="two">Protocoles réseaux</h3>
+                <section id="twop">
                     <p>
                         Le protocole réseau nous permet bien identifier chaque portion de signal à décoder et permet aussi de détecter des erreurs de transmissions potentielles. Pour identifier chaque trame nous avons un bit de start, un bit de stop, un identificateur avec le numéro de trame, un bit de parité et finalement le segment. Le segment qui contient la donnée avec le code correcteur de Hamming par-dessus pour détecter les erreurs.<br>
                         l'image ci-dessous récapitule la composition d'une trame.<br>
@@ -102,15 +106,15 @@
                     <img src="images/Com/ProtocoleReseau.JPG" alt="Composition d'une trame">
                 </section>
       
-                <h3 id="prog">Programme en Python</h3>
-                <section id="progp">
+                <h3 id="three">Programme en Python</h3>
+                <section id="threep">
                     <p>
                         Le programme en python nous permet de simuler l'envoie et la réception des données. c'est pourquoi nous avons un programme pour l'envoi et un autre pour la réception. <br>
             
                         Le programme d'envoi va lire le message depuis un fichier texte et faire la conversion des caractères en binaires. il va ensuite découper la suite de bits pour obtenir des segments en y rajoutant les bits de contrôles de Hamming. Le programme va composer les trames comme vu plus haut. Enfin le programme va composer le signal sonore modulé et lire le son produit. <br>
                         Voici le programme d'envoie complet.
                     </p>
-                    <a href="#modal1">Programme d'envoi</a>
+                    <a href="#modal1" class="OpenModal">Programme d'envoi</a>
                     <p>
                         Dans un souci nous n'avons pas pu travailler sur la réception du son par un ordinateur, Nous avons donc simulé en écrivant les trames dans un fichier texte. <br>
             
@@ -121,6 +125,7 @@
                 </section>
             </section>
         </article>
+        <section class="TextBanner">Merci de votre visite !</section>
     </main>
     <!-- ///////////////////Corp du site///////////////////////////////////////-->
     
@@ -141,7 +146,7 @@
     <!-- ///////////////////FOOTER/////////////////////////////////////////////-->  
     
     
-    <div class="CodeBlock" id="modal1">
+    <div class="Modal" id="modal1">
         <pre class="Preformate">
             <a href="#" class="ModalClose"><i class="far fa-times-circle"></i></a>
           <code class="language-py">
@@ -350,7 +355,7 @@
         </pre>
     </div>
 
-    <div class="CodeBlock" id="modal2">
+    <div class="Modal" id="modal2">
         <pre class="Preformate">
             <a href="#" class="ModalClose"><i class="far fa-times-circle"></i></a>
             <code class="language-py">

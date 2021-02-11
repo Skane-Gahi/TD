@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 10vh 0 0 0;
+  overflow: auto;
   /* Hide scrollbar  */
   font-family: 'Cuprum', sans-serif;
   font-weight: bold;
@@ -112,6 +113,20 @@ main h2 {
   font-size: 3em;
 }
 
+main img {
+  max-width: 90%;
+  border-style: solid;
+  border-color: #1e1e1e;
+  border-width: 0.2em;
+  margin: 5vh 0;
+}
+
+main a {
+  border-bottom-style: solid;
+  border-bottom-color: white;
+  border-bottom-width: 0.15em;
+}
+
 main article .Intro {
   background: #001d64;
   background: -webkit-gradient(linear, left top, right top, from(#001d64), color-stop(35%, #003c87), to(#0098f1));
@@ -183,48 +198,59 @@ main article .Content h4 {
   color: white;
 }
 
-main article .Content img {
-  border-style: solid;
-  border-color: #1e1e1e;
-  border-width: 0.3em;
-  margin: 5vh 0;
-}
-
-#modu {
-  background-color: #f2f2f2;
-  color: #001d64;
-}
-
-#modup {
-  background-color: #003c87;
-  color: #f2f2f2;
-}
-
-#prot {
+#one {
   background-color: #dadada;
   color: #001d64;
 }
 
-#protp {
-  background-color: #002473;
-  color: #dadada;
+#onep {
+  background-color: #0098f1;
+  color: white;
 }
 
-#prog {
+#two {
   background-color: #f2f2f2;
   color: #001d64;
 }
 
-#progp {
+#twop {
+  background-color: #003c87;
+  color: #f2f2f2;
+}
+
+#three {
+  background-color: #dadada;
+  color: #001d64;
+}
+
+#threep {
+  background-color: #002473;
+  color: #dadada;
+}
+
+#four {
+  background-color: #f2f2f2;
+  color: #001d64;
+}
+
+#fourp {
   background-color: #001d64;
   color: #969696;
 }
 
+main .TextBanner {
+  width: 100%;
+  background-color: #1e1e1e;
+  color: #f2f2f2;
+  font-size: 1.5em;
+  text-align: center;
+  padding: 3vh 0;
+}
+
 /*--------------------HOVERS--------------------------------------------------*/
 main article section section a:hover {
-  border-bottom-style: solid;
-  border-bottom-color: white;
-  border-bottom-width: 0.15em;
+  color: #dadada;
+  border-color: #dadada;
 }
 
 /*--------------------HOVERS--------------------------------------------------*/
@@ -292,7 +318,7 @@ footer .FooterLinks a:hover {
 /*---------------------HOVERS-------------------------------------------------*/
 /*--------------------FOOTER--------------------------------------------------*/
 /*--------------------CODE MODALS---------------------------------------------*/
-.CodeBlock {
+.Modal {
   background: rgba(0, 0, 0, 0.7);
   width: 100%;
   height: 100%;
@@ -317,7 +343,7 @@ footer .FooterLinks a:hover {
   overflow: hidden;
 }
 
-.CodeBlock pre {
+.Modal pre {
   width: 80vw;
   height: 75vh;
   position: relative;
@@ -327,9 +353,10 @@ footer .FooterLinks a:hover {
   visibility: hidden;
   -webkit-transition: .3s;
   transition: .3s;
+  overflow-y: scroll;
 }
 
-.CodeBlock .ModalClose {
+.Modal .ModalClose {
   text-decoration: none;
   font-size: 2em;
   color: #1e1e1e;
@@ -338,21 +365,21 @@ footer .FooterLinks a:hover {
   right: 2em;
 }
 
-.CodeBlock .ModalClose:hover {
+.Modal .ModalClose:hover {
   color: #828282;
 }
 
 /*--------------------MODALS OPENING------------------------------------------*/
-#modal1:target, #modal2:target {
+#modal1:target, #modal2:target, #modal3:target, #modal4:target, #modal5:target {
   opacity: 1;
   visibility: visible;
 }
 
-#modal1:target pre, #modal2:target pre {
+#modal1:target pre, #modal2:target pre, #modal3:target pre, #modal4:target pre, #modal5:target pre {
   opacity: 1;
   visibility: visible;
 }
 
 /*--------------------MODALS OPENING------------------------------------------*/
 /*--------------------CODE MODALS---------------------------------------------*/
-/*# sourceMappingURL=Com.css.map */
+/*# sourceMappingURL=Project.css.map */

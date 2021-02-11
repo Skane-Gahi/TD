@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>TD's Portfolio</title>
+
+    <!--Scripts-->
+    <script type="text/javascript" src="scroll.js"></script>
+    <!--Scripts-->
     
     <!--FavIcon-->
     <link rel="icon" type="image/png" href="Documents/favicons/icons8-accueil-40.png">
@@ -48,12 +52,12 @@
               </a>
             </li>
             <li>
-              <a href="mailto:tanguy.delage@viacesi.fr">
+              <a href="#modal0">
                 <i class="fas fa-envelope"></i>
               </a>
             </li>
             <li>
-              <a href="#ModalContacts">
+              <a href="#modal0">
                 <i class="fas fa-phone-square"></i>
               </a>
             </li>
@@ -97,7 +101,7 @@
     
     <!-- ///////////////////FOOTER/////////////////////////////////////////////-->   
     <footer>
-        <button onclick="window.location.href = '#ModalContacts';">Contactez Moi</button>
+        <button onclick="window.location.href = '#modal0';">Contactez Moi</button>
         <section id="inspired">
             <p>© 2021 par Tanguy Delage. Inspiré de</p>
             <a href="https://www.reutchen.com" id="Reut">Reut Chen</a>
@@ -109,6 +113,26 @@
             <a href="https://fonts.google.com">Polices de Google Fonts</a>
         </section>
     </footer>
-    <!-- ///////////////////FOOTER/////////////////////////////////////////////-->    
+    <!-- ///////////////////FOOTER/////////////////////////////////////////////--> 
+    
+    <div class="Modal" id="modal0">
+      <div class="modalcontact">
+        <section class="top0">
+          <h2>Contactez Moi</h2>
+          <p>tanguy.delage@viacesi.fr | 0661982334</p>
+        </section>
+        <form action="php/form.php" method="POST">
+          <label for="sender">Votre nom / Votre société</label>
+          <input type="text" id="sender" name="sender">
+          <label for="sendermail">Votre e-mail</label>
+          <input type="text" id="sendermail" name="sendermail">
+          <label for="object">Pourquoi m'envoyer ce message ?</label>
+          <input type="text" id="object" name="object">
+          <label for="msg">Votre message</label>
+          <textarea id="msg" name="msg" cols="30" rows="7"></textarea>
+          <input type="submit" value="ENVOYER">
+        </form>
+    </div>
+
   </body>
 </html>
