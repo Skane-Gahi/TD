@@ -1,547 +1,421 @@
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  /* Hide scrollbar */
   font-family: 'Cuprum', sans-serif;
-  background-color: rgb(230, 230, 230);
+  font-weight: bold;
+  background-image: url("images/facade.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
 body::-webkit-scrollbar {
   display: none;
 }
 
-/*---------------------HEADER-------------------------------------------------*/
+.fa-linkedin, .fa-envelope, .fa-phone-square {
+  color: white;
+}
 
+button {
+  padding: 1em 3em;
+  color: white;
+  background-color: #1e1e1e;
+  border-style: none;
+  border-radius: 1.5em;
+  cursor: pointer;
+  font-family: 'Cuprum', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+/*---------------------HEADER-------------------------------------------------*/
 header {
-  
-  margin-left: 0;
-  margin-right: 0;
+  top: 0;
   width: 100%;
   height: 7vh;
   line-height: 7vh;
-  background-color: rgba(0, 0, 0, 0.3);
   position: fixed;
+  color: white;
   z-index: 10;
 }
 
-header .HeaderTitle {
-  
-  color: rgb(100, 255, 255);
+header .HeaderTitle h1 {
+  color: white;
   float: left;
-  padding: 0 30px;
+  padding: 0 1vw 0 1vw;
+  margin: 0 1vw;
   text-decoration: none;
   font-size: 1.5em;
 }
 
-header .HeaderMenu {
-  
+header .HeaderNav {
   float: right;
 }
 
-header .HeaderMenu .NavBar {
-  
+header .HeaderNav .NavChoice {
   display: inline-block;
-  color: rgb(100, 255, 255);
-  padding: 0 5vh;
+  color: white;
+  padding: 0 1vw;
   text-decoration: none;
 }
 
-header .HeaderMenu .Contacts {
-  
+header .HeaderNav .Contacts {
   float: right;
-  padding: 0;
+  padding: 0 1vw 0 0;
 }
 
-header .HeaderMenu .Contacts .ContactsHead {
-  
+header .HeaderNav .Contacts .ContactsHead {
+  display: inline-block;
   text-decoration: none;
-  color: rgb(100, 255, 255);
+  color: white;
   text-align: center;
-  padding: 0 5vh;
-  display: block;
+  padding: 0 1vw;
   height: 100%;
 }
 
-header .HeaderMenu .Contacts .DropDown {
-  
+header .HeaderNav .Contacts .DropDown {
   width: 100%;
   list-style-type: none;
   margin: 0;
   position: absolute;
-  text-align: left;
-  padding-inline-start: 7vh;
-  background-color: rgba(0, 0, 0, 0.3);
-  border-style: none solid solid solid;
-  border-width: 0.15em;
-  border-color: rgb(255, 255, 255);
+  background-color: transparent;
   display: none;
 }
 
-.fa-linkedin, .fa-envelope, .fa-phone-square {
-  
-  color: rgb(255, 255, 255);
-}
-
-
-header .HeaderTitle:hover,
-header .HeaderMenu .NavBar:hover,
-header .HeaderMenu .Contacts:hover .ContactsHead {
-  
+/*---------------------HOVERS-------------------------------------------------*/
+header .HeaderTitle h1:hover,
+header .HeaderNav .NavChoice:hover,
+header .HeaderNav .Contacts:hover .ContactsHead {
   border-bottom-style: solid;
-  border-bottom-color: rgb(255, 255, 255);
+  border-bottom-color: white;
   border-bottom-width: 0.15em;
 }
 
-header .HeaderMenu .Contacts:hover .DropDown {
-  
+header .HeaderNav .Contacts:hover .DropDown {
   display: block;
 }
 
-header .HeaderMenu .Contacts:hover .DropDown i:hover {
-  
-  color: rgb(100, 255, 255);
-}
+/*---------------------HOVERS-------------------------------------------------*/
 /*---------------------HEADER-------------------------------------------------*/
-
-
-/*--------------------BACKGROUND----------------------------------------------*/
-#background {
-  
-  filter: brightness(50%);
-  position: absolute;
-  width: 100%;
-  height: 100%;;
-  border-bottom-style: solid;
-  border-width: 0.5em;
-  z-index: 0;
-}
-/*--------------------BACKGROUND----------------------------------------------*/
-
-
-
-
-/*--------------------BANNER--------------------------------------------------*/
-
-.Banner {
-  
-  position: absolute;
+/*--------------------MAIN----------------------------------------------------*/
+/*--------------------WELCOMEBANNER-------------------------------------------*/
+.WelcomeBanner {
   height: auto;
   width: 100%;
-}
-
-/*-------------------TOPBANNER------------------------------------------------*/
-
-.TopBanner {
-  
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  overflow: hidden;
-}
-
-.Banner .BannerContent {
-  
-  position: relative;
-  margin-top: 15vh;
-  width: 50%;
-  height: 35vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  font-size: 1.3em;
-  border-radius: 2em;
-  z-index: 2;
-}
-
-.Banner .BannerContent h1,
-.Banner .BannerContent h2 {
-  
-  color: rgb(100, 255, 255);
-}
-
-.Banner .BannerContent button {
-  
-  position: relative;
-  width: 50%;
-  height: auto;
-  font-size: 2em;
-  padding: 20px;
-  color: rgb(255, 255, 255);
-  background-color: rgba(0, 0, 0, 1);
-  border-style: outset;
-  border-color: rgba(255, 255, 255, 1);
-  border-radius: 1em;
-  border-width: 0.1em;
-  cursor: pointer;
-}
-
-.Banner .BannerContent button:hover {
-  
-  transform: scale(1.1);
-  transition: .3s;
-}
-
-/*-------------------BANNERCONTENT--------------------------------------------*/
-
-
-
-/*-------------------BANNERLIST-----------------------------------------------*/
-.Banner .BannerList {
-  
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-auto-rows: auto auto;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  z-index: 2;
-}
-
-.BannerList .element {
-  
-  position: relative;
-  width: 100%;
-  height: auto;
-  padding: 0;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.element img {
-  
-  display: block;
-  position: relative;
-  right: 0;
-  width: 100%;
-  height: auto;
-}
-
-
-.ProjectImage .caption {
-  
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  margin: 0;
-  top: 0;
-  color: rgb(0, 0, 0);
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
+  padding: 10vh 0 5vh 0;
   text-align: center;
+  background: #001d64;
+  background: -webkit-gradient(linear, left top, right top, from(#001d64), color-stop(35%, #003c87), to(#0098f1));
+  background: linear-gradient(90deg, #001d64 0%, #003c87 35%, #0098f1 100%);
+  color: white;
+}
+
+.WelcomeBanner .TopWelcomeBanner {
+  margin-bottom: 5vh;
+}
+
+.WelcomeBanner .TopWelcomeBanner button {
   font-size: 2em;
-  overflow: hidden;
-  visibility: hidden;
 }
 
-.ProjectImage {
-  
+.WelcomeBanner .TopWelcomeBanner h1 {
+  font-size: 2em;
+}
+
+.WelcomeBanner button {
+  color: yellow;
+}
+
+#universe {
+  margin-top: 2vh;
+  font-size: 1.5em;
+}
+
+.WelcomeBanner .TopWelcomeBanner button:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+/*--------------------WELCOMEBANNER-------------------------------------------*/
+/*--------------------PROJECTLIST---------------------------------------------*/
+.ProjectList {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-rows: 40vh 40vh;
+      grid-template-rows: 40vh 40vh;
+}
+
+.ProjectList .Project {
+  background-size: cover;
+  background-position: center;
+  background-color: #001d64;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-decoration: none;
+  color: transparent;
+  font-size: 2.5em;
+  -webkit-transition: .5s ease;
+  transition: .5s ease;
+}
+
+/*---------------------HOVERS-------------------------------------------------*/
+.ProjectList .Project:hover {
+  background-color: #0098f1;
+  color: yellow;
+  background-image: none;
+}
+
+/*---------------------HOVERS-------------------------------------------------*/
+/*--------------------IMAGES--------------------------------------------------*/
+.Com {
+  background-image: url(images/com.jpg);
+}
+
+.BDD {
+  background-image: url(images/BDD.jpg);
+}
+
+.Embq {
+  background-image: url(images/Embq.jpg);
+}
+
+.POO {
+  background-image: url(images/POO.png);
+}
+
+.Net {
+  background-image: url(images/Reseau.jpg);
+}
+
+.WEB {
+  background-image: url(images/Web.jpg);
+}
+
+/*--------------------IMAGES--------------------------------------------------*/
+/*--------------------PROJECTLIST---------------------------------------------*/
+main .TextBanner {
   width: 100%;
-  position: relative;
-  overflow: hidden;
+  background-color: #1e1e1e;
+  color: #f2f2f2;
+  font-size: 1.5em;
+  text-align: center;
+  padding: 3vh 0;
 }
 
-.BannerList .element:hover .ProjectImage img {
-  
-  opacity: 0.5;
-  transition: .3s;
+/*--------------------MAIN----------------------------------------------------*/
+/*--------------------FOOTER--------------------------------------------------*/
+footer {
+  width: 100%;
+  background: #001d64;
+  background: -webkit-gradient(linear, left top, right top, from(#001d64), color-stop(35%, #003c87), to(#0098f1));
+  background: linear-gradient(90deg, #001d64 0%, #003c87 35%, #0098f1 100%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 40vh;
+  padding: 10vh 0;
+  color: white;
 }
 
-.BannerList .element:hover .ProjectImage .caption {
-  
-  visibility: visible;
-  transition: .3s;
+footer button {
+  color: yellow;
+  font-size: 1.3em;
+  margin-bottom: 5vh;
 }
-/*-------------------BANNERLIST-----------------------------------------------*/
 
+footer .FooterLinks a {
+  color: white;
+  text-decoration: none;
+  margin: 0 1vw;
+}
 
-/*---------------------MODALS-------------------------------------------------*/
-.ModalCom, .ModalBDD, .ModalEmbq, .ModalPOO, .ModalContacts {
-  
-  background: rgba(0, 0, 0, 0.3);
+#inspired {
+  margin: 2vh 0;
+}
+
+#inspired p {
+  margin: 0 1vh 0 0;
+  float: left;
+}
+
+#inspired a {
+  float: right;
+}
+
+/*---------------------HOVERS-------------------------------------------------*/
+footer button:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+footer .FooterLinks a:hover {
+  border-bottom-style: solid;
+  border-bottom-color: white;
+  border-bottom-width: 0.15em;
+}
+
+/*---------------------HOVERS-------------------------------------------------*/
+/*--------------------FOOTER--------------------------------------------------*/
+/*--------------------MODAL0--------------------------------------------------*/
+.Modal {
+  background: rgba(0, 0, 0, 0.7);
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   z-index: 9;
   opacity: 0;
   visibility: hidden;
+  -webkit-transition: .3s;
   transition: .3s;
   overflow: hidden;
 }
 
-.ModalContent {
-  
-  width: 80%;
-  height: 75vh;
-  background-color: rgb(40, 44, 52);
-  color: rgb(151, 158, 170);
+.Modal .modalcontact {
+  background: #001d64;
+  background: -webkit-gradient(linear, left top, right top, from(#001d64), color-stop(35%, #003c87), to(#0098f1));
+  background: linear-gradient(90deg, #001d64 0%, #003c87 35%, #0098f1 100%);
+  width: 50vw;
+  height: 70vh;
   position: relative;
   top: 12vh;
   padding: 2em 4em;
-  border-radius: 3em;
-  overflow-y: scroll;
   opacity: 0;
   visibility: hidden;
+  -webkit-transition: .3s;
   transition: .3s;
+  border-radius: 0.5em;
+  color: white;
 }
 
-.ModalContent::-webkit-scrollbar {
-  
-  display: none;
+.Modal .modalcontact .top0 {
+  height: 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.5em;
 }
 
-.ModalClose {
-  
+.Modal .modalcontact form {
+  font-size: 1.2em;
+  height: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 7vh;
+}
+
+.Modal .modalcontact form label {
+  margin: 2vh 0 2vh 0;
+}
+
+.Modal .modalcontact form input[type=text], .Modal .modalcontact form textarea {
+  background-color: transparent;
+  border-style: none none solid none;
+  border-width: 0.1em;
+  border-color: white;
+  font-family: 'Cuprum', sans-serif;
+  color: white;
+}
+
+.Modal .modalcontact form input[type=text]:focus, .Modal .modalcontact form textarea:focus {
+  outline: none !important;
+}
+
+.Modal .modalcontact form input[type=submit] {
+  border-style: none;
+  border-radius: 0.5em;
+  background-color: #1e1e1e;
+  color: white;
+  margin: 2vh auto 0 auto;
+  padding: 1em 2.5em;
+  cursor: pointer;
+}
+
+.Modal .modalcontact form input[type=submit]:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.Modal .modalcontact .ModalClose {
   text-decoration: none;
   font-size: 2em;
-  color: rgb(151, 158, 170);
+  color: white;
   position: absolute;
   top: 1em;
   right: 2em;
 }
 
-.ModalClose:hover {
-  
-  color: rgb(207, 102, 111);
+.Modal .modalcontact .ModalClose:hover {
+  -webkit-transition: .4s ease;
+  transition: .4s ease;
+  color: #dadada;
 }
 
-#ModalCom:target, #ModalBDD:target, #ModalEmbq:target, #ModalPOO:target, #ModalContacts:target {
-  
+/*--------------------MODALS OPENING------------------------------------------*/
+#modal0:target {
   opacity: 1;
   visibility: visible;
 }
 
-#ModalCom:target .ModalContent, #ModalBDD:target .ModalContent, #ModalEmbq:target .ModalContent, #ModalPOO:target .ModalContent, #ModalContacts:target .ModalContent {
-  
+#modal0:target .modalcontact {
   opacity: 1;
   visibility: visible;
 }
-/*----------------------------------------------------------------------------*/
-.ModalContent h2 {
-  
-  font-size: 2em;
-  color: rgb(86, 182, 194);
-  text-align: center;
-}
 
-.ModalContent h3 {
-  
-  font-size: 1.5em;
-  color: rgb(138, 177, 113);
-  text-indent: 5vh;
-}
-
-.ModalContent h4 {
-  
-  font-size: 1.5em;
-  color: rgb(255, 255, 255);
-  text-align: center;
-}
-
-.ModalContent .ModalImage {
-  
-  text-align: center;
-}
-
-.ModalContent .ModalLink {
-  
-  text-decoration: underline;
-  color: rgb(255, 255, 255);
-}
-
-.ModalContent img {
-  
-  position: relative;
-  max-width: 100%;
-  height: auto;
-  margin: 5vh auto;
-}
-
-.ModalContent p {
-  
-  font-family: 'Changa', sans-serif;
-}
-
-.CodeBlock {
-  
-  margin: 5vh 0;
-}
-
-.CodeBlock pre {
-  
-  padding-right: -30vh;
-  max-height: 70vh;
-}
-
-/*--------------------ModalContact--------------------------------------------*/
-.ModalContacts .ModalContent {
-  
-  width: 25vh;
-  height: auto;
-  background-color: rgb(200, 200, 200);
-  color: rgb(0, 0, 0);
-  overflow: hidden;
-}
-
-.ModalContacts .ModalContent .ContactsGrid {
-  
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-template-rows: auto auto auto;
-  align-items: center;
-}
-
-.ModalContacts .ModalContent .ModalClose {
-  
-  top: 0.7em;
-  right: 1em;;
-}
-
-.ModalContacts h2 {
-  
-  font-size: 2em;
-  color: rgb(57, 133, 164);
-  text-align: center;
-}
-
-.ModalContacts .ModalContent .ContactsGrid i {
-  
-  color: rgb(0, 0, 0);
-  font-size: 1.5em;
-}
-
-.ModalContacts .ModalContent .ContactsGrid a,
-.ModalContacts .ModalContent .ContactsGrid div {
-  
-  color: rgb(0, 0, 0);
-  text-decoration: none;
-  font-size: 1.5em;
-  margin: 1vh 1vh;
-}
-
-.ModalContacts .ModalContent .ContactsGrid a:hover {
-  
-  text-decoration: underline;
-  transition: .3s;
-}
-
-/*---------------------MODALS-------------------------------------------------*/
-
-
-
-/*--------------------ArrowAndText--------------------------------------------*/
-.Arrows {
- 
-  margin-bottom: 10vh;
-}
-
-.fa-angle-double-down {
- 
-  color: rgb(100, 255, 255);
-  font-size: 5em;
-}
-
-#ArrowLeft {
- 
-  float: left;
-  margin-right: 25vh;
-}
-
-#ArrowRight {
- 
-  float: right;
-  margin-left: 25vh;
-}
-
-.BannerText {
- 
-  color: rgb(100, 255, 255);
-  font-size: 2em;
-  text-align: center;
-  margin: 10vh 0;
-  max-width: 75%;
-}
-/*--------------------ArrowAndText--------------------------------------------*/
-
-
-
-/*-----------------------FOOTER-----------------------------------------------*/
-footer {
- 
-  text-align: center;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  height: auto;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  padding: 1vh 0;
-}
-
-footer button,
-footer p {
- 
-  text-decoration: none;
-  color: rgb(255, 255, 255);
-  margin: 1vh;
-}
-
-footer p {
-  
-  font-size: 1.5em;
-  color: rgb(100, 255, 255);
-}
-
-footer .FooterLinks {
- 
-  width: 100%;
-  margin-top: 2vh;
-  display: inline;
-  text-align: center;
-}
-
-footer a {
-  
-  font-size: 1em;
-  color: rgb(100, 255, 255);
-  margin: 0 2vh;
-}
-
-footer button {
-  
-  width: auto;
-  font-size: 1.5em;
-  padding: 0.5em;
-  background-color: rgba(0, 0, 0, 1);
-  border-style: outset;
-  border-color: rgba(255, 255, 255, 1);
-  border-radius: 1em;
-  border-width: 0.1em;
-  cursor: pointer;
-}
-
-footer button:hover {
-  
-  transform: scale(1.1);
-  transition: .3s;
-}
-/*-----------------------FOOTER-----------------------------------------------*/
+/*--------------------MODALS OPENING------------------------------------------*/
+/*--------------------MODAL0--------------------------------------------------*/
+/*# sourceMappingURL=Index2.css.map */
