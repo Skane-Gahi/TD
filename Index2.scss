@@ -141,6 +141,10 @@ header .HeaderNav .Contacts:hover .DropDown {
             font-size: 2em;
         }
     }
+    & button {
+
+        color: rgb(255, 255, 0);
+    }
 }
 
 #universe {
@@ -164,6 +168,7 @@ header .HeaderNav .Contacts:hover .DropDown {
 
         background-size: cover;
         background-position: center;
+        background-color: rgb(0, 29, 100);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -174,10 +179,10 @@ header .HeaderNav .Contacts:hover .DropDown {
     }
 }
 /*---------------------HOVERS-------------------------------------------------*/
-.ProjectList .Project:hover{
+.ProjectList .Project:hover {
+    background-color: rgba(0,152,241,1);
+    color: rgb(255, 255, 0);
     background-image: none;
-    background-color: rgb(242, 242, 242);
-    color: rgb(0,29,100);
 }
 /*---------------------HOVERS-------------------------------------------------*/
 /*--------------------IMAGES--------------------------------------------------*/
@@ -227,6 +232,7 @@ footer {
 
     & button {
 
+        color: rgb(255, 255, 0);
         font-size: 1.3em;
         margin-bottom: 5vh;
     }
@@ -304,7 +310,7 @@ footer .FooterLinks a:hover {
 
         & .top0 {
 
-            height: 25%;
+            height: 20%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -314,13 +320,14 @@ footer .FooterLinks a:hover {
         & form {
 
             font-size: 1.2em;
-            height: 75%;
+            height: 80%;
             display: flex;
             flex-direction: column;
+            margin-top: 7vh;
 
             & label {
 
-                margin: 2vh 0 1vh 0;
+                margin: 2vh 0 2vh 0;
             }
 
             & input[type=text], textarea {
@@ -328,8 +335,9 @@ footer .FooterLinks a:hover {
                 background-color: transparent;
                 border-style: none none solid none;
                 border-width: 0.1em;
-                border-color: rgb(218, 218, 218);
+                border-color: white;
                 font-family: 'Cuprum', sans-serif;
+                color: white;
 
                 &:focus {
 
@@ -343,7 +351,7 @@ footer .FooterLinks a:hover {
                 border-radius: 0.5em;
                 background-color: rgb(30, 30, 30);
                 color: white;
-                margin: 7vh auto;
+                margin: 2vh auto 0 auto;
                 padding: 1em 2.5em;
                 cursor: pointer;
                 
@@ -351,6 +359,21 @@ footer .FooterLinks a:hover {
                     
                     transform: scale(1.1);
                 }
+            }
+        }
+        & .ModalClose {
+
+            text-decoration: none;
+            font-size: 2em;
+            color: white;
+            position: absolute;
+            top: 1em;
+            right: 2em;
+    
+            &:hover {
+                
+                transition: .4s ease;
+                color: rgb(218, 218, 218);
             }
         }
     }
@@ -368,27 +391,5 @@ footer .FooterLinks a:hover {
     opacity: 1;
     visibility: visible;
 }
-
-
-
-input:focus::-webkit-input-placeholder { color:transparent; }
-input:focus:-moz-placeholder { color:transparent; }
-input:focus::-moz-placeholder { color:transparent; }
-input:focus:-ms-input-placeholder { color:transparent; }
-
-textarea:focus::-webkit-input-placeholder { color:transparent; }
-textarea:focus:-moz-placeholder { color:transparent; }
-textarea:focus::-moz-placeholder { color:transparent; }
-textarea:focus:-ms-input-placeholder { color:transparent; }
-
-input::-webkit-input-placeholder { color: #999999; }
-input:-moz-placeholder { color: #999999; }
-input::-moz-placeholder { color: #999999; }
-input:-ms-input-placeholder { color: #999999; }
-
-textarea::-webkit-input-placeholder { color: #999999; }
-textarea:-moz-placeholder { color: #999999; }
-textarea::-moz-placeholder { color: #999999; }
-textarea:-ms-input-placeholder { color: #999999; }
 /*--------------------MODALS OPENING------------------------------------------*/
 /*--------------------MODAL0--------------------------------------------------*/
