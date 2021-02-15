@@ -40,7 +40,7 @@
         <a href="Index.html" class="NavChoice">Accueil</a>
         <a href="APropos.html" class="NavChoice">À propos</a>
         <div class="Contacts">
-          <a href="#modal0" class="ContactsHead">Contacts</a>
+          <a href="#modal0" class="ContactsHead OpenModal">Contacts</a>
           <ul class="DropDown">
             <li>
               <a href="https://www.linkedin.com/in/tanguy-delage-a085931a0/">
@@ -48,12 +48,12 @@
               </a>
             </li>
             <li>
-              <a href="#modal0">
+              <a href="#modal0" class="OpenModal">
                 <i class="fas fa-envelope"></i>
               </a>
             </li>
             <li>
-              <a href="#modal0">
+              <a href="#modal0" class="OpenModal">
                 <i class="fas fa-phone-square"></i>
               </a>
             </li>
@@ -66,7 +66,7 @@
 
     <!-- ///////////////////Corp du site///////////////////////////////////////-->
     <main>
-        <h2>LOGO | Projet Base de données</h2>
+        <h2>Projet Base de données</h2>
         <article>
             <section class="Intro">
                 <p>
@@ -114,7 +114,7 @@
                     </p>
                     <h4>Données "guerres" initiales</h4>
                     <img src="images/BDD/guerres.png" alt="Données 'guerres' initiales">
-                    <a href="#modal1">Solution SQL apportée (Procédure stockée avec curseurs)</a>
+                    <a href="#modal1" class="OpenModal">Solution SQL apportée (Procédure stockée avec curseurs)</a>
                     <p>
                         Si cela vous intéresse le script complet (! 1200+ lignes) écrit à la main par mes soins se trouve tout en bas de cette page.
                     </p>
@@ -125,19 +125,19 @@
                     <p>
                         Dernière phase du projet, il faut composer les requêtes permettant de répondre aux 12 souhaits de départ. Le principal problème a été d'optimiser les requêtes pour permettre à MySQL de les réaliser. L'un des souhaits les plus intéressants est pour l'ajout de nouvelles ventes. Celui-ci comprend un trigger qui déclenche une procédure stockée. Si cela vous intéresse, le script complet avec tous les souhaits se trouve tout en bas de cette page.
                     </p>
-                    <a href="#modal2">Souhait "ajout de nouvelles ventes" en SQL</a>
+                    <a href="#modal2" class="OpenModal">Souhait "ajout de nouvelles ventes" en SQL</a>
                     <p>
                         Je vais prendre l'exemple du souhait 4 pour vous montrer un résultat final bien illustré. Ce souhait consiste à comparer l'évolution des ventes de l'Ægypte par rapport à toutes les autres provinces. Comme vous pourrez le constater le nombre de ventes évolue de façon similaire dans les deux cas. Voici le script SQL réalisé suivi du diagramme réalisé sur excel.
                     </p>
-                    <a href="#modal3">Souhait 4 en SQL</a>
+                    <a href="#modal3" class="OpenModal">Souhait 4 en SQL</a>
                     <h4>Diagramme du souhait 4</h4>
                     <img src="images/BDD/wish4.png" alt="Souhait 4 en SQL">
                 </section>
 
                 <h3 id="four">Scripts complets</h3>
                 <section id="fourp">
-                    <a href="#modal4">Implémentation</a>
-                    <a href="#modal5">Souhaits des Dieux</a>
+                    <a href="#modal4" class="OpenModal">Implémentation</a>
+                    <a href="#modal5" class="OpenModal">Souhaits des Dieux</a>
                 </section>
             </section>
         </article>
@@ -147,7 +147,7 @@
     
     <!-- ///////////////////FOOTER/////////////////////////////////////////////-->   
     <footer>
-        <button onclick="window.location.href = '#modal0';">Contactez Moi</button>
+        <button onclick="window.location.href = '#modal0';" class="OpenModal">Contactez Moi</button>
         <section id="inspired">
             <p>© 2021 par Tanguy Delage. Inspiré de</p>
             <a href="https://www.reutchen.com" id="Reut">Reut Chen</a>
@@ -2285,3 +2285,7 @@
 
   </body>
 </html>
+
+<!--Scripts-->
+<script type="text/javascript" src="scroll.js"></script>
+<!--Scripts-->

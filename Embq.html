@@ -40,7 +40,7 @@
         <a href="Index.html" class="NavChoice">Accueil</a>
         <a href="APropos.html" class="NavChoice">À propos</a>
         <div class="Contacts">
-          <a href="#modal0" class="ContactsHead">Contacts</a>
+          <a href="#modal0" class="ContactsHead OpenModal">Contacts</a>
           <ul class="DropDown">
             <li>
               <a href="https://www.linkedin.com/in/tanguy-delage-a085931a0/">
@@ -48,12 +48,12 @@
               </a>
             </li>
             <li>
-              <a href="#modal0">
+              <a href="#modal0" class="OpenModal">
                 <i class="fas fa-envelope"></i>
               </a>
             </li>
             <li>
-              <a href="#modal0">
+              <a href="#modal0" class="OpenModal">
                 <i class="fas fa-phone-square"></i>
               </a>
             </li>
@@ -66,7 +66,7 @@
 
     <!-- ///////////////////Corp du site///////////////////////////////////////-->
     <main>
-        <h2>LOGO | Projet Système Embarqué</h2>
+        <h2>Projet Système Embarqué</h2>
         <article>
             <section class="Intro">
                 <p>
@@ -111,7 +111,7 @@
                     <p>
                         Voici donc notre programme final pour ceux que ça intéresse. Nous avons eu pas mal de soucis avec le capteur bme280 et la mémoire très limitée de la carte arduino uno. Si nous avions eu le temps, nous aurions rajouté des pointeurs et des structures mais nous avons préféré avoir un programme simple et fonctionnel en priorité. La première structure aurait certainement été pour contenir les données à enregistrer sur le support SD.
                     </p>
-                    <a href="#modal1">Programme complet</a>
+                    <a href="#modal1" class="OpenModal">Programme complet</a>
                 </section>
 
                 <h3 id="four">Documentation utilisateur et technique</h3>
@@ -129,7 +129,7 @@
     
     <!-- ///////////////////FOOTER/////////////////////////////////////////////-->   
     <footer>
-        <button onclick="window.location.href = '#modal0';">Contactez Moi</button>
+        <button onclick="window.location.href = '#modal0';" class="OpenModal">Contactez Moi</button>
         <section id="inspired">
             <p>© 2021 par Tanguy Delage. Inspiré de</p>
             <a href="https://www.reutchen.com" id="Reut">Reut Chen</a>
@@ -786,3 +786,7 @@
 
   </body>
 </html>
+
+<!--Scripts-->
+<script type="text/javascript" src="scroll.js"></script>
+<!--Scripts-->

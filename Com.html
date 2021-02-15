@@ -6,10 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>TD's Portfolio</title>
-
-    <!--Scripts-->
-    <script type="text/javascript" src="scroll.js"></script>
-    <!--Scripts-->
     
     <!--FavIcon-->
     <link rel="icon" type="image/png" href="Documents/favicons/icons8-accueil-40.png">
@@ -44,7 +40,7 @@
         <a href="Index.html" class="NavChoice">Accueil</a>
         <a href="APropos.html" class="NavChoice">À propos</a>
         <div class="Contacts">
-          <a href="#modal0" class="ContactsHead">Contacts</a>
+          <a href="#modal0" class="ContactsHead OpenModal">Contacts</a>
           <ul class="DropDown">
             <li>
               <a href="https://www.linkedin.com/in/tanguy-delage-a085931a0/">
@@ -52,12 +48,12 @@
               </a>
             </li>
             <li>
-              <a href="#modal0">
+              <a href="#modal0" class="OpenModal">
                 <i class="fas fa-envelope"></i>
               </a>
             </li>
             <li>
-              <a href="#modal0">
+              <a href="#modal0" class="OpenModal">
                 <i class="fas fa-phone-square"></i>
               </a>
             </li>
@@ -70,7 +66,7 @@
 
     <!-- ///////////////////Corp du site///////////////////////////////////////-->
     <main>
-        <h2>LOGO | Projet Communication</h2>
+        <h2>Projet Communication</h2>
         <article>
             <section class="Intro">
                 <p>
@@ -121,7 +117,7 @@
                         Le programme de réception va lire le fichier texte avec les trames envoyées, et reconvertir les bits en caractères. Le programme passe évidemment par la décomposition des trames ainsi que de tous les bits de contrôles.<br>
                         Voici le programme de réception complet.
                     </p>
-                    <a href="#modal2">Programme de réception</a>
+                    <a href="#modal2" class="OpenModal">Programme de réception</a>
                 </section>
             </section>
         </article>
@@ -131,7 +127,7 @@
     
     <!-- ///////////////////FOOTER/////////////////////////////////////////////-->   
     <footer>
-        <button onclick="window.location.href = '#modal0';">Contactez Moi</button>
+        <button onclick="window.location.href = '#modal0';" class="OpenModal">Contactez Moi</button>
         <section id="inspired">
             <p>© 2021 par Tanguy Delage. Inspiré de</p>
             <a href="https://www.reutchen.com" id="Reut">Reut Chen</a>
@@ -147,7 +143,6 @@
     
     
     <div class="Modal" id="modal1">
-        <a href="#" class="ModalClose"><i class="far fa-times-circle"></i></a>
         <pre class="Preformate">
             <a href="#" class="ModalClose"><i class="far fa-times-circle"></i></a>
           <code class="language-py">
@@ -445,6 +440,10 @@
             <input type="submit" value="ENVOYER">
           </form>
       </div>
-
+      
   </body>
 </html>
+
+<!--Scripts-->
+<script type="text/javascript" src="scroll.js"></script>
+<!--Scripts-->
