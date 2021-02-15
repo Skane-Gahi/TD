@@ -1,10 +1,9 @@
 body {
   margin: 0;
-  padding: 10vh 0 0 0;
-  /* Hide scrollbar  */
+  padding: 0;
+  /* Hide scrollbar */
   font-family: 'Cuprum', sans-serif;
   font-weight: bold;
-  font-size: 1em;
   background-image: url("images/facade.jpg");
   background-attachment: fixed;
   background-position: center;
@@ -103,77 +102,113 @@ header .HeaderNav .Contacts:hover .DropDown {
 
 /*---------------------HOVERS-------------------------------------------------*/
 /*---------------------HEADER-------------------------------------------------*/
-/*---------------------MAIN---------------------------------------------------*/
-main h1 {
-  margin: 15vh 0;
+/*--------------------MAIN----------------------------------------------------*/
+/*--------------------WELCOMEBANNER-------------------------------------------*/
+.WelcomeBanner {
+  height: auto;
+  width: 100%;
+  padding: 10vh 0 5vh 0;
   text-align: center;
-  color: yellow;
-  font-size: 3em;
+  background: #001d64;
+  background: -webkit-gradient(linear, left top, right top, from(#001d64), color-stop(35%, #003c87), to(#0098f1));
+  background: linear-gradient(90deg, #001d64 0%, #003c87 35%, #0098f1 100%);
+  color: white;
 }
 
-main article {
+.WelcomeBanner .TopWelcomeBanner {
+  margin-bottom: 5vh;
+}
+
+.WelcomeBanner .TopWelcomeBanner button {
+  font-size: 2em;
+}
+
+.WelcomeBanner .TopWelcomeBanner h1 {
+  font-size: 2em;
+}
+
+.WelcomeBanner button {
+  color: yellow;
+}
+
+#universe {
+  margin-top: 2vh;
+  font-size: 1.5em;
+}
+
+.WelcomeBanner .TopWelcomeBanner button:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+/*--------------------WELCOMEBANNER-------------------------------------------*/
+/*--------------------PROJECTLIST---------------------------------------------*/
+.ProjectList {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 25% 75%;
-      grid-template-columns: 25% 75%;
-  -ms-grid-rows: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-rows: 40vh 40vh;
+      grid-template-rows: 40vh 40vh;
 }
 
-main article h3, main article p {
-  display: block;
-  margin: 0;
-  padding: 3vh 5vw;
-  font-size: 1.5em;
-}
-
-main article h3 {
-  font-size: 1.5em;
-  text-align: right;
-  padding: 3vh 2vw;
-}
-
-main article p {
+.ProjectList .Project {
+  background-size: cover;
+  background-position: center;
+  background-color: #001d64;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-weight: normal;
-  text-align: justify;
+  text-decoration: none;
+  color: transparent;
+  font-size: 2.5em;
+  -webkit-transition: .5s ease;
+  transition: .5s ease;
 }
 
-#whysite {
-  background-color: #dadada;
-  color: #001d64;
+/*---------------------HOVERS-------------------------------------------------*/
+.ProjectList .Project:hover {
+  background-color: #0098f1;
+  color: yellow;
+  background-image: none;
 }
 
-#whysitep {
-  background-color: #003c87;
-  color: #f2f2f2;
+/*---------------------HOVERS-------------------------------------------------*/
+/*--------------------IMAGES--------------------------------------------------*/
+.Com {
+  background-image: url(images/com.jpg);
 }
 
-#likesite {
-  background-color: #f2f2f2;
-  color: #001d64;
+.BDD {
+  background-image: url(images/BDD.jpg);
 }
 
-#likesitep {
-  background-color: #002473;
-  color: #dadada;
+.Embq {
+  background-image: url(images/Embq.jpg);
 }
 
-#collab {
-  background-color: #dadada;
-  color: #001d64;
+.POO {
+  background-image: url(images/POO.png);
 }
 
-#collabp {
-  background-color: #001d64;
-  color: #969696;
+.Net {
+  background-image: url(images/Reseau.jpg);
 }
 
+.WEB {
+  background-image: url(images/Web.jpg);
+}
+
+/*--------------------IMAGES--------------------------------------------------*/
+/*--------------------PROJECTLIST---------------------------------------------*/
 main .TextBanner {
   width: 100%;
   background-color: #1e1e1e;
@@ -183,7 +218,7 @@ main .TextBanner {
   padding: 3vh 0;
 }
 
-/*---------------------MAIN---------------------------------------------------*/
+/*--------------------MAIN----------------------------------------------------*/
 /*--------------------FOOTER--------------------------------------------------*/
 footer {
   width: 100%;
@@ -203,14 +238,15 @@ footer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-top: 40vh;
   padding: 10vh 0;
   color: white;
 }
 
 footer button {
+  color: yellow;
   font-size: 1.3em;
   margin-bottom: 5vh;
-  color: yellow;
 }
 
 footer .FooterLinks a {
@@ -382,4 +418,4 @@ footer .FooterLinks a:hover {
 
 /*--------------------MODALS OPENING------------------------------------------*/
 /*--------------------MODAL0--------------------------------------------------*/
-/*# sourceMappingURL=APropos.css.map */
+/*# sourceMappingURL=index.css.map */
