@@ -45,13 +45,32 @@ header {
   z-index: 10;
 }
 
-header .HeaderTitle h1 {
-  color: white;
+header .LogoTitle {
   float: left;
-  padding: 0 1vw 0 1vw;
-  margin: 0 1vw;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 1vw;
+}
+
+header .LogoTitle .HeaderTitle h1 {
+  color: white;
+  padding: 0 1vw 0 0;
+  margin: 0 0 0 0.5vw;
   text-decoration: none;
   font-size: 1.5em;
+}
+
+header .LogoTitle img {
+  height: 60%;
 }
 
 header .HeaderNav {
@@ -105,6 +124,29 @@ header .HeaderNav .Contacts:hover .DropDown {
 /*---------------------HEADER-------------------------------------------------*/
 /*---------------------MAIN---------------------------------------------------*/
 /*---------------------MAIN---------------------------------------------------*/
+main .LogoProject {
+  height: 40vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+main .LogoProject img {
+  height: 30%;
+  border-style: none;
+  margin: 0;
+}
+
 main h2 {
   margin: 15vh 0;
   text-align: center;

@@ -47,14 +47,29 @@ header {
     color: white;
     z-index: 10;
 
-    & .HeaderTitle h1 {
-        
-        color: white;
+    & .LogoTitle {
+
         float: left;
-        padding: 0 1vw 0 1vw;
-        margin: 0 1vw;
-        text-decoration: none;
-        font-size: 1.5em;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-left: 1vw;
+
+        & .HeaderTitle h1 {
+        
+            color: white;
+            padding: 0 1vw 0 0;
+            margin: 0 0 0 0.5vw;
+            text-decoration: none;
+            font-size: 1.5em;
+        }
+
+        & img {
+
+            height: 60%;
+        }
+
     }
 
     & .HeaderNav {
